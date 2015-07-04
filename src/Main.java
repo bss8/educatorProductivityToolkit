@@ -7,19 +7,9 @@ import javax.mail.internet.AddressException;
 public class Main {
 
    public static void main(String args[]) throws AddressException, MessagingException {
-//      Mail.generateAndSendEmail();
-//      System.out.println("\n\n ===> Your Java Program has just sent an Email successfully. Check your email..");
 
-      //FOR TESTING PURPOSES OF JAVA SWING
-      //new HelloWorldFrame();
+      EmailForm myEmailForm = new EmailForm();  //creates the email form window
+      myEmailForm.setSize(800, 500);            //sets the size of the email form
 
-      ButtonFrame frame = new ButtonFrame("Send email button test");
-
-      frame.setSize(400, 500);
-      frame.setVisible( true );
-
-      EmailForm myEmailForm = new EmailForm();
-      myEmailForm.setSize(400, 500);
-   }
-
-}
+   }  //end main
+}  //end class Main

@@ -16,9 +16,11 @@ public class Mail {
     static Session getMailSession;
     static MimeMessage generateMailMessage;
 
-    public static void generateAndSendEmail() throws AddressException, MessagingException {
+    public static void generateAndSendEmail(String _toField, String _ccField, String _subject, String _message)
+            throws AddressException, MessagingException
+    {
 
-        // Step1: specify ports and connection info / server properties
+        // STEP_1: specify ports and connection info / server properties
         System.out.println("\n 1st ===> setup Mail Server Properties..");
         mailServerProperties = System.getProperties();
         mailServerProperties.put("mail.smtp.port", "587");
@@ -26,24 +28,22 @@ public class Mail {
         mailServerProperties.put("mail.smtp.starttls.enable", "true");
         System.out.println("Mail Server Properties setup successfully...");
 
-        // Step2: get a mail session and fill an email message with necessary info (subject, to, cc, from)
+        // STEP_2: get a mail session and fill an email message with necessary info (subject, to, cc, from)
         System.out.println("\n\n 2nd ===> get Mail Session..");
         getMailSession = Session.getDefaultInstance(mailServerProperties, null);
         generateMailMessage = new MimeMessage(getMailSession);
-        generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("bss64@txstate.edu"));
-        generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("ajn21@txstate.edu"));
-        generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("arnissim@gmail.com"));
+        generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(_toField));
 
-        //generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress("arnissim@gmail.com"));
-        generateMailMessage.setSubject("Greetings from Group4-RR-MailServer!");
-        String emailBody = "TLS Test email for JavaMail API example (for the next project)"
-                + "<br><br>Mail Session created successfully (I hope)..."
-                + "<br><br> Please let me know if you see this message"
-                + "<br><br> Regards, <br>Boris";
-        generateMailMessage.setContent(emailBody, "text/html");
+        //generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("ajn21@txstate.edu"));
+        //generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("arnissim@gmail.com"));
+
+        generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(_ccField));
+        generateMailMessage.setSubject(_subject);
+
+        generateMailMessage.setContent(_message, "text/html");
         System.out.println("Mail Session created successfully...");
 
-        // Step3: transport the message
+        // STEP_3: transport the message
         System.out.println("\n\n 3rd ===> Get Session and Send mail");
         Transport transport = getMailSession.getTransport("smtp");
 
@@ -52,5 +52,6 @@ public class Mail {
         transport.connect("smtp.gmail.com", "defaultbusinessacct01@gmail.com", "loaphdmteeaeasak");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
-    }
-}
+
+    }  //end generateAndSendEmail
+}  //end class Mail
