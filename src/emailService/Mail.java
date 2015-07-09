@@ -1,3 +1,6 @@
+package emailService;
+
+import Views.EmailForm;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -7,8 +10,9 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
 /**
- * Mail created by Borislav S. on 7/1/2015 @ 10:00 PM.
+ * emailService.Mail created by Borislav S. on 7/1/2015 @ 10:00 PM.
  */
 public class Mail {
 
@@ -16,20 +20,19 @@ public class Mail {
     static Session getMailSession;
     static MimeMessage generateMailMessage;
 
-    public static void generateAndSendEmail(String _toField, String _ccField, String _subject, String _message)
+    public static void generateAndSendEmail(String _toField, String _ccField, String _subject, String _message, EmailForm emailForm)
             throws AddressException, MessagingException
     {
-
         // STEP_1: specify ports and connection info / server properties
-        System.out.println("\n 1st ===> setup Mail Server Properties..");
+        System.out.println("\n 1st ===> setup emailService.Mail Server Properties..");
         mailServerProperties = System.getProperties();
         mailServerProperties.put("mail.smtp.port", "587");
         mailServerProperties.put("mail.smtp.auth", "true");
         mailServerProperties.put("mail.smtp.starttls.enable", "true");
-        System.out.println("Mail Server Properties setup successfully...");
+        System.out.println("emailService.Mail Server Properties setup successfully...");
 
         // STEP_2: get a mail session and fill an email message with necessary info (subject, to, cc, from)
-        System.out.println("\n\n 2nd ===> get Mail Session..");
+        System.out.println("\n\n 2nd ===> get emailService.Mail Session..");
         getMailSession = Session.getDefaultInstance(mailServerProperties, null);
         generateMailMessage = new MimeMessage(getMailSession);
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(_toField));
@@ -41,7 +44,7 @@ public class Mail {
         generateMailMessage.setSubject(_subject);
 
         generateMailMessage.setContent(_message, "text/html");
-        System.out.println("Mail Session created successfully...");
+        System.out.println("emailService.Mail Session created successfully...");
 
         // STEP_3: transport the message
         System.out.println("\n\n 3rd ===> Get Session and Send mail");
@@ -54,4 +57,6 @@ public class Mail {
         transport.close();
 
     }  //end generateAndSendEmail
-}  //end class Mail
+
+
+}  //end class emailService.Mail

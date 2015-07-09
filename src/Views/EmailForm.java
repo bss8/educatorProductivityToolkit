@@ -1,3 +1,7 @@
+package Views;
+
+import emailService.Mail;
+
 import javax.mail.MessagingException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,6 +20,10 @@ public class EmailForm extends JFrame {
    private JTextField toTextField;
    private JTextField subjectTextField;
 
+   static final int MY_MIN = 0;
+   static final int MY_MAX = 100;
+   private EmailForm emailForm;
+
    public EmailForm() {
       super("Hello World!");
       setContentPane(emailPanel);
@@ -28,7 +36,10 @@ public class EmailForm extends JFrame {
             //JOptionPane.showConfirmDialog(EmailForm.this, "Hello World!");
 
             try {
-               Mail.generateAndSendEmail(getToTextField(), getCcTextField(), getSubjectTextField(), getMessageTextArea());
+               Mail.generateAndSendEmail(getToTextField(),getCcTextField(),getSubjectTextField(),getMessageTextArea(),emailForm);
+
+               Mail.generateAndSendEmail(getToTextField(), getCcTextField(), getSubjectTextField(),
+                       getMessageTextArea(), emailForm);
                System.out.println("\n\n ===> Your Java Program just sent an email successfully. Check your email...");
             } catch (MessagingException e) {
                System.out.print("messaging exception");
@@ -43,4 +54,6 @@ public class EmailForm extends JFrame {
    public String getMessageTextArea()  { return messageTextArea.getText(); }
    public String getCcTextField()      { return ccTextField.getText(); }
    public String getSubjectTextField() { return subjectTextField.getText(); }
+   public EmailForm setEmailForm(EmailForm _emailForm) { return emailForm = _emailForm; }
+
 }
