@@ -7,6 +7,8 @@ import javax.swing.*;
  */
 public class AuthenticationForm extends JFrame {
    private JPanel authenticationPanel;
+   private JTextField textField2;
+   private JTextField textField1;
 
    public AuthenticationForm() {
       super("Login");
