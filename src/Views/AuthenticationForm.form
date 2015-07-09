@@ -79,7 +79,7 @@
               </grid>
             </constraints>
           </vspacer>
-          <component id="c608d" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="c608d" class="javax.swing.JTextField" binding="passwordTextField">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="200" height="-1"/>
@@ -103,7 +103,7 @@
               </grid>
             </constraints>
           </vspacer>
-          <component id="ea658" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="ea658" class="javax.swing.JTextField" binding="usernameTextField">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="2" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="200" height="-1"/>

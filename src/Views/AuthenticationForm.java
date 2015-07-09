@@ -7,8 +7,8 @@ import javax.swing.*;
  */
 public class AuthenticationForm extends JFrame {
    private JPanel authenticationPanel;
-   private JTextField textField2;
-   private JTextField textField1;
+   private JTextField passwordTextField;
+   private JTextField usernameTextField;
 
    public AuthenticationForm() {
       super("Login");
@@ -16,9 +16,10 @@ public class AuthenticationForm extends JFrame {
       pack();
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setExtendedState(JFrame.MAXIMIZED_BOTH);
-
       setVisible(true);
    }
+
+
 
 
 }
