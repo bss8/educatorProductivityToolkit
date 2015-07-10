@@ -1,7 +1,7 @@
 import Views.AuthenticationForm;
 import Views.EmailForm;
 import io_operations.ReadFromFile;
-
+import emailService.Mail;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.swing.*;
@@ -22,12 +22,12 @@ public class Main {
       myEmailForm.setEmailForm(myEmailForm);
       */
 
-      AuthenticationForm loginScreen = new AuthenticationForm();
-      loginScreen.setSize(500,400);
+      AuthenticationForm.main();
+
 //      loginScreen.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //      loginScreen.setUndecorated(true);
 
-      ReadFromFile rf = new ReadFromFile(".\\flatFiles\\userAuthenticationRepository.txt");
+      ReadFromFile rf = new ReadFromFile(".\\resources\\flatFiles\\userAuthenticationRepository.txt");
       try
       {
          rf.OpenFile();
