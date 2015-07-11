@@ -6,40 +6,38 @@ Users will have the ability to:
  - perform analytics on class and individual student performance;
  - email reports, gradebook, and other materials
  
-# Setup Instructions
+# 1. Setup Instructions
 
 To build the updated project, add the following dependencies (JAR files) in a directory. For example:
  - Create a folder called "projectDependencies"
  - In this folder, include mail.jar: 
    http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-eeplat-419426.html#javamail-1.4.5-oth-JPR
- - Include ALL of the jars as outlined in the Google Sheets API instructions (the ones under java\lib and java\deps). Here is a    direct download link, click on "Source" under the Download section:
-   https://github.com/google/gdata-java-client
- - Include the recommended activation.jar:  
-   http://www.oracle.com/technetwork/java/javase/downloads/index-135046.html
  - Navigate to: File > Project Structure > Modules > Dependencies
  - Click the green + icon and select "JARs or directories..."
  - Navigate to and select your directory "projectDependencies"
  - Click "Apply" then "OK"
  - The libraries should now be included in the project. See my previous emails for details on how to build a project JAR or     compile to run. 
 
-# Installing Git: 
+# 2. Installing Git: 
 - Go to the site and download: https://git-scm.com/download/win
 - During configuration, select both Git Bash and Git GUI
 - Select "Use with Windows Command Prompt"
 
-# Installing IntelliJ:
+# 3. Installing IntelliJ:
 - Go to the site, make an account using your Texas State email, and download:
 https://confluence.jetbrains.com/display/IntelliJIDEA/Basics+and+Installation
 - Take most default options but look through some of the settings and remove components that are not commonly used to speed up load times. Web servers like Glassfish, Tomcat; version control plugins: we will be using Git and GitHub;
 - From the main menu, click on "View" and check all four options (Toolbar, Tool Buttons, Status Bar, Navigation Bar)
 - Ctrl+Shift+A for looking up commands; Ctrl+Shift+F for global searches
 
-# GitHub:
+# 4. Working with GitHub:
 - Make an account: https://github.com/
 - Send me your user name so I can add you to the project
 - Download the code as a zip and extract it somewhere
 
-# Configuring the project to compile and run:
+# 5. Configuring the project to compile and run:
+Note that there is some duplication with #1 above as both steps reference including mail.jar
+
 - Select a project SDK (usually located in Program Files > Java > jdk###). IntelliJ I believe comes with one but if you don't find it, you can download a jdk from Oracle. I recommend version 1.6 something. 
 - Download the latest mail.jar from Oracle: 
 http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-eeplat-419426.html#javamail-1.4.5-oth-JPR
