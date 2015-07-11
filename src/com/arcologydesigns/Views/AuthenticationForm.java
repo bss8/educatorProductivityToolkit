@@ -1,5 +1,7 @@
 package com.arcologydesigns.Views;
 
+import com.arcologydesigns.Controllers.AuthenticationController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -59,6 +61,25 @@ public class AuthenticationForm extends JFrame {
             setVisible(false);
          }
       });
+
+      submitButton.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent actionEvent) {
+            AuthenticationController authenticate = new AuthenticationController();
+            boolean isUserValid = authenticate.authenticateUser(getUsernameTextField(), getPasswordTextField());
+            if(isUserValid) {
+               EmailForm e = new EmailForm();
+               e.setSize(800, 500);
+               setVisible(false);
+            } else {
+               JOptionPane.showMessageDialog(getParent(),
+                  "Invalid user ID or password!\nPlease try again or submit an access request.",
+                  "Authentication Error",
+                  JOptionPane.ERROR_MESSAGE);
+            }
+
+         }
+      });
    }
 
    public static void main()
@@ -72,5 +93,11 @@ public class AuthenticationForm extends JFrame {
       });
    }
 
+   public String getPasswordTextField() {
+      return passwordTextField.getText();
+   }
 
+   public String getUsernameTextField() {
+      return usernameTextField.getText();
+   }
 }

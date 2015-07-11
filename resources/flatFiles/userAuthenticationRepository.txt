@@ -1,2 +1,0 @@
-bss64 guest
-test line

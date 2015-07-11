@@ -14,13 +14,13 @@ public class ReadFromFile {
         path = filePath;
     }
 
-    public String OpenFile() throws IOException {
+    public String ReadOneLine() throws IOException {
         FileReader fileReader = new FileReader(path);
         BufferedReader lineReader = new BufferedReader(fileReader);
         String fileData;
 
         fileData = lineReader.readLine();
-        System.out.print("1st line: " + fileData);
+        System.out.print("1st line: " + fileData + "\n");
 
         lineReader.close();
 
