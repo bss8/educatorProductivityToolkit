@@ -1,6 +1,6 @@
-package Views;
+package com.arcologydesigns.Views;
 
-import emailService.Mail;
+import com.arcologydesigns.emailService.Mail;
 
 import javax.mail.MessagingException;
 import javax.swing.*;

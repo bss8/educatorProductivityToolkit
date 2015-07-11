@@ -1,6 +1,4 @@
-package Views;
-
-import emailService.Mail;
+package com.arcologydesigns.Views;
 
 import javax.swing.*;
 import java.awt.*;

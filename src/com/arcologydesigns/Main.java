@@ -1,14 +1,14 @@
-import Views.AuthenticationForm;
-import Views.EmailForm;
-import io_operations.ReadFromFile;
-import emailService.Mail;
+package com.arcologydesigns;
+
+import com.arcologydesigns.Views.AuthenticationForm;
+import com.arcologydesigns.io_operations.ReadFromFile;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
-import javax.swing.*;
 import java.io.IOException;
 
 /**
- * Main created by Borislav S. on 7/3/2015 @ 1:29 PM.
+ * com.arcologydesigns.Main created by Borislav S. on 7/3/2015 @ 1:29 PM.
  */
 public class Main {
 
@@ -36,4 +36,4 @@ public class Main {
       }
 
    }  //end main
-}  //end class Main
+}  //end class com.arcologydesigns.Main

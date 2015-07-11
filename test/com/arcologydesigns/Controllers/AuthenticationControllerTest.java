@@ -1,10 +1,8 @@
-package Controllers;
+package com.arcologydesigns.Controllers;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * AuthenticationControllerTest created by Borislav S. on 7/10/2015 @ 6:30 PM.

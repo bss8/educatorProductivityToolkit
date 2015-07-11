@@ -1,6 +1,6 @@
-package emailService;
+package com.arcologydesigns.emailService;
 
-import Views.EmailForm;
+import com.arcologydesigns.Views.EmailForm;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 
 /**
- * emailService.Mail created by Borislav S. on 7/1/2015 @ 10:00 PM.
+ * com.arcologydesigns.emailServicedesigns.Mail created by Borislav S. on 7/1/2015 @ 10:00 PM.
  */
 public class Mail {
 
@@ -24,15 +24,15 @@ public class Mail {
             throws AddressException, MessagingException
     {
         // STEP_1: specify ports and connection info / server properties
-        System.out.println("\n 1st ===> setup emailService.Mail Server Properties..");
+        System.out.println("\n 1st ===> setup com.arcologydesigns.emailServicedesigns.Mail Server Properties..");
         mailServerProperties = System.getProperties();
         mailServerProperties.put("mail.smtp.port", "587");
         mailServerProperties.put("mail.smtp.auth", "true");
         mailServerProperties.put("mail.smtp.starttls.enable", "true");
-        System.out.println("emailService.Mail Server Properties setup successfully...");
+        System.out.println("com.arcologydesigns.emailServicedesigns.Mail Server Properties setup successfully...");
 
         // STEP_2: get a mail session and fill an email message with necessary info (subject, to, cc, from)
-        System.out.println("\n\n 2nd ===> get emailService.Mail Session..");
+        System.out.println("\n\n 2nd ===> get com.arcologydesigns.Mailns.emailService.Mail Session..");
         getMailSession = Session.getDefaultInstance(mailServerProperties, null);
         generateMailMessage = new MimeMessage(getMailSession);
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(_toField));
@@ -44,7 +44,7 @@ public class Mail {
         generateMailMessage.setSubject(_subject);
 
         generateMailMessage.setContent(_message, "text/html");
-        System.out.println("emailService.Mail Session created successfully...");
+        System.out.println("com.arcologydesigns.Mailns.emailService.Mail Session created successfully...");
 
         // STEP_3: transport the message
         System.out.println("\n\n 3rd ===> Get Session and Send mail");
@@ -59,4 +59,4 @@ public class Mail {
     }  //end generateAndSendEmail
 
 
-}  //end class emailService.Mail
+}  //end class com.arcologydesigns.emailServicedesigns.Mail

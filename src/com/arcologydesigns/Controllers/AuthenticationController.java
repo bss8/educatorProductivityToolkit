@@ -1,4 +1,4 @@
-package Controllers;
+package com.arcologydesigns.Controllers;
 
 /**
  * AuthenticationController created by Borislav S. on 7/10/2015 @ 5:59 PM.
