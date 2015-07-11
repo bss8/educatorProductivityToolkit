@@ -66,5 +66,8 @@ http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-dow
     - green: a new file is added
     - brown: file exists locally, but is not in the repository, and is not scheduled for adding. 
 
+# Mark your META-INF directory as "excluded" before making commits. 
+This particular directory is created when you build the project to an external JAR. It is a local config file only. 
+
 As the project directory structure changes and we add things like packages, other dependencies, we may need to go through this process a few times.
 If we are mostly working remote, we can look into meeting tools like Cisco WebEx or Skype so we can share the desktop and get on a call together.
