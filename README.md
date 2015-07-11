@@ -54,5 +54,17 @@ http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-dow
 - Finally, to compile and run the application for the first time, select the "Main" class
 - Right click, Run Main (or Ctrl + Shift + F10)
 
+# 6. Marking directories in IntelliJ
+- When you build a JAR for the project, the "out" directory should be automatically set to ignore
+- right click on ".idea" directory, select "Mark directory as," then select "Excluded"
+- the "src" directory should be automatically marked as source when you create the project
+- the "test" directory should be marked as test: right click > mark directory as > test
+- the file "educatorProductivityToolkit-master.iml" should be automatically ignored
+- Colors in IntelliJ (https://www.jetbrains.com/idea/help/file-status-highlights.html):
+    - red: ignored by Git
+    - blue: the file has been modified from it's current version / a change has been made
+    - green: a new file is added
+    - brown: file exists locally, but is not in the repository, and is not scheduled for adding. 
+
 As the project directory structure changes and we add things like packages, other dependencies, we may need to go through this process a few times.
 If we are mostly working remote, we can look into meeting tools like Cisco WebEx or Skype so we can share the desktop and get on a call together.
