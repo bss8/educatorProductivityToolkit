@@ -60,14 +60,12 @@ http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-dow
 - the "src" directory should be automatically marked as source when you create the project
 - the "test" directory should be marked as test: right click > mark directory as > test
 - the file "educatorProductivityToolkit-master.iml" should be automatically ignored
+- the file "MANIFEST.MF" should be ignored; it is used for packaging the app as a JAR
 - Colors in IntelliJ (https://www.jetbrains.com/idea/help/file-status-highlights.html):
     - red: ignored by Git
     - blue: the file has been modified from it's current version / a change has been made
     - green: a new file is added
     - brown: file exists locally, but is not in the repository, and is not scheduled for adding. 
-
-# Mark your META-INF directory as "excluded" before making commits. 
-This particular directory is created when you build the project to an external JAR. It is a local config file only. 
 
 As the project directory structure changes and we add things like packages, other dependencies, we may need to go through this process a few times.
 If we are mostly working remote, we can look into meeting tools like Cisco WebEx or Skype so we can share the desktop and get on a call together.
