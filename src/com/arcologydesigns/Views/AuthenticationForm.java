@@ -14,9 +14,8 @@ public class AuthenticationForm extends JFrame {
    private JPanel authenticationPanel, p2;
    private JTextField usernameTextField;
    private JTextField passwordTextField;
-   private JButton submitButton;
-   private JButton cancelButton;
-   private JButton requestAccessButton;
+   private JButton loginButton;
+   private JButton requestIDButton;
 
    public AuthenticationForm() {
       createAndShowGUI();
@@ -30,7 +29,25 @@ public class AuthenticationForm extends JFrame {
       setDefaultCloseOperation(EXIT_ON_CLOSE);
 
       // Set a background for JFrame
-      setContentPane(new JLabel(new ImageIcon(".\\resources\\images\\desert.jpg")));
+      ClassLoader cldr = this.getClass().getClassLoader();
+      java.net.URL imageURL   = cldr.getResource("images/desert.jpg");
+
+      assert imageURL != null;  //used during debugging
+
+      ImageIcon img = null;
+      if (imageURL != null) {
+         img = new ImageIcon(imageURL);
+      }
+      setContentPane(new JLabel(img));
+
+      /*
+      EXAMPLE OF BAD CODE: the below code. To fetch a resource, use the absolute reference path and invoke
+      getClassLoader() then getResource() to set a resource. Otherwise, the resource will not show when running
+      the application from a JAR file.
+
+      setContentPane(new JLabel(new ImageIcon(".\\resources\\desert.jpg")));
+
+      */
 
       // Set some layout, say FlowLayout
       setLayout(new FlowLayout());
@@ -53,7 +70,7 @@ public class AuthenticationForm extends JFrame {
    }
 
    private void addButtonEventListeners() {
-      requestAccessButton.addActionListener(new ActionListener() {
+      requestIDButton.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent actionEvent) {
             EmailForm e = new EmailForm();
@@ -62,7 +79,7 @@ public class AuthenticationForm extends JFrame {
          }
       });
 
-      submitButton.addActionListener(new ActionListener() {
+      loginButton.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent actionEvent) {
             AuthenticationController authenticate = new AuthenticationController();
