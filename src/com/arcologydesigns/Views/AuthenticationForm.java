@@ -13,19 +13,20 @@ import java.awt.event.ActionListener;
 public class AuthenticationForm extends JFrame {
    private JPanel authenticationPanel, p2;
    private JTextField usernameTextField;
-   private JTextField passwordTextField;
+   private JPasswordField passwordTextField;
    private JButton loginButton;
    private JButton requestIDButton;
+   private ImageIcon img = null;
 
    public AuthenticationForm() {
       createAndShowGUI();
       addButtonEventListeners();
    }
 
-   private void createAndShowGUI()
-   {
+   private void createAndShowGUI() {
+
       // Set title and default close operation
-      setTitle("Transparent Panel");
+      setTitle("User Authentication");
       setDefaultCloseOperation(EXIT_ON_CLOSE);
 
       // Set a background for JFrame
@@ -34,19 +35,17 @@ public class AuthenticationForm extends JFrame {
 
       assert imageURL != null;  //used during debugging
 
-      ImageIcon img = null;
       if (imageURL != null) {
          img = new ImageIcon(imageURL);
       }
       setContentPane(new JLabel(img));
 
       /*
-      EXAMPLE OF BAD CODE: the below code. To fetch a resource, use the absolute reference path and invoke
-      getClassLoader() then getResource() to set a resource. Otherwise, the resource will not show when running
-      the application from a JAR file.
+         EXAMPLE OF BAD CODE: the below code. To fetch a resource, use the absolute reference path and invoke
+         getClassLoader() then getResource() to set a resource. Otherwise, the resource will not show when running
+         the application from a JAR file.
 
-      setContentPane(new JLabel(new ImageIcon(".\\resources\\desert.jpg")));
-
+            setContentPane(new JLabel(new ImageIcon(".\\resources\\desert.jpg")));
       */
 
       // Set some layout, say FlowLayout
@@ -67,7 +66,7 @@ public class AuthenticationForm extends JFrame {
       // Set the size of the JFrame and make it visible
       setSize(600,400);
       setVisible(true);
-   }
+   } // end createAndShowGUI()
 
    private void addButtonEventListeners() {
       requestIDButton.addActionListener(new ActionListener() {
@@ -85,8 +84,7 @@ public class AuthenticationForm extends JFrame {
             AuthenticationController authenticate = new AuthenticationController();
             boolean isUserValid = authenticate.authenticateUser(getUsernameTextField(), getPasswordTextField());
             if(isUserValid) {
-               EmailForm e = new EmailForm();
-               e.setSize(800, 500);
+               EducatorMainForm educator = new EducatorMainForm();
                setVisible(false);
             } else {
                JOptionPane.showMessageDialog(getParent(),
@@ -94,13 +92,11 @@ public class AuthenticationForm extends JFrame {
                   "Authentication Error",
                   JOptionPane.ERROR_MESSAGE);
             }
-
          }
       });
-   }
+   } // end addButtonListeners()
 
-   public static void main()
-   {
+   public static void main() {
       // Run in the EDT
       SwingUtilities.invokeLater(new Runnable(){
          public void run()
@@ -108,13 +104,13 @@ public class AuthenticationForm extends JFrame {
             new AuthenticationForm();
          }
       });
-   }
+   } // end main()
 
-   public String getPasswordTextField() {
-      return passwordTextField.getText();
+   public char[] getPasswordTextField() {
+      return passwordTextField.getPassword();
    }
 
    public String getUsernameTextField() {
       return usernameTextField.getText();
    }
-}
+} // end class AuthenticationForm

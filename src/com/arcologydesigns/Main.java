@@ -17,19 +17,14 @@ public class Main {
 
    public static void main(String args[]) throws AddressException, MessagingException, IOException {
 
-      /*
-      TODO: refactor to be called upon successful authentication
-      EmailForm myEmailForm = new EmailForm();  //creates the email form window
-      myEmailForm.setSize(800, 500);            //sets the size of the email form
-
-      myEmailForm.setEmailForm(myEmailForm);
-      */
-
       AuthenticationForm.main();
 
+      /*
+         Code for setting a JFrame to full screen:
+            loginScreen.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            loginScreen.setUndecorated(true);
+      */
 
-      //loginScreen.setExtendedState(JFrame.MAXIMIZED_BOTH);
-      //loginScreen.setUndecorated(true);
       ReadFromFile rf = new ReadFromFile(".\\resources\\flatFiles\\studentData.txt");
       try {
          rf.ReadOneLine();
@@ -37,8 +32,7 @@ public class Main {
          System.out.printf("IO Exception on reading file: " + e + "\n");
       }
 
-
-
+      // Get user data on initial load
       SpreadsheetIntegration mySheet = new SpreadsheetIntegration();
 
 

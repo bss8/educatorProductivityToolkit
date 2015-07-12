@@ -139,7 +139,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="16e77" class="javax.swing.JTextField" binding="passwordTextField" default-binding="true">
+      <component id="16e77" class="javax.swing.JPasswordField" binding="passwordTextField" default-binding="true">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="210" height="-1"/>

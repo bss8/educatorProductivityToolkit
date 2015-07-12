@@ -1,8 +1,7 @@
 package com.arcologydesigns.Controllers;
 
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
-
-import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * AuthenticationController created by Borislav S. on 7/10/2015 @ 5:59 PM.
@@ -11,25 +10,28 @@ import java.io.IOException;
  */
 public class AuthenticationController {
    private boolean isUserValid;
+   private ArrayList<SpreadsheetIntegration.UserNode> userData;
 
    public AuthenticationController() {
-
+      isUserValid = false;
    }
 
-   public boolean authenticateUser(String username, String password) {
+   public boolean authenticateUser(String username, char[] password) {
+      String strPwd = "";
 
-      try {
-         SpreadsheetIntegration sheetData = new SpreadsheetIntegration();
-         for (SpreadsheetIntegration.UserNode node : sheetData.getUserData()) {
-            return (node.username.equals(username) && node.password.equals(password));
-         }
-
-      } catch (IOException e) {
-         e.printStackTrace();
+      // convert array password to a string
+      for(char c : password) {
+         strPwd += c;
       }
 
+      userData = SpreadsheetIntegration.UserData.getUserData();
 
-      return false;
-   }
+      for (SpreadsheetIntegration.UserNode currentNode : userData) {
+         if ( (currentNode.username.equals(username) && (currentNode.password.equals(strPwd))) ) {
+            isUserValid = true;
+         }
+      }
 
-}
+      return isUserValid;
+   }  // end authenticateUser()
+}  // end class AuthenticationController
