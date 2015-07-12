@@ -20,12 +20,15 @@ a {
   display: inline-block;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(50, 100, 100, 0.35);
   border-color: rgba(255, 255, 255, 0.2);
   border-style: solid;
   border-width: 1px;
   border-radius: 0.3rem;
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s; 
+  text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
+}
+  
   .btn + .btn {
     margin-left: 1rem; }
 
@@ -57,10 +60,11 @@ a {
 .page-header {
   color: #fff;
   text-align: center;
-  background-color: #159957;
+  background-color: #000;
   height: 480px;
   background-image: url("https://i.imgur.com/92PJBDf.jpg"); 
   background-repeat: no-repeat;
+  background-position: center;
 }
 @media screen and (min-width: 64em) {
   .page-header {
