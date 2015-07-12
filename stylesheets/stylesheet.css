@@ -7,9 +7,7 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff; 
-  background-color: #606c71;
-  
+  color: #606c71; 
 }
 
 a {
@@ -60,6 +58,7 @@ a {
   color: #fff;
   text-align: center;
   background-color: #159957;
+  height: 480px;
   background-image: url("https://i.imgur.com/92PJBDf.jpg"); }
   background-repeat: no-repeat;
   background-position: top left;
