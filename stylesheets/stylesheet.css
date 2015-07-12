@@ -8,7 +8,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #606c71; 
-  background-image: url("http://i.imgur.com/qGL0Sz7.jpg");
+  
 }
 
 a {
@@ -59,7 +59,7 @@ a {
   color: #fff;
   text-align: center;
   background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957); }
+  background-image: url("http://i.imgur.com/qGL0Sz7.jpg") no-repeat; }
 
 @media screen and (min-width: 64em) {
   .page-header {
