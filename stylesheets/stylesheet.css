@@ -96,6 +96,7 @@ a {
 .project-tagline {
   margin-bottom: 2rem;
   font-weight: normal;
+  text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
 }
 
 @media screen and (min-width: 64em) {
