@@ -33,5 +33,6 @@ public class AuthenticationController {
       }
 
       return isUserValid;
+
    }  // end authenticateUser()
 }  // end class AuthenticationController

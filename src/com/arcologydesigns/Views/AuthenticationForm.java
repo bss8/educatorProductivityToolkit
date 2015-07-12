@@ -23,6 +23,7 @@ public class AuthenticationForm extends JFrame {
       addButtonEventListeners();
    }
 
+   /** Creates a form with a background image and a semi-transparent overlay for displaying login content */
    private void createAndShowGUI() {
 
       // Set title and default close operation
@@ -97,7 +98,7 @@ public class AuthenticationForm extends JFrame {
    } // end addButtonListeners()
 
    public static void main() {
-      // Run in the EDT
+      // Run in the Event Dispatch Thread (EDT)
       SwingUtilities.invokeLater(new Runnable(){
          public void run()
          {
@@ -113,4 +114,5 @@ public class AuthenticationForm extends JFrame {
    public String getUsernameTextField() {
       return usernameTextField.getText();
    }
+
 } // end class AuthenticationForm

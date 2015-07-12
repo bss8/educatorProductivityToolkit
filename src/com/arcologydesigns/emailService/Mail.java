@@ -6,7 +6,6 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -20,9 +19,8 @@ public class Mail {
     static Session getMailSession;
     static MimeMessage generateMailMessage;
 
-    public static void generateAndSendEmail(String _toField, String _ccField, String _subject, String _message, EmailForm emailForm)
-            throws AddressException, MessagingException
-    {
+    public static void generateAndSendEmail(String _toField, String _ccField, String _subject, String _message)
+            throws MessagingException {
         // STEP_1: specify ports and connection info / server properties
         System.out.println("\n 1st ===> setup com.arcologydesigns.emailServicedesigns.Mail Server Properties..");
         mailServerProperties = System.getProperties();
@@ -36,9 +34,6 @@ public class Mail {
         getMailSession = Session.getDefaultInstance(mailServerProperties, null);
         generateMailMessage = new MimeMessage(getMailSession);
         generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(_toField));
-
-        //generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("ajn21@txstate.edu"));
-        //generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("arnissim@gmail.com"));
 
         generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(_ccField));
         generateMailMessage.setSubject(_subject);
@@ -57,6 +52,4 @@ public class Mail {
         transport.close();
 
     }  //end generateAndSendEmail
-
-
 }  //end class com.arcologydesigns.emailServicedesigns.Mail

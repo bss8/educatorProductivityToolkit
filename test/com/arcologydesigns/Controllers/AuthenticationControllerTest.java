@@ -23,4 +23,9 @@ public class AuthenticationControllerTest extends AuthenticationController {
    public void testAuthenticateUser() throws Exception {
 
    }
+
+   @Test
+   public void testAuthenticateUser1() throws Exception {
+
+   }
 }

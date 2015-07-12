@@ -48,7 +48,8 @@ public class EducatorMainForm extends JFrame {
       add(educatorMainPanel);
 
       // Set the size of the JFrame and make it visible
-      setExtendedState(JFrame.MAXIMIZED_BOTH);
+      setExtendedState(JFrame.MAXIMIZED_BOTH);  // set to full screen
       setVisible(true);
+
    } // end createAndShowGUI()
-}
+} // end class EducatorMainForm
