@@ -61,8 +61,7 @@ a {
   height: 480px;
   background-image: url("https://i.imgur.com/92PJBDf.jpg"); 
   background-repeat: no-repeat;
-  background-position: top left;
-
+}
 @media screen and (min-width: 64em) {
   .page-header {
     padding: 5rem 6rem; } }
