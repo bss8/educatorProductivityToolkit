@@ -84,13 +84,20 @@ public class AuthenticationForm extends JFrame {
          public void actionPerformed(ActionEvent actionEvent) {
             AuthenticationController authenticate = new AuthenticationController();
             boolean isUserValid = authenticate.authenticateUser(getUsernameTextField(), getPasswordTextField());
+
             if(isUserValid) {
-               EducatorMainForm educator = new EducatorMainForm();
+               char userType = authenticate.getUserType();
+
+               EducatorMainForm educator = new EducatorMainForm(userType);
+               educator.setUserIdLabel(getUsernameTextField());
+
+
+
                setVisible(false);
             } else {
                JOptionPane.showMessageDialog(getParent(),
                   "Invalid user ID or password!\nPlease try again or submit an access request.",
-                  "Authentication Error",
+                  "Authentication Error!",
                   JOptionPane.ERROR_MESSAGE);
             }
          }

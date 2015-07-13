@@ -14,6 +14,7 @@ public class SpreadsheetIntegration {
    public class UserNode {
       public String username;
       public String password;
+      public String userType;
    } // end class UserNode
 
    /** A static class to fetch user data and maintain a single copy */
@@ -50,6 +51,7 @@ public class SpreadsheetIntegration {
          if (split.length > 1) {
             uNode.username = split[0];
             uNode.password = split[1];
+            uNode.userType = split[2];
          }
 
          if(uNode.username != null && uNode.password != null) {
