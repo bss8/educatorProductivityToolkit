@@ -17,6 +17,12 @@ public class EducatorMainForm extends JFrame {
 
    public EducatorMainForm(char userType) {
 
+      /*
+         hotfix for null panel when user is not a student. This does not seem right, something is not being
+         instantiated or referenced properly
+      */
+      educatorMainPanel.setSize(300,300);
+
       switch (userType) {
          case 'S':
             imgUrl = "images/educator_logo_student.jpg";
