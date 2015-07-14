@@ -46,7 +46,7 @@ public class Mail {
             if (!_ccField.equals("-")) {
                 generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(_ccField));
             }
-
+            // message subject
             generateMailMessage.setSubject(_subject);
 
             generateMailMessage.setContent(_message, "text/html");
