@@ -12,11 +12,6 @@ To build the updated project, add the following dependencies (JAR files) in a di
  - Create a folder called "projectDependencies"
  - In this folder, include mail.jar: 
    http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-eeplat-419426.html#javamail-1.4.5-oth-JPR
- - Navigate to: File > Project Structure > Modules > Dependencies
- - Click the green + icon and select "JARs or directories..."
- - Navigate to and select your directory "projectDependencies"
- - Click "Apply" then "OK"
- - The libraries should now be included in the project. See my previous emails for details on how to build a project JAR or     compile to run. 
 
 # 2. Installing Git: 
 - Go to the site and download: https://git-scm.com/download/win
@@ -29,6 +24,11 @@ https://confluence.jetbrains.com/display/IntelliJIDEA/Basics+and+Installation
 - Take most default options but look through some of the settings and remove components that are not commonly used to speed up load times. Web servers like Glassfish, Tomcat; version control plugins: we will be using Git and GitHub;
 - From the main menu, click on "View" and check all four options (Toolbar, Tool Buttons, Status Bar, Navigation Bar)
 - Ctrl+Shift+A for looking up commands; Ctrl+Shift+F for global searches
+- Navigate to: File > Project Structure > Modules > Dependencies
+- Click the green + icon and select "JARs or directories..."
+- Navigate to and select your directory "projectDependencies"
+- Click "Apply" then "OK"
+- The libraries should now be included in the project. See my previous emails for details on how to build a project JAR or     compile to run. 
 
 # 4. Working with GitHub:
 - Make an account: https://github.com/
