@@ -11,7 +11,9 @@ public class EducatorMainForm extends JFrame {
    private ImageIcon img;
    private JPanel educatorMainPanel;
    private JLabel userIdLabel;
-   private JTable table1;
+   private JButton button1;
+   private JButton button2;
+   private JButton button3;
    private java.net.URL imageURL;
    private String imgUrl;
 

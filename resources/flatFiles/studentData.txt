@@ -1,5 +1,7 @@
-Alberto Nissim Computer_Science
-Borislav Sabotinov Computer_Science
-Adam Neely Computer_Science
-Nevil Clavain Biology
-Luke Skywalker Physics
+Alberto Nissim,12345,4154977164,arnissim@gmail.com,001,002,003,004
+Borislav Sabotinov,
+Adam Neely,Computer_Science
+Nevil Clavain,Biology
+Luke Skywalker,Physics
+
+Name,ID,Phone,Address,Email,ClassID,ClassID,ClassID,ClassID

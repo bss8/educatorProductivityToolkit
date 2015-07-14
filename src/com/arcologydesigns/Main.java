@@ -2,6 +2,7 @@ package com.arcologydesigns;
 
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
 import com.arcologydesigns.Views.AuthenticationForm;
+import com.arcologydesigns.Views.StudentInfoForm;
 import com.arcologydesigns.io_operations.ReadFromFile;
 
 import javax.mail.MessagingException;
@@ -17,15 +18,28 @@ public class Main {
 
       AuthenticationForm.main();  // initialize by prompting user for credentials
 
+      StudentInfoForm studentInfoForm = new StudentInfoForm();
+      String student;
+
+
+
+
       ReadFromFile rf = new ReadFromFile(".\\resources\\flatFiles\\studentData.txt");
       try {
-         rf.ReadOneLine();
+        student = rf.ReadOneLine();
+         final String split[] = student.split(",");
+         if (split.length > 1) {
+            studentInfoForm.setStudentNameLabel(split[0]);
+         }
+
       } catch (IOException e) {
          System.out.printf("IO Exception on reading file: " + e + "\n");
       }
 
       // Get user data on initial load
       SpreadsheetIntegration mySheet = new SpreadsheetIntegration();
+
+
 
    }  //end main
 }  //end class com.arcologydesigns.Main
