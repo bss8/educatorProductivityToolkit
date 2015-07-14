@@ -26,6 +26,11 @@ public class EmailForm extends JFrame {
       pack();
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+      toTextField.setText("-");
+      ccTextField.setText("-");
+      subjectTextField.setText("-");
+      messageTextArea.setText("-");
+
       sendEmailButton.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent actionEvent) {

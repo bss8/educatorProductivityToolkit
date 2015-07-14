@@ -61,9 +61,8 @@ public class EducatorMainForm extends JFrame {
       // Set some layout, say FlowLayout
       setLayout(new FlowLayout());
 
-      // Set the background, black with 125 as alpha value
-      // This is less transparent
-//      if(educatorMainPanel != null) {
+      // Set the background, black with 125 as alpha value. This is less transparent
+      if(educatorMainPanel != null) {
          educatorMainPanel.setBackground(new Color(10, 50, 30, 165));
 
          // Set some size to the panels
@@ -72,7 +71,8 @@ public class EducatorMainForm extends JFrame {
 
          // Add the panels to the JFrame
          add(educatorMainPanel);
-//      }
+      }
+
       // Set the size of the JFrame and make it visible
       setExtendedState(JFrame.MAXIMIZED_BOTH);  // set to full screen
       setVisible(true);

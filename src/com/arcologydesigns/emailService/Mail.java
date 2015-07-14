@@ -34,7 +34,7 @@ public class Mail {
         mailServerProperties.put("mail.smtp.starttls.enable", "true");
         System.out.println("com.arcologydesigns.emailServicedesigns.Mail Server Properties setup successfully...");
 
-        if ( (_toField != null) && (_ccField != null) & (_subject != null) & (_message != null)) {
+        if ( !_toField.equals("-") ) {
 
             // STEP_2: get a mail session and fill an email message with necessary info (subject, to, cc, from)
             System.out.println("\n\n 2nd ===> get com.arcologydesigns.Mailns.emailService.Mail Session..");
@@ -42,7 +42,11 @@ public class Mail {
             generateMailMessage = new MimeMessage(getMailSession);
             generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(_toField));
 
-            generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(_ccField));
+            // make CC field optional
+            if (!_ccField.equals("-")) {
+                generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(_ccField));
+            }
+
             generateMailMessage.setSubject(_subject);
 
             generateMailMessage.setContent(_message, "text/html");

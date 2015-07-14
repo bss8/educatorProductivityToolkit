@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
  * Authentication created by Borislav S. on 7/8/2015 @ 9:44 PM.
  */
 public class AuthenticationForm extends JFrame {
-   private JPanel authenticationPanel, p2;
+   private JPanel authenticationPanel;
    private JTextField usernameTextField;
    private JPasswordField passwordTextField;
    private JButton loginButton;
@@ -90,8 +90,6 @@ public class AuthenticationForm extends JFrame {
 
                EducatorMainForm educator = new EducatorMainForm(userType);
                educator.setUserIdLabel(getUsernameTextField());
-
-
 
                setVisible(false);
             } else {

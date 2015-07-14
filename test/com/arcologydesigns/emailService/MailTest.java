@@ -8,11 +8,14 @@ import org.junit.Test;
  * MailTest created by Borislav S. on 7/10/2015 @ 6:31 PM.
  */
 public class MailTest extends Mail {
-   private Mail mail;
+   // private Mail mail;
 
    @Before
    public void setUp() throws Exception {
-      this.mail = new Mail();
+      /*
+         The below code is not needed as the method we are testing is static:
+         this.mail = new Mail();
+      */
    }
 
    @After
@@ -22,6 +25,6 @@ public class MailTest extends Mail {
 
    @Test
    public void testGenerateAndSendEmail() throws Exception {
-      assert(generateAndSendEmail("bss64@txstate.edu","bss64@txstate.edu","Test_Subject_001","Test_Message_001"));
+      assert(generateAndSendEmail("bss64@txstate.edu", "bss64@txstate.edu", "Test_Subject_001", "Test_Message_001"));
    }
 }
