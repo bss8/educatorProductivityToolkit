@@ -1,9 +1,8 @@
 package com.arcologydesigns.Controllers;
 
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
-import com.arcologydesigns.Views.EducatorMainForm;
-import com.arcologydesigns.ept.Instructor;
-import com.arcologydesigns.ept.Student;
+import com.arcologydesigns.ept.users.Instructor;
+import com.arcologydesigns.ept.users.Student;
 
 import java.util.ArrayList;
 

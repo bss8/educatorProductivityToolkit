@@ -3,7 +3,7 @@ package com.arcologydesigns;
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
 import com.arcologydesigns.Views.AuthenticationForm;
 import com.arcologydesigns.Views.StudentInfoForm;
-import com.arcologydesigns.io_operations.ReadFromFile;
+import com.arcologydesigns.io_operations.FileIO;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -24,7 +24,7 @@ public class Main {
 
 
 
-      ReadFromFile rf = new ReadFromFile(".\\resources\\flatFiles\\studentData.txt");
+      FileIO rf = new FileIO(".\\resources\\flatFiles\\studentData.txt");
       try {
         student = rf.ReadOneLine();
          final String split[] = student.split(",");

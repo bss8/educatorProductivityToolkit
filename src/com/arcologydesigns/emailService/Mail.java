@@ -1,6 +1,5 @@
 package com.arcologydesigns.emailService;
 
-import com.arcologydesigns.Views.EmailForm;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -8,7 +7,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 
 /**
  * com.arcologydesigns.emailServicedesigns.Mail created by Borislav S. on 7/1/2015 @ 10:00 PM.

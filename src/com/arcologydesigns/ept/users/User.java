@@ -1,4 +1,4 @@
-package com.arcologydesigns.ept;
+package com.arcologydesigns.ept.users;
 
 /**
  * User created by Borislav S. on 7/12/2015 @ 5:06 PM.
