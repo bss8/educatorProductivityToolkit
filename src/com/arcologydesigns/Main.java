@@ -26,7 +26,7 @@ public class Main {
 
       FileIO rf = new FileIO(".\\resources\\flatFiles\\studentData.txt");
       try {
-        student = rf.ReadOneLine();
+         student = rf.ReadOneLine();
          final String split[] = student.split(",");
          if (split.length > 1) {
             studentInfoForm.setStudentNameLabel(split[0]);

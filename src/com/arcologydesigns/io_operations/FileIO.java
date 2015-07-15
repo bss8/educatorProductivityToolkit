@@ -38,6 +38,8 @@ public class FileIO {
         BufferedReader lineReader = new BufferedReader(fileReader);
         String fileData;
 
+       lineReader.readLine();  // temporary code to skip first line containing headers
+
         fileData = lineReader.readLine();
         System.out.print("1st line: " + fileData + "\n");
 
