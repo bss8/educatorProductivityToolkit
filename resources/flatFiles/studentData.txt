@@ -1,7 +1,16 @@
-Alberto Nissim,12345,4154977164,arnissim@gmail.com,001,002,003,004
-Borislav Sabotinov,
-Adam Neely,Computer_Science
-Nevil Clavain,Biology
-Luke Skywalker,Physics
-
 Name,ID,Phone,Address,Email,ClassID,ClassID,ClassID,ClassID
+Alberto Nissim,12345,4154977164,arnissim@gmail.com,001,002,003,004,4398
+Borislav Sabotinov,54321,8123255877,bss64@txstate.edu,003,004,005,006,4398
+Adam Neely,10101,3175874325,ajn21@txstate.edu,001,002,003,004,4398
+Nevil Clavain,0001,5555555555,bss64@txstate.edu,001,002,003,004
+Luke Skywalker,9995387969,bss64@txstate.edu,003,004,005,006
+John Smith,12345,4154977164,arnissim@gmail.com,001,002,003,004
+Andrew Daily,54321,8123255877,bss64@txstate.edu,003,004,005,006
+Kevin Smith,10101,3175874325,ajn21@txstate.edu,001,002,003,004
+Andrew Jackson,0001,5555555555,bss64@txstate.edu,001,002,003,004
+James Polk,9995387969,bss64@txstate.edu,003,004,005,006
+Ryan Burr,12345,4154977164,arnissim@gmail.com,001,002,003,004
+Elizabeth Taylor,54321,8123255877,bss64@txstate.edu,003,004,005,006
+Samantha Day,10101,3175874325,ajn21@txstate.edu,001,002,003,004
+Isabelle Lehmay,0001,5555555555,bss64@txstate.edu,001,002,003,004
+Ericka Hudson,9995387969,bss64@txstate.edu,003,004,005,006

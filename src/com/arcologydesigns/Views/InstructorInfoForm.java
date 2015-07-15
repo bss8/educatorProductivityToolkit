@@ -8,5 +8,5 @@ import javax.swing.*;
 public class InstructorInfoForm extends JDialog {
 
 
-
+   private JPanel instructorInfoPanel;
 }

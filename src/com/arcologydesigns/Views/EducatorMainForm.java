@@ -65,7 +65,7 @@ public class EducatorMainForm extends JFrame {
 
       // Set the background, black with 125 as alpha value. This is less transparent
       if(educatorMainPanel != null) {
-         educatorMainPanel.setBackground(new Color(10, 50, 30, 165));
+         educatorMainPanel.setBackground(new Color(33, 71, 116, 165));
 
          // Set some size to the panels
          educatorMainPanel.setPreferredSize(new Dimension(600, 500));
