@@ -5,6 +5,8 @@ Users will have the ability to:
  - read/write data for a class;
  - perform analytics on class and individual student performance;
  - email reports, gradebook, and other materials
+
+## Class Diagram: http://i.imgur.com/bln6cJi.png
  
 # 1. Setup Instructions
 
