@@ -2,6 +2,16 @@ package com.arcologydesigns.Views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URL;
+
+import static java.awt.event.ActionEvent.*;
 
 /**
  * EducatorMainForm created by Borislav S. on 7/11/2015 @ 9:57 PM.
@@ -14,8 +24,26 @@ public class EducatorMainForm extends JFrame {
    private JButton button1;
    private JButton button2;
    private JButton button3;
-   private java.net.URL imageURL;
    private String imgUrl;
+   private JPopupMenu pmenu;
+   private final JLabel statusbar;
+
+   private class MenuItemAction extends AbstractAction {
+
+      public MenuItemAction(String text, ImageIcon icon,
+                            Integer mnemonic) {
+         super(text);
+
+         putValue(SMALL_ICON, icon);
+         putValue(MNEMONIC_KEY, mnemonic);
+      }
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+
+         System.out.println(e.getActionCommand());
+      }
+   }
 
    public EducatorMainForm(char userType) {
 
@@ -24,6 +52,7 @@ public class EducatorMainForm extends JFrame {
          instantiated or referenced properly
       */
       educatorMainPanel.setSize(300,300);
+      setLocationRelativeTo(null);
 
       switch (userType) {
          case 'S':
@@ -42,6 +71,12 @@ public class EducatorMainForm extends JFrame {
       }
 
       createAndShowGUI();
+      createPopupMenu();
+      createMenuBar();
+
+      statusbar = new JLabel("Ready");
+      statusbar.setBorder(BorderFactory.createEtchedBorder());
+      add(statusbar);
    }
 
    private void createAndShowGUI() {
@@ -53,7 +88,7 @@ public class EducatorMainForm extends JFrame {
       // Set a background for JFrame
       ClassLoader cldr = this.getClass().getClassLoader();
 
-      imageURL = cldr.getResource(imgUrl);
+      URL imageURL = cldr.getResource(imgUrl);
       if (imageURL != null) {
          img = new ImageIcon(imageURL);
       }
@@ -80,6 +115,126 @@ public class EducatorMainForm extends JFrame {
       setVisible(true);
 
    } // end createAndShowGUI()
+
+   private void createPopupMenu() {
+
+      pmenu = new JPopupMenu();
+
+      JMenuItem maxMi = new JMenuItem("Maximize");
+      maxMi.addActionListener(new ActionListener() {
+
+         @Override
+         public void actionPerformed(ActionEvent e) {
+
+            if (getExtendedState() != JFrame.MAXIMIZED_BOTH) {
+               setExtendedState(JFrame.MAXIMIZED_BOTH);
+            }
+
+         }
+      });
+
+      pmenu.add(maxMi);
+
+      JMenuItem quitMi = new JMenuItem("Quit");
+      quitMi.addActionListener(new ActionListener() {
+
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+         }
+      });
+
+      pmenu.add(quitMi);
+
+      addMouseListener(new MouseAdapter() {
+
+         @Override
+         public void mouseReleased(MouseEvent e) {
+
+            if (e.getButton() == MouseEvent.BUTTON3) {
+               pmenu.show(e.getComponent(), e.getX(), e.getY());
+            }
+         }
+      });
+   }
+
+   private void createMenuBar() {
+
+      ImageIcon iconNew = new ImageIcon("new.png");
+      ImageIcon iconOpen = new ImageIcon("open.png");
+      ImageIcon iconSave = new ImageIcon("save.png");
+      ImageIcon iconExit = new ImageIcon("exit.png");
+
+      JMenuBar menubar = new JMenuBar();
+
+      JMenu fileMenu = new JMenu("File");
+      fileMenu.setMnemonic(KeyEvent.VK_F);
+
+      JMenuItem newMi = new JMenuItem(new MenuItemAction("New", iconNew,
+              KeyEvent.VK_N));
+
+      JMenuItem openMi = new JMenuItem(new MenuItemAction("Open", iconOpen,
+              KeyEvent.VK_O));
+
+      JMenuItem saveMi = new JMenuItem(new MenuItemAction("Save", iconSave,
+              KeyEvent.VK_S));
+
+      JMenuItem exitMi = new JMenuItem("Exit", iconExit);
+      exitMi.setMnemonic(KeyEvent.VK_E);
+      exitMi.setToolTipText("Exit application");
+      exitMi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
+              CTRL_MASK));
+
+      exitMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent event) {
+            System.exit(0);
+         }
+      });
+
+      fileMenu.add(newMi);
+      fileMenu.add(openMi);
+      fileMenu.add(saveMi);
+      fileMenu.addSeparator();
+      fileMenu.add(exitMi);
+
+      JMenu viewMenu = new JMenu("View");
+      viewMenu.setMnemonic(KeyEvent.VK_V);
+
+      JMenu toolsMenu = new JMenu("Tools");
+      JMenu helpMenu = new JMenu("Help");
+
+      JCheckBoxMenuItem sbarMi = new JCheckBoxMenuItem("Show statubar");
+      sbarMi.setMnemonic(KeyEvent.VK_S);
+      sbarMi.setDisplayedMnemonicIndex(5);
+      sbarMi.setSelected(true);
+
+      sbarMi.addItemListener(new ItemListener() {
+
+         @Override
+         public void itemStateChanged(ItemEvent e) {
+
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+               statusbar.setVisible(true);
+            } else {
+               statusbar.setVisible(false);
+            }
+
+         }
+
+      });
+
+      viewMenu.add(sbarMi);
+      menubar.add(fileMenu);
+      menubar.add(viewMenu);
+      menubar.add(toolsMenu);
+      menubar.add(Box.createHorizontalGlue());
+      menubar.add(helpMenu);
+
+      setJMenuBar(menubar);
+   }
+
+
 
    public void setUserIdLabel(String _userIdLabel) {
       this.userIdLabel.setText(_userIdLabel);

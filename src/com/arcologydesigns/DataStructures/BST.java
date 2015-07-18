@@ -6,6 +6,8 @@ import java.lang.management.MemoryUsage;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.System.*;
+
 /**
  * BST created by Borislav S. on 7/14/2015 @ 7:07 PM.
  * This class allows for the implementation of a binary search tree
@@ -14,12 +16,12 @@ import java.util.List;
  */
 public class BST< T extends Comparable<T> > {
 
-   TreeNode ROOT;
+   private TreeNode ROOT;
    private static final int MEGABYTE = (1024*1024);
-   MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
+   private MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
    private String inOrderBST;
-   private T minTreeValue;
-   private T maxTreeValue;
+   private double minTreeValue;
+   private double maxTreeValue;
 
    private class TreeNode  {
       T data;
@@ -43,8 +45,8 @@ public class BST< T extends Comparable<T> > {
    public BST() {
       ROOT = null;
       inOrderBST = "";
-      minTreeValue = null;
-      maxTreeValue = null;
+      minTreeValue = 0.0;
+      maxTreeValue = 0.0;
    }
 
 
@@ -79,7 +81,7 @@ public class BST< T extends Comparable<T> > {
          MemoryUsage heapUsage = memoryBean.getHeapMemoryUsage();
          long maxMemory = heapUsage.getMax() / MEGABYTE;
          long usedMemory = heapUsage.getUsed() / MEGABYTE;
-         System.out.println("Memory Use :" + usedMemory + "M/" + maxMemory + "M");
+         out.println("Memory Use :" + usedMemory + "M/" + maxMemory + "M");
          return true;
       }
    }
@@ -135,7 +137,7 @@ public class BST< T extends Comparable<T> > {
    private void preOrderTraversal(TreeNode t) {
       if (t != null)
       {
-         System.out.printf("%s, ", t.data);
+         out.printf("%s, ", t.data);
          preOrderTraversal(t.left);
          preOrderTraversal(t.right);
       }
@@ -165,7 +167,7 @@ public class BST< T extends Comparable<T> > {
       if (t != null) {
          postOrderTraversal(t.left);
          postOrderTraversal(t.right);
-         System.out.printf ("%s, ", t.data);
+         out.printf ("%s, ", t.data);
       }
    }
 
@@ -225,11 +227,11 @@ public class BST< T extends Comparable<T> > {
    }
 
    private int findMin(List<Double> treeList) {
-      Double min = treeList.get(0);
+      minTreeValue = treeList.get(0);
       int minIndex = 0;
       for(int i = 1; i < treeList.size(); i++) {
-         if(treeList.get(i) < min) {
-            min = treeList.get(i);
+         if(treeList.get(i) < minTreeValue) {
+            minTreeValue = treeList.get(i);
             minIndex = i;
          }
       }
@@ -237,11 +239,11 @@ public class BST< T extends Comparable<T> > {
    }
 
    private int findMax(List<Double> treeList) {
-      Double max = treeList.get(0);
+      maxTreeValue = treeList.get(0);
       int maxIndex = 0;
       for(int i = 1; i < treeList.size(); i++) {
-         if(treeList.get(i) > max) {
-            max = treeList.get(i);
+         if(treeList.get(i) > maxTreeValue) {
+            maxTreeValue = treeList.get(i);
             maxIndex = i;
          }
       }
@@ -281,5 +283,13 @@ public class BST< T extends Comparable<T> > {
       int listSize = list.size() - 1;
       T item = (T) list.get(listSize);
       this.insertItem(item);
+   }
+
+   public double getMinTreeValue() {
+      return this.minTreeValue;
+   }
+
+   public double getMaxTreeValue() {
+      return this.maxTreeValue;
    }
 }

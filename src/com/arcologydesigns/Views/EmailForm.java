@@ -3,9 +3,16 @@ package com.arcologydesigns.Views;
 import com.arcologydesigns.emailService.Mail;
 
 import javax.mail.MessagingException;
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static java.lang.System.*;
 
 /**
  * Test created by Borislav S. on 7/3/2015 @ 5:53 PM.
@@ -38,9 +45,9 @@ public class EmailForm extends JFrame {
             try {
                Mail.generateAndSendEmail(getToTextField(), getCcTextField(), getSubjectTextField(), getMessageTextArea());
 
-               System.out.println("\n\n ===> Your Java Program just sent an email successfully. Check your email...");
+               out.println("\n\n ===> Your Java Program just sent an email successfully. Check your email...");
             } catch (MessagingException e) {
-               System.out.printf("Messaging exception: %s", e);
+               out.printf("Messaging exception: %s", e);
             }
          }
       });
