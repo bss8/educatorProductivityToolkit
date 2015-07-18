@@ -1,31 +1,35 @@
 package com.arcologydesigns.DataStructures;
 
-import sun.reflect.generics.tree.Tree;
-
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.MemoryUsage;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * BST created by Borislav S. on 7/14/2015 @ 7:07 PM.
  * This class allows for the implementation of a binary search tree
+ * TODO: need to balance the tree using the the Stout-Warren algorithm
+ * TODO: need to be able to delete a node from the tree and reorganize the tree using above
  */
 public class BST< T extends Comparable<T> > {
 
    TreeNode ROOT;
    private static final int MEGABYTE = (1024*1024);
    MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
-
+   private String inOrderBST;
+   private T minTreeValue;
+   private T maxTreeValue;
 
    private class TreeNode  {
       T data;
-      TreeNode parent;
+      //TreeNode parent;
       TreeNode left;
       TreeNode right;
 
       private TreeNode(T data) {
          this.data = data;
-         this.parent = null;
+         //this.parent = null;
          this.left = null;
          this.right = null;
       }
@@ -38,6 +42,9 @@ public class BST< T extends Comparable<T> > {
 
    public BST() {
       ROOT = null;
+      inOrderBST = "";
+      minTreeValue = null;
+      maxTreeValue = null;
    }
 
 
@@ -86,12 +93,12 @@ public class BST< T extends Comparable<T> > {
       else if (newItem.compareTo(t.data) < 0 && t.left == null)
       {
          t.left = new TreeNode(newItem);
-         t.left.parent = t;
+         //t.left.parent = t;
       }
       else if (newItem.compareTo(t.data) >= 0 && t.right == null)
       {
          t.right = new TreeNode(newItem);
-         t.right.parent = t;
+         //t.right.parent = t;
       }
       else
       {
@@ -135,19 +142,23 @@ public class BST< T extends Comparable<T> > {
    }
 
    public void preOrderTraversal() {
+      inOrderBST = null;
       preOrderTraversal(ROOT);
    }
 
-   private void inOrderTraversal(TreeNode t) {
+   private String inOrderTraversal(TreeNode t) {
+
       if (t != null) {
          inOrderTraversal(t.left);
-         System.out.printf("%s, ", t.data);
+         inOrderBST += t.data.toString() + ",";
          inOrderTraversal(t.right);
       }
+      return inOrderBST;
    }
 
-   public void inOrderTraversal() {
-      inOrderTraversal(ROOT);
+   public String inOrderTraversal() {
+      this.inOrderBST = "";
+      return inOrderTraversal(ROOT);
    }
 
    private void postOrderTraversal(TreeNode t) {
@@ -159,6 +170,7 @@ public class BST< T extends Comparable<T> > {
    }
 
    public void postOrderTraversal() {
+      this.inOrderBST = "";
       postOrderTraversal(ROOT);
    }
 
@@ -199,5 +211,75 @@ public class BST< T extends Comparable<T> > {
       //we call the private method from the exposed public function and pass in
       //the root (beginning of tree) and searched-for item
       return breadthFirstSearch(ROOT, item);
+   }
+
+   private ArrayList<Double> convertTreeToList(String treeValues) {
+      String[] split = treeValues.split(",");
+      ArrayList<Double> list = new ArrayList<>();
+
+      for(String s : split) {
+         double d = Double.parseDouble(s);
+         list.add(d);
+      }
+      return list;
+   }
+
+   private int findMin(List<Double> treeList) {
+      Double min = treeList.get(0);
+      int minIndex = 0;
+      for(int i = 1; i < treeList.size(); i++) {
+         if(treeList.get(i) < min) {
+            min = treeList.get(i);
+            minIndex = i;
+         }
+      }
+      return minIndex;
+   }
+
+   private int findMax(List<Double> treeList) {
+      Double max = treeList.get(0);
+      int maxIndex = 0;
+      for(int i = 1; i < treeList.size(); i++) {
+         if(treeList.get(i) > max) {
+            max = treeList.get(i);
+            maxIndex = i;
+         }
+      }
+      return maxIndex;
+   }
+
+   @SuppressWarnings("unchecked")
+   private void balanceRecursive(int min, int max, List list){
+
+      if(min == max)
+         return;
+
+      int midpoint = (min + max)/2;
+
+      T insert = (T) list.get( midpoint);
+      insertItem(insert);
+
+      balanceRecursive(midpoint+1, max, list);
+      balanceRecursive(min, midpoint, list);
+   }
+
+   @SuppressWarnings("unchecked")
+   public void balanceRecursive() {
+
+      // call inOrderTraversal to obtain a string list of
+      String listTraversal = inOrderTraversal();
+      ArrayList<Double> list = convertTreeToList(listTraversal);
+      int min = findMin(list);
+      int max = findMax(list);
+
+      // need to make the tree empty to avoid replication of data
+      this.makeEmpty();
+
+      balanceRecursive(min, max, list);
+
+      // add in the last item, which is left out by recursive call
+      int listSize = list.size() - 1;
+      T item = (T) list.get(listSize);
+      this.insertItem(item);
    }
 }

@@ -4,6 +4,7 @@ import com.arcologydesigns.DataStructures.BST;
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
 import com.arcologydesigns.Views.AuthenticationForm;
 import com.arcologydesigns.Views.StudentInfoForm;
+import com.arcologydesigns.ept.users.Student;
 import com.arcologydesigns.io_operations.FileIO;
 
 import javax.mail.MessagingException;
@@ -37,31 +38,29 @@ public class Main {
       // Get user data on initial load
       SpreadsheetIntegration mySheet = new SpreadsheetIntegration();
 
-      BST<Integer> bst = new BST();
-      bst.insertItem(20);
-      bst.insertItem(10);
-      bst.insertItem(30);
-      for(int i = 0; i < 8; i++) {
-         bst.insertItem(i);
+      BST<Double> intTree = new BST<>();
+      intTree.insertItem(10.0);
+
+      intTree.insertItem(20.0);
+
+      intTree.insertItem(30.0);
+
+
+      for(int i = 0; i < 10; i++) {
+         intTree.insertItem((double) i);
+
       }
-
-
-      System.out.print("IN ORDER TRAVERSAL: \n");
-      bst.inOrderTraversal();
+      String test = intTree.inOrderTraversal();
       System.out.print("\n");
-      System.out.print("PRE ORDER TRAVERSAL: \n");
-      bst.preOrderTraversal();
+      System.out.printf("%s", test);
+
+      intTree.balanceRecursive();
+
+      String test1 = intTree.inOrderTraversal();
       System.out.print("\n");
-      System.out.print("POST ORDER TRAVERSAL: \n");
-      bst.postOrderTraversal();
-      System.out.print("\n");
+      System.out.printf("%s", test1);
 
-      System.out.printf("%s, \n", bst.countNodes());
 
-      System.out.printf("%b, ", bst.breadthFirstSearch(7));
 
-      System.out.printf("%b, ", bst.isEmpty());
-      bst.makeEmpty();
-      System.out.printf("%b, ", bst.isEmpty());
    }  //end main
 }  //end class com.arcologydesigns.Main

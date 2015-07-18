@@ -5,6 +5,7 @@ package com.arcologydesigns.ept.users;
  */
 public abstract class User {
    private String userID;
+   private String name;
 
    public void setUserID(String userID) {
       this.userID = userID;
@@ -13,4 +14,6 @@ public abstract class User {
    public String getUserID() {
       return userID;
    }
+   public void setUserName(String name) { this.name = name; }
+   public String getUserName() {return name;}
 }
