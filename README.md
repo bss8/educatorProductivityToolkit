@@ -7,7 +7,8 @@ Users will have the ability to:
  - email reports, gradebook, and other materials
 
 ## Class Diagram: http://i.imgur.com/bln6cJi.png
- 
+### StackOverflow on creating generic array: https://stackoverflow.com/questions/31486242/java-instantiating-array-object-of-type-t-using-a-factory/31486323?noredirect=1#comment50937886_31486323
+
 # 1. Setup Instructions
 
 To build the updated project, add the following dependencies (JAR files) in a directory. For example:
