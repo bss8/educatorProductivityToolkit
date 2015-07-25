@@ -28,7 +28,7 @@ public class AuthenticationForm extends JFrame {
 
       // Set title and default close operation
       setTitle("User Authentication");
-      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       // Set a background for JFrame
       ClassLoader cldr = this.getClass().getClassLoader();
@@ -73,7 +73,7 @@ public class AuthenticationForm extends JFrame {
       requestIDButton.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent actionEvent) {
-            EmailForm e = new EmailForm();
+            EmailForm e = new EmailForm("Request a user ID");
             e.setSize(700,400);
             setVisible(false);
          }

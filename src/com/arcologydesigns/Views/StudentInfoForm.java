@@ -10,10 +10,10 @@ public class StudentInfoForm extends JDialog {
     private JLabel studentNameLabel;
     private JPanel studentInfoPanel;
 
-    public StudentInfoForm(){
+    public StudentInfoForm() {
         // Set title and default close operation
         setTitle("Student Information");
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
 
         // Add the panels to the JFrame

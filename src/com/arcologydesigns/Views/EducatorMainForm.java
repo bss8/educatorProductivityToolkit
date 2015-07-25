@@ -83,7 +83,7 @@ public class EducatorMainForm extends JFrame {
 
       // Set title and default close operation
       setTitle("Educator Productivity Toolkit - EPT v0.1");
-      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       // Set a background for JFrame
       ClassLoader cldr = this.getClass().getClassLoader();
@@ -143,6 +143,12 @@ public class EducatorMainForm extends JFrame {
             System.exit(0);
          }
       });
+
+      /**
+       * Lambda expression alternative to above function:
+       * quitMi.addActionListener((e) -> { System.exit(0); });
+       * Only available in Java 8
+       * */
 
       pmenu.add(quitMi);
 
@@ -234,11 +240,10 @@ public class EducatorMainForm extends JFrame {
       setJMenuBar(menubar);
    }
 
-
-
    public void setUserIdLabel(String _userIdLabel) {
       this.userIdLabel.setText(_userIdLabel);
    }
+
    public void setImageURL(String _imageURL) {
       imgUrl = _imageURL;
    }

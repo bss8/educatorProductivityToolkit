@@ -27,11 +27,12 @@ public class EmailForm extends JFrame {
    private JTextField toTextField;
    private JTextField subjectTextField;
 
-   public EmailForm() {
-      super("Hello World!");
+   public EmailForm(String formTitle) {
+
+      super(formTitle);
       setContentPane(emailPanel);
       pack();
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
       toTextField.setText("-");
       ccTextField.setText("-");

@@ -9,11 +9,10 @@ public class Queue< T > {
    private int front;
    private int rear;
    private Object[] items;
-   private int maxQue;
    private static final int MAX_ITEMS = 1000;
 
    public Queue() {
-      maxQue = MAX_ITEMS + 1;
+      int maxQue = MAX_ITEMS + 1;
       front = maxQue - 1;
       rear = maxQue - 1;
 
@@ -21,8 +20,7 @@ public class Queue< T > {
    }
 
    void makeEmpty() {
-      while (!this.isEmpty())
-      {
+      while (!this.isEmpty()) {
          this.deQueue();
       }
    }
@@ -46,8 +44,6 @@ public class Queue< T > {
    @SuppressWarnings("unchecked")
    public T deQueue() {
       front++;
-
       return (T) items[front % MAX_ITEMS];
-
    }
 }

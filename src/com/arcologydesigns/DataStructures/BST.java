@@ -20,6 +20,8 @@ public class BST< T extends Comparable<T> > {
    private static final int MEGABYTE = (1024*1024);
    private MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
    private String inOrderBST;
+   private String preOrderBST;
+   private String postOrderBST;
    private double minTreeValue;
    private double maxTreeValue;
 
@@ -38,8 +40,6 @@ public class BST< T extends Comparable<T> > {
 
       private TreeNode() {
       }
-
-
    }
 
    public BST() {
@@ -48,7 +48,6 @@ public class BST< T extends Comparable<T> > {
       minTreeValue = 0.0;
       maxTreeValue = 0.0;
    }
-
 
    public void copyTree(TreeNode copy, TreeNode originalTree) {
       if (originalTree == null) {
@@ -61,7 +60,6 @@ public class BST< T extends Comparable<T> > {
       }
    }
 
-
    public void makeEmpty() {
       this.ROOT = null;
    }
@@ -71,13 +69,11 @@ public class BST< T extends Comparable<T> > {
    }
 
    public boolean isFull() {
-      try
-      {
+      try {
          TreeNode a = new TreeNode();
          return false;
       }
-      catch (OutOfMemoryError e)
-      {
+      catch (OutOfMemoryError e) {
          MemoryUsage heapUsage = memoryBean.getHeapMemoryUsage();
          long maxMemory = heapUsage.getMax() / MEGABYTE;
          long usedMemory = heapUsage.getUsed() / MEGABYTE;
@@ -87,34 +83,25 @@ public class BST< T extends Comparable<T> > {
    }
 
    private void insertItem(TreeNode t, T newItem) {
-      if (t == null)
-      {
+      if (t == null) {
          t = new TreeNode(newItem);
          ROOT = t;
       }
-      else if (newItem.compareTo(t.data) < 0 && t.left == null)
-      {
+      else if (newItem.compareTo(t.data) < 0 && t.left == null) {
          t.left = new TreeNode(newItem);
          //t.left.parent = t;
       }
-      else if (newItem.compareTo(t.data) >= 0 && t.right == null)
-      {
+      else if (newItem.compareTo(t.data) >= 0 && t.right == null) {
          t.right = new TreeNode(newItem);
          //t.right.parent = t;
-      }
-      else
-      {
-         if (newItem.compareTo(t.data) < 0)
-         {
+      } else {
+         if (newItem.compareTo(t.data) < 0) {
             insertItem(t.left, newItem);
-         }
-         else
-         {
+         } else {
             insertItem(t.right, newItem);
          }
       }
    }
-
 
    public void insertItem(T newItem)
    {
@@ -122,7 +109,6 @@ public class BST< T extends Comparable<T> > {
    }
 
    private int countNodes(TreeNode t) {
-
       if (t == null)
          return 0;
       else
@@ -134,18 +120,18 @@ public class BST< T extends Comparable<T> > {
       return countNodes(ROOT);
    }
 
-   private void preOrderTraversal(TreeNode t) {
-      if (t != null)
-      {
-         out.printf("%s, ", t.data);
+   private String preOrderTraversal(TreeNode t) {
+      if (t != null) {
+         preOrderBST += t.data.toString() + ",";
          preOrderTraversal(t.left);
          preOrderTraversal(t.right);
       }
+      return preOrderBST;
    }
 
-   public void preOrderTraversal() {
-      inOrderBST = null;
-      preOrderTraversal(ROOT);
+   public String preOrderTraversal() {
+      this.preOrderBST = "";
+      return preOrderTraversal(ROOT);
    }
 
    private String inOrderTraversal(TreeNode t) {
@@ -163,21 +149,21 @@ public class BST< T extends Comparable<T> > {
       return inOrderTraversal(ROOT);
    }
 
-   private void postOrderTraversal(TreeNode t) {
+   private String postOrderTraversal(TreeNode t) {
       if (t != null) {
          postOrderTraversal(t.left);
          postOrderTraversal(t.right);
-         out.printf ("%s, ", t.data);
+         postOrderBST += t.data.toString() + ",";
       }
+      return postOrderBST;
    }
 
-   public void postOrderTraversal() {
-      this.inOrderBST = "";
-      postOrderTraversal(ROOT);
+   public String postOrderTraversal() {
+      this.postOrderBST = "";
+      return postOrderTraversal(ROOT);
    }
 
-   private boolean breadthFirstSearch(TreeNode t, T item)
-   {
+   private boolean breadthFirstSearch(TreeNode t, T item) {
       if (t == null) return false;  //if t is null, list is empty and the item will not be found
 
       //create a queue to store tree nodes and enqueue the first item, the root, to begin the search
@@ -188,14 +174,12 @@ public class BST< T extends Comparable<T> > {
       //while the queue is not empty, create a temporary tree node and set it to the first item in the queue;
       //check if that is the item we are looking for - if yes, return true and stop searching,
       //if no, enqueue the child elements of the dequeued node
-      while (!q.isEmpty())
-      {
+      while (!q.isEmpty()) {
          TreeNode tmp = q.deQueue();
 
          if (tmp.data.equals(item))
             return true;
-         else
-         {
+         else {
             //enqueue the node's child elements, if they exist (check if not null)
             if (tmp.left != null)
                q.enQueue(tmp.left);
@@ -203,13 +187,11 @@ public class BST< T extends Comparable<T> > {
                q.enQueue(tmp.right);
          }
       }
-
       //if the if-condition above is not reached, the item is not found - return false
       return false;
    }
 
-   public boolean breadthFirstSearch(T item)
-   {
+   public boolean breadthFirstSearch(T item) {
       //we call the private method from the exposed public function and pass in
       //the root (beginning of tree) and searched-for item
       return breadthFirstSearch(ROOT, item);

@@ -2,6 +2,7 @@ package com.arcologydesigns;
 
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
 import com.arcologydesigns.Views.AuthenticationForm;
+import com.arcologydesigns.Views.EducatorMainForm;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class Main {
       // Get user data on initial load
       SpreadsheetIntegration mySheet = new SpreadsheetIntegration();
 
+      //EducatorMainForm e = new EducatorMainForm('S');
 
    }  //end main
 }  //end class com.arcologydesigns.Main
