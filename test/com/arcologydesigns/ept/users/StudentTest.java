@@ -16,8 +16,13 @@ public class StudentTest {
 
    }
 
-   @After
+    @After
    public void tearDown() throws Exception {
+
+ /*
+      This was throwing the error at the end of our call, commenting it out fixed it.
+      @After
+ */
 
    }
 
