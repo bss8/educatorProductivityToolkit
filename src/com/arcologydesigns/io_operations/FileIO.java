@@ -48,4 +48,10 @@ public class FileIO {
         return fileData;
     }
 
+    public String ReadAll() throws IOException {
+
+
+        return "";
+    }
+
 }

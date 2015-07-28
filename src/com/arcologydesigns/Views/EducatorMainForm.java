@@ -21,9 +21,6 @@ public class EducatorMainForm extends JFrame {
    private ImageIcon img;
    private JPanel educatorMainPanel;
    private JLabel userIdLabel;
-   private JButton button1;
-   private JButton button2;
-   private JButton button3;
    private String imgUrl;
    private JPopupMenu pmenu;
    private final JLabel statusbar;
@@ -46,13 +43,8 @@ public class EducatorMainForm extends JFrame {
    }
 
    public EducatorMainForm(char userType) {
-
-      /*
-         hotfix for null panel when user is not a student. This does not seem right, something is not being
-         instantiated or referenced properly
-      */
       educatorMainPanel.setSize(300,300);
-      setLocationRelativeTo(null);
+      //setLocationRelativeTo(null);
 
       switch (userType) {
          case 'S':
@@ -103,7 +95,7 @@ public class EducatorMainForm extends JFrame {
          educatorMainPanel.setBackground(new Color(33, 71, 116, 165));
 
          // Set some size to the panels
-         educatorMainPanel.setPreferredSize(new Dimension(600, 500));
+         educatorMainPanel.setPreferredSize(new Dimension(1920, 1080));
          //p2.setPreferredSize(new Dimension(250,150));
 
          // Add the panels to the JFrame

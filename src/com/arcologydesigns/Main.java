@@ -19,7 +19,7 @@ public class Main {
       // Get user data on initial load
       SpreadsheetIntegration mySheet = new SpreadsheetIntegration();
 
-      //EducatorMainForm e = new EducatorMainForm('S');
+      EducatorMainForm e = new EducatorMainForm('S');
 
    }  //end main
 }  //end class com.arcologydesigns.Main
