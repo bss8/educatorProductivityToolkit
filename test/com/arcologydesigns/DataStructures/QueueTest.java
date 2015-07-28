@@ -21,28 +21,65 @@ public class QueueTest {
 
    }
 
-   @Test
-   public void testMakeEmpty() throws Exception {
-
-   }
-
-   @Test
-   public void testIsEmpty() throws Exception {
-
-   }
-
-   @Test
-   public void testIsFull() throws Exception {
-
-   }
 
    @Test
    public void testEnQueue() throws Exception {
+      Queue<String> myQ1 = new Queue<>();
+      myQ1.enQueue("Test");
+      assertEquals("Test",myQ1.deQueue());
+
+      Queue<Integer> myQ2 = new Queue<>();
+      myQ2.enQueue(14);
+      assertEquals(14,myQ2.deQueue());
+
+      Queue<Double> myQ3 = new Queue<>();
+      myQ3.enQueue(5.4);
+      assertEquals(5.4,myQ3.deQueue());
 
    }
 
    @Test
    public void testDeQueue() throws Exception {
+      Queue<Integer> myQ = new Queue<>();
+      myQ.enQueue(10);
+      myQ.enQueue(7);
+      myQ.enQueue(1);
+
+      assertEquals(10 , myQ.deQueue());
+      assertNotSame(10, myQ.deQueue());
+      assertEquals(1  , myQ.deQueue());
+   }
+
+   @Test
+   public void testIsEmpty() throws Exception {
+      Queue<Integer> myQ = new Queue<>();
+      assert(myQ.isEmpty());
+      myQ.enQueue(10);
+      assert(!myQ.isEmpty());
+   }
+
+   @Test
+   public void testMakeEmpty() throws Exception {
+      Queue<String> myQ = new Queue<>();
+      myQ.enQueue("Test");
+      assert(!myQ.isEmpty());
+      myQ.makeEmpty();
+      assert(myQ.isEmpty());
 
    }
+
+
+   @Test
+   public void testIsFull() throws Exception {
+      Queue<Integer> myQ = new Queue<>();
+      int i=0;
+      while( i<1000) {
+         myQ.enQueue(i);
+         i++;
+      }
+      assert(myQ.isFull());
+      myQ.makeEmpty();
+      assert(!myQ.isFull());
+   }
+
 }
