@@ -4,8 +4,10 @@ import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
 import com.arcologydesigns.Views.AuthenticationForm;
 import com.arcologydesigns.Views.EducatorMainForm;
 import com.arcologydesigns.Views.StudentInfoForm;
+import com.arcologydesigns.Views.TestUIElements;
 
 import javax.mail.MessagingException;
+import javax.swing.*;
 import java.io.IOException;
 
 /**
@@ -19,6 +21,12 @@ public class Main {
 
    public static void main(String args[]) throws MessagingException, IOException {
 
+      try {
+         UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+      } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
+         e.printStackTrace();
+      }
+
       AuthenticationForm.main();  // initialize by prompting user for credentials
 
       // Get user data on initial load
@@ -30,6 +38,10 @@ public class Main {
       *  DO NOT CHECK IN MODIFICATIONS FOR THIS FILE!
       * MODIFY ONLY FOR LOCAL TESTING
       * */
+
+      StudentInfoForm si = new StudentInfoForm();
+
+
 
    }  //end main
 }  //end class com.arcologydesigns.Main
