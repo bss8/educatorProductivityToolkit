@@ -4,7 +4,6 @@ import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
 import com.arcologydesigns.Views.AuthenticationForm;
 import com.arcologydesigns.Views.EducatorMainForm;
 import com.arcologydesigns.Views.StudentInfoForm;
-import com.arcologydesigns.Views.TestUIElements;
 
 import javax.mail.MessagingException;
 import javax.swing.*;
@@ -38,9 +37,6 @@ public class Main {
       *  DO NOT CHECK IN MODIFICATIONS FOR THIS FILE!
       * MODIFY ONLY FOR LOCAL TESTING
       * */
-
-      StudentInfoForm si = new StudentInfoForm();
-
 
 
    }  //end main
