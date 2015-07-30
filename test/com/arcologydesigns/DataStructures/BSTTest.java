@@ -27,6 +27,7 @@ public class BSTTest {
       BST<Integer> testTree = new BST<>();
       testTree.insertItem(10);
       assertEquals(10, testTree.getMaxTreeValue());//bad things happened when i tried to run this.
+      //This line exist to perform a push.
    }
 
    @Test
