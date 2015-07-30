@@ -10,6 +10,10 @@ import java.io.IOException;
 
 /**
  * com.arcologydesigns.Main created by Borislav S. on 7/3/2015 @ 1:29 PM.
+ *
+ * DO NOT CHECK IN MODIFICATIONS FOR THIS FILE!
+ * MODIFY ONLY FOR LOCAL TESTING
+ *
  */
 public class Main {
 
@@ -22,7 +26,10 @@ public class Main {
 
       //EducatorMainForm e = new EducatorMainForm('S');
 
-      StudentInfoForm myStudent = new StudentInfoForm();
+      /*
+      *  DO NOT CHECK IN MODIFICATIONS FOR THIS FILE!
+      * MODIFY ONLY FOR LOCAL TESTING
+      * */
 
    }  //end main
 }  //end class com.arcologydesigns.Main

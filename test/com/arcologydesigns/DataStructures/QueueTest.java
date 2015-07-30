@@ -30,11 +30,11 @@ public class QueueTest {
 
       Queue<Integer> myQ2 = new Queue<>();
       myQ2.enQueue(14);
-      assertEquals(14,myQ2.deQueue());
+      assertEquals(Integer.valueOf(14),myQ2.deQueue());
 
       Queue<Double> myQ3 = new Queue<>();
       myQ3.enQueue(5.4);
-      assertEquals(5.4,myQ3.deQueue());
+      assertEquals(Double.valueOf(5.4),myQ3.deQueue());
 
    }
 
@@ -45,9 +45,9 @@ public class QueueTest {
       myQ.enQueue(7);
       myQ.enQueue(1);
 
-      assertEquals(10 , myQ.deQueue());
+      assertEquals(Integer.valueOf(10) , myQ.deQueue());
       assertNotSame(10, myQ.deQueue());
-      assertEquals(1  , myQ.deQueue());
+      assertEquals(Integer.valueOf(1)  , myQ.deQueue());
    }
 
    @Test
