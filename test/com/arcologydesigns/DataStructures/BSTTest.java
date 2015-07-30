@@ -14,6 +14,7 @@ public class BSTTest {
    @Before
    public void setUp() throws Exception {
 
+
    }
 
    @After
@@ -23,7 +24,9 @@ public class BSTTest {
 
    @Test
    public void testMakeEmpty() throws Exception {
-
+      BST<Integer> testTree = new BST<>();
+      testTree.insertItem(10);
+      assertEquals(10, testTree.getMaxTreeValue());//bad things happened when i tried to run this.
    }
 
    @Test
