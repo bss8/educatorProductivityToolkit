@@ -21,13 +21,19 @@ public class EducatorMainForm extends JFrame {
    private ImageIcon img;
    private JPanel educatorMainPanel;
    private JLabel userIdLabel;
+   private JButton importClassDataFromButton;
+   private JButton importClassDataFromButton1;
+   private JPanel mainContentPanel;
+   private JPanel userIdPanel;
+   private JLabel helpText1;
+   private JLabel helpText2;
    private String imgUrl;
    private JPopupMenu pmenu;
-   private final JLabel statusbar;
+
 
    private class MenuItemAction extends AbstractAction {
 
-      public MenuItemAction(String text, ImageIcon icon,
+      public MenuItemAction(String text, Icon icon,
                             Integer mnemonic) {
          super(text);
 
@@ -65,10 +71,6 @@ public class EducatorMainForm extends JFrame {
       createAndShowGUI();
       createPopupMenu();
       createMenuBar();
-
-      statusbar = new JLabel("Ready");
-      statusbar.setBorder(BorderFactory.createEtchedBorder());
-      add(statusbar);
    }
 
    private void createAndShowGUI() {
@@ -157,11 +159,17 @@ public class EducatorMainForm extends JFrame {
    }
 
    private void createMenuBar() {
+      Icon iconNew =  UIManager.getIcon("FileChooser.newFolderIcon");
+      Icon iconSave =  UIManager.getIcon("FileView.floppyDriveIcon");
+      Icon iconOpen =  UIManager.getIcon("Tree.timeFactor");
+      Icon iconExit = UIManager.getIcon("InternalFrame.closeIcon");
 
-      ImageIcon iconNew = new ImageIcon("new.png");
-      ImageIcon iconOpen = new ImageIcon("open.png");
-      ImageIcon iconSave = new ImageIcon("save.png");
-      ImageIcon iconExit = new ImageIcon("exit.png");
+
+
+      //ImageIcon iconNew = new ImageIcon("new.png");
+      //ImageIcon iconOpen = new ImageIcon("open.png");
+      //ImageIcon iconSave = new ImageIcon("save.png");
+      //ImageIcon iconExit = new ImageIcon("exit.png");
 
       JMenuBar menubar = new JMenuBar();
 
@@ -212,10 +220,12 @@ public class EducatorMainForm extends JFrame {
          @Override
          public void itemStateChanged(ItemEvent e) {
 
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-               statusbar.setVisible(true);
+            if (e.getStateChange() == ItemEvent.DESELECTED) {
+               helpText1.setVisible(false);
+               helpText2.setVisible(false);
             } else {
-               statusbar.setVisible(false);
+               helpText1.setVisible(true);
+               helpText2.setVisible(true);
             }
 
          }
