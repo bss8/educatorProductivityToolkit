@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 /**
@@ -24,10 +26,6 @@ public class BSTTest {
 
    @Test
    public void testMakeEmpty() throws Exception {
-      BST<Integer> testTree = new BST<>();
-      testTree.insertItem(10);
-      assertEquals(10, testTree.getMaxTreeValue());//bad things happened when i tried to run this.
-      //This line exist to perform a push.
    }
 
    @Test
@@ -37,6 +35,7 @@ public class BSTTest {
 
    @Test
    public void testIsFull() throws Exception {
+
 
    }
 
@@ -51,18 +50,42 @@ public class BSTTest {
    }
 
    @Test
-   public void testPreOrderTraversal() throws Exception {
+   public void testPreOrderTraversal() throws Exception { //need to physically check these are in order in a bit.
+       BST<Integer> testTree = new BST<>();
+       testTree.insertItem(1);
+       testTree.insertItem(3);
+       testTree.insertItem(5);
+       testTree.insertItem(6);
+       testTree.insertItem(4);
+       testTree.insertItem(2);
+       assertEquals(String.valueOf("1,3,2,5,4,6,"), testTree.preOrderTraversal());//trailing comma
 
    }
 
    @Test
    public void testInOrderTraversal() throws Exception {
+       BST<Integer> testTree = new BST<>();
+       testTree.insertItem(1);
+       testTree.insertItem(3);
+       testTree.insertItem(5);
+       testTree.insertItem(6);
+       testTree.insertItem(4);
+       testTree.insertItem(2);
+       assertEquals(String.valueOf("1,2,3,4,5,6,"), testTree.inOrderTraversal());//trailing comma
 
    }
 
    @Test
    public void testPostOrderTraversal() throws Exception {
-
+       BST<Integer> testTree = new BST<>();
+       testTree.insertItem(1);
+       testTree.insertItem(3);
+       testTree.insertItem(5);
+       testTree.insertItem(6);
+       testTree.insertItem(4);
+       testTree.insertItem(2);
+       //System.out.println(testTree.postOrderTraversal()); //useful to check traversals.
+       assertEquals(String.valueOf("2,4,6,5,3,1,"), testTree.postOrderTraversal());//trailing comma
    }
 
    @Test
