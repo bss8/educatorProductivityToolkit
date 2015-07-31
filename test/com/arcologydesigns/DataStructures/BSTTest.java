@@ -50,7 +50,7 @@ public class BSTTest {
    }
 
    @Test
-   public void testPreOrderTraversal() throws Exception { //need to physically check these are in order in a bit.
+   public void testPreOrderTraversal() throws Exception { //need to physically check these are correctly ordered.
        BST<Integer> testTree = new BST<>();
        testTree.insertItem(1);
        testTree.insertItem(3);
@@ -100,11 +100,27 @@ public class BSTTest {
 
    @Test
    public void testGetMinTreeValue() throws Exception {
-
+       /*BST<Integer> testTree = new BST<>();
+       testTree.insertItem(-1);
+       testTree.insertItem(3);
+       testTree.insertItem(5);
+       testTree.insertItem(6);
+       testTree.insertItem(4);
+       testTree.insertItem(2);
+       System.out.println(testTree.getMinTreeValue());
+       */
    }
 
    @Test
    public void testGetMaxTreeValue() throws Exception {
-
+       /*BST<Integer> testTree = new BST<>();
+       testTree.insertItem(1);
+       testTree.insertItem(3);
+       testTree.insertItem(5);
+       testTree.insertItem(6);
+       testTree.insertItem(4);
+       testTree.insertItem(2);
+       System.out.println(testTree.getMaxTreeValue());
+        */
    }
 }
