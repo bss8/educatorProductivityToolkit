@@ -26,17 +26,37 @@ public class BSTTest {
 
    @Test
    public void testMakeEmpty() throws Exception {
+       BST<String> testTree = new BST<>();
+       testTree.insertItem("Hello");
+       assert(!testTree.isEmpty());
+       testTree.makeEmpty();
+       assert(testTree.isEmpty());
    }
 
    @Test
    public void testIsEmpty() throws Exception {
+       BST<String> testTree = new BST<>();
+       testTree.insertItem("World");
+       assert(!testTree.isEmpty());
+       testTree.makeEmpty();
+       assert(testTree.isEmpty());
 
    }
 
    @Test
    public void testIsFull() throws Exception {
+        //not sure how to test, looks like its based upon a static block of memory, will give it a shot though.
+      /* BST<Integer> testTree = new BST<>();
+       assert(!testTree.isFull());
+
+       while(!testTree.isFull() ) {
+           testTree.insertItem(1);
 
 
+       }
+       System.out.println(testTree.countNodes());
+       assert(testTree.isFull()); //nope, didn't work.
+        */
    }
 
    @Test
@@ -46,7 +66,14 @@ public class BSTTest {
 
    @Test
    public void testCountNodes() throws Exception {
-
+       BST<Integer> testTree = new BST<>();
+       testTree.insertItem(1);
+       testTree.insertItem(3);
+       testTree.insertItem(5);
+       testTree.insertItem(6);
+       testTree.insertItem(4);
+       testTree.insertItem(2);
+       assertEquals(Integer.valueOf(6),testTree.countNodes());
    }
 
    @Test
