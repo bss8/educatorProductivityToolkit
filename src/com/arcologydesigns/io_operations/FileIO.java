@@ -13,7 +13,7 @@ public class FileIO {
 
     private String fileName;
     private String path;
-    private boolean appendToFile;
+    private static boolean appendToFile;
 
     public FileIO(String filePath) {
         path = filePath;
@@ -31,6 +31,10 @@ public class FileIO {
         printWriter.printf("%s" + "%n", textLine);
 
         printWriter.close();
+    }
+
+    public static boolean appendCheck() throws IOException {
+        return appendToFile;
     }
 
     public String ReadOneLine() throws IOException {

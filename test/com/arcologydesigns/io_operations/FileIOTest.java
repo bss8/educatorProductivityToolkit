@@ -4,6 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileWriter;
+import java.io.Writer;
+
 import static org.junit.Assert.*;
 
 /**
@@ -23,7 +26,9 @@ public class FileIOTest {
 
    @Test
    public void testWriteOperation() throws Exception {
-
+      FileIO testfile = new FileIO("test.txt");
+      testfile.WriteOperation("This is a test");
+      assertFalse(FileIO.appendCheck());
    }
 
    @Test
