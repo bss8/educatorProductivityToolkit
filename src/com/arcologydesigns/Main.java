@@ -20,6 +20,9 @@ public class Main {
 
    public static void main(String args[]) throws MessagingException, IOException {
 
+      /**
+       * UIManager Provides ability to change the look and feel (LaF) of Java Swing
+       * */
       try {
          UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
       } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
