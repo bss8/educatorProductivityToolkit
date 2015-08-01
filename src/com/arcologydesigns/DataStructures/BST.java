@@ -13,6 +13,9 @@ import static java.lang.System.*;
  * This class allows for the implementation of a binary search tree
  * TODO: need to balance the tree using the the Stout-Warren algorithm
  * TODO: need to be able to delete a node from the tree and reorganize the tree using above
+ *
+ * INSTRUCTIONS: create a new instance, insert items (must be an object, i.e., Integer rather than int), make a call to
+ * balance the tree, then use breadthFirstSearch to find an item.
  */
 public class BST< T extends Comparable<T> > {
 
@@ -60,14 +63,35 @@ public class BST< T extends Comparable<T> > {
       }
    }
 
+   /****************************
+    makeEmpty
+
+    Function: Removes all the items from the BST.
+    Preconditions: BST has been initialized
+    Postconditions: All the items have been removed
+    *****************************/
    public void makeEmpty() {
       this.ROOT = null;
    }
 
+   /****************************
+    isEmpty
+
+    Function: Checks to see if there are any items in the BST.
+    Preconditions: BST has been initialized
+    Postconditions: Returns true if there are no items in the BST, else false.
+    *****************************/
    public boolean isEmpty() {
       return (this.ROOT == null);
    }
 
+   /****************************
+    isFull
+
+    Function: Determines if you have any more room to add items to the BST
+    Preconditions: BST has been initialized
+    Postconditions: Returns true if there is no more room to add items, else false
+    *****************************/
    public boolean isFull() {
       try {
          TreeNode a = new TreeNode();
@@ -82,6 +106,13 @@ public class BST< T extends Comparable<T> > {
       }
    }
 
+   /****************************
+    insertItem
+
+    Function: Adds newItem to the BST.
+    Preconditions: BST has been initialized and is not full.
+    Postconditions: newItem is in the proper position for a BST.
+    *****************************/
    private void insertItem(TreeNode t, T newItem) {
       if (t == null) {
          t = new TreeNode(newItem);
@@ -115,11 +146,25 @@ public class BST< T extends Comparable<T> > {
          return countNodes(t.left) + countNodes(t.right) + 1;
    }
 
+   /****************************
+    countNodes
+
+    Function: Counts the number of nodes in the BST
+    Preconditions: BST has been initialized.
+    Postconditions: returns the number of nodes in the BST
+    *****************************/
    public int countNodes()
    {
       return countNodes(ROOT);
    }
 
+   /****************************
+    preOrderTraversal
+
+    Function: prints the preOder (Node, Left, Right) traversal to standard output
+    Preconditions: BST has been initialized.
+    Postconditions: none
+    *****************************/
    private String preOrderTraversal(TreeNode t) {
       if (t != null) {
          preOrderBST += t.data.toString() + ",";
@@ -134,6 +179,13 @@ public class BST< T extends Comparable<T> > {
       return preOrderTraversal(ROOT);
    }
 
+   /****************************
+    inOrderTraversal
+
+    Function: prints the inOder (Left, Node, Right) traversal to standard output
+    Preconditions: BST has been initialized.
+    Postconditions: none
+    *****************************/
    private String inOrderTraversal(TreeNode t) {
 
       if (t != null) {
@@ -149,6 +201,13 @@ public class BST< T extends Comparable<T> > {
       return inOrderTraversal(ROOT);
    }
 
+   /****************************
+    postOrderTraversal
+
+    Function: prints the postOder (Left, Right, Node) traversal to standard output
+    Preconditions: BST has been initialized.
+    Postconditions: none
+    *****************************/
    private String postOrderTraversal(TreeNode t) {
       if (t != null) {
          postOrderTraversal(t.left);
@@ -163,6 +222,13 @@ public class BST< T extends Comparable<T> > {
       return postOrderTraversal(ROOT);
    }
 
+   /****************************
+    breadthFirstSearch
+
+    Function: finds item by passing through the rows in the BST
+    Preconditions: BST has been initialized
+    Postcondidions: returns true if the item is found in the BST
+    *****************************/
    private boolean breadthFirstSearch(TreeNode t, T item) {
       if (t == null) return false;  //if t is null, list is empty and the item will not be found
 
