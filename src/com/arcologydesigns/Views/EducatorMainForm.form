@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="educatorMainPanel" layout-manager="GridLayoutManager" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="174" y="998" width="928" height="489"/>
+      <xy x="174" y="998" width="1592" height="489"/>
     </constraints>
     <properties>
       <background color="-14596236"/>
@@ -18,7 +18,10 @@
       </hspacer>
       <vspacer id="e2981">
         <constraints>
-          <grid row="3" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="5" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="25" height="-1"/>
+            <preferred-size width="25" height="-1"/>
+          </grid>
         </constraints>
       </vspacer>
       <hspacer id="e6268">
@@ -28,10 +31,13 @@
       </hspacer>
       <vspacer id="6917">
         <constraints>
-          <grid row="3" column="3" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="3" row-span="5" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="25" height="-1"/>
+            <preferred-size width="25" height="-1"/>
+          </grid>
         </constraints>
       </vspacer>
-      <grid id="cea6f" binding="mainContentPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="cea6f" binding="mainContentPanel" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -44,34 +50,122 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="52b33" class="javax.swing.JButton" binding="importClassDataFromButton" default-binding="true">
+          <component id="752de" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-10941696"/>
-              <font size="20" style="1"/>
+              <font size="14"/>
               <foreground color="-1"/>
-              <text value="Import Class Data from Online Source"/>
+              <text value="Instructors URL: "/>
+              <toolTipText value="URL pointing to Instructors data sheet"/>
             </properties>
-            <clientProperties>
-              <hideActionText class="java.lang.Boolean" value="false"/>
-            </clientProperties>
           </component>
-          <component id="f6043" class="javax.swing.JButton" binding="importClassDataFromButton1" default-binding="true">
+          <component id="ca686" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <text value="Students URL: "/>
+              <toolTipText value="URL pointing to Students data sheet"/>
+            </properties>
+          </component>
+          <component id="3324d" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <text value="Classes URL: "/>
+              <toolTipText value="URL pointing to Classes data sheet"/>
+            </properties>
+          </component>
+          <component id="21d37" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="14"/>
+              <foreground color="-1"/>
+              <text value="Assignments URL:"/>
+              <toolTipText value="URL pointing to Assignments data sheet"/>
+            </properties>
+          </component>
+          <vspacer id="d0c45">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="f6043" class="javax.swing.JButton" binding="importDataButton">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-10941696"/>
               <font size="20" style="1"/>
               <foreground color="-1"/>
-              <text value="Import Class Data from Local Source"/>
+              <horizontalAlignment value="2"/>
+              <text value="Import Class Data "/>
+            </properties>
+          </component>
+          <hspacer id="a47f2">
+            <constraints>
+              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="500" height="-1"/>
+                <preferred-size width="500" height="-1"/>
+              </grid>
+            </constraints>
+          </hspacer>
+          <component id="2c540" class="javax.swing.JTextField" binding="httpsDocsGoogleComTextField" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="10" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="650" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/pub?gid=390144314&amp;single=true&amp;output=csv"/>
+              <toolTipText value="URL pointing to Instructors data sheet"/>
+            </properties>
+          </component>
+          <component id="608f6" class="javax.swing.JTextField" binding="httpsDocsGoogleComTextField1" default-binding="true">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="650" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/pub?gid=678753428&amp;single=true&amp;output=csv"/>
+              <toolTipText value="URL pointing to Students data sheet"/>
+            </properties>
+          </component>
+          <component id="b34e9" class="javax.swing.JTextField" binding="httpsDocsGoogleComTextField2" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="650" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/pub?gid=2084154255&amp;single=true&amp;output=csv"/>
+              <toolTipText value="URL pointing to Classes data sheet"/>
+            </properties>
+          </component>
+          <component id="20f61" class="javax.swing.JTextField" binding="httpsDocsGoogleComTextField3" default-binding="true">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="650" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/pub?gid=851848807&amp;single=true&amp;output=csv"/>
+              <toolTipText value="URL pointing to Assignments data sheet"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="44dd1" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="44dd1" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -99,6 +193,16 @@
               <font size="12"/>
               <foreground color="-1"/>
               <text value="- The spreadsheet format must be the same as outlined in the README. "/>
+            </properties>
+          </component>
+          <component id="4641d" class="javax.swing.JLabel" binding="helpText3">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="12"/>
+              <foreground color="-1"/>
+              <text value="- The values must be in a comma separated format (i.e., CSV file)"/>
             </properties>
           </component>
         </children>
@@ -133,6 +237,14 @@
           </component>
         </children>
       </grid>
+      <vspacer id="96339">
+        <constraints>
+          <grid row="2" column="1" row-span="2" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="150"/>
+            <preferred-size width="-1" height="150"/>
+          </grid>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>

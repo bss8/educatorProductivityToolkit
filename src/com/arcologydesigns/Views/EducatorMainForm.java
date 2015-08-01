@@ -1,5 +1,7 @@
 package com.arcologydesigns.Views;
 
+import com.sun.javafx.scene.control.Keystroke;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,15 +23,18 @@ public class EducatorMainForm extends JFrame {
    private ImageIcon img;
    private JPanel educatorMainPanel;
    private JLabel userIdLabel;
-   private JButton importClassDataFromButton;
-   private JButton importClassDataFromButton1;
+   private JButton importDataButton;
    private JPanel mainContentPanel;
    private JPanel userIdPanel;
    private JLabel helpText1;
    private JLabel helpText2;
+   private JTextField httpsDocsGoogleComTextField3;
+   private JTextField httpsDocsGoogleComTextField2;
+   private JTextField httpsDocsGoogleComTextField1;
+   private JTextField httpsDocsGoogleComTextField;
+   private JLabel helpText3;
    private String imgUrl;
    private JPopupMenu pmenu;
-
 
    private class MenuItemAction extends AbstractAction {
 
@@ -49,7 +54,7 @@ public class EducatorMainForm extends JFrame {
    }
 
    public EducatorMainForm(char userType) {
-      educatorMainPanel.setSize(300,300);
+      educatorMainPanel.setSize(300, 300);
       //setLocationRelativeTo(null);
 
       switch (userType) {
@@ -71,6 +76,15 @@ public class EducatorMainForm extends JFrame {
       createAndShowGUI();
       createPopupMenu();
       createMenuBar();
+
+
+      importDataButton.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent event) {
+
+
+         }
+      });
    }
 
    private void createAndShowGUI() {
@@ -78,6 +92,7 @@ public class EducatorMainForm extends JFrame {
       // Set title and default close operation
       setTitle("Educator Productivity Toolkit - EPT v0.1");
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
       // Set a background for JFrame
       ClassLoader cldr = this.getClass().getClassLoader();
@@ -97,7 +112,7 @@ public class EducatorMainForm extends JFrame {
          educatorMainPanel.setBackground(new Color(33, 71, 116, 165));
 
          // Set some size to the panels
-         educatorMainPanel.setPreferredSize(new Dimension(1920, 1080));
+         educatorMainPanel.setPreferredSize(new Dimension(1920, 600));
          //p2.setPreferredSize(new Dimension(250,150));
 
          // Add the panels to the JFrame
@@ -107,7 +122,6 @@ public class EducatorMainForm extends JFrame {
       // Set the size of the JFrame and make it visible
       setExtendedState(JFrame.MAXIMIZED_BOTH);  // set to full screen
       setVisible(true);
-
    } // end createAndShowGUI()
 
    private void createPopupMenu() {
@@ -115,6 +129,8 @@ public class EducatorMainForm extends JFrame {
       pmenu = new JPopupMenu();
 
       JMenuItem maxMi = new JMenuItem("Maximize");
+      maxMi.setOpaque(true);
+
       maxMi.addActionListener(new ActionListener() {
 
          @Override
@@ -130,6 +146,8 @@ public class EducatorMainForm extends JFrame {
       pmenu.add(maxMi);
 
       JMenuItem quitMi = new JMenuItem("Quit");
+      quitMi.setOpaque(true);
+      quitMi.setBackground(Color.CYAN);
       quitMi.addActionListener(new ActionListener() {
 
          @Override
@@ -164,32 +182,35 @@ public class EducatorMainForm extends JFrame {
       Icon iconOpen =  UIManager.getIcon("Tree.timeFactor");
       Icon iconExit = UIManager.getIcon("InternalFrame.closeIcon");
 
+      Icon iconOptions = UIManager.getIcon("FileChooser.detailsViewIcon");
 
+      Icon iconHelp = UIManager.getIcon("OptionPane.questionIcon");
 
-      //ImageIcon iconNew = new ImageIcon("new.png");
-      //ImageIcon iconOpen = new ImageIcon("open.png");
-      //ImageIcon iconSave = new ImageIcon("save.png");
-      //ImageIcon iconExit = new ImageIcon("exit.png");
 
       JMenuBar menubar = new JMenuBar();
 
       JMenu fileMenu = new JMenu("File");
       fileMenu.setMnemonic(KeyEvent.VK_F);
 
-      JMenuItem newMi = new JMenuItem(new MenuItemAction("New", iconNew,
-              KeyEvent.VK_N));
+      JMenuItem newMi = new JMenuItem(new MenuItemAction("New", iconNew, KeyEvent.VK_N));
+      JMenuItem openMi = new JMenuItem(new MenuItemAction("Open", iconOpen, KeyEvent.VK_O));
+      JMenuItem saveMi = new JMenuItem(new MenuItemAction("Save", iconSave, KeyEvent.VK_S));
 
-      JMenuItem openMi = new JMenuItem(new MenuItemAction("Open", iconOpen,
-              KeyEvent.VK_O));
+      JMenuItem optionsMi = new JMenuItem(new MenuItemAction("Options", iconOptions, KeyEvent.VK_O));
+      JMenuItem nimbusMi = new JMenuItem(new MenuItemAction("Nimbus LaF", null, null));
+      JMenuItem metalMi = new JMenuItem(new MenuItemAction("Metal LaF", null, null));
+      JMenuItem systemMi = new JMenuItem(new MenuItemAction("System LaF", null, null));
 
-      JMenuItem saveMi = new JMenuItem(new MenuItemAction("Save", iconSave,
-              KeyEvent.VK_S));
+      JMenuItem documentationMi = new JMenuItem(new MenuItemAction("Documentation", iconHelp, KeyEvent.VK_H));
+      JMenuItem aboutMi = new JMenuItem("About");
+      aboutMi.setMnemonic(KeyEvent.VK_A);
+      aboutMi.setToolTipText("Learn about the EPT application and access GitHub URL");
+      aboutMi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, CTRL_MASK));
 
       JMenuItem exitMi = new JMenuItem("Exit", iconExit);
       exitMi.setMnemonic(KeyEvent.VK_E);
       exitMi.setToolTipText("Exit application");
-      exitMi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,
-              CTRL_MASK));
+      exitMi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, CTRL_MASK));
 
       exitMi.addActionListener(new ActionListener() {
          @Override
@@ -208,7 +229,42 @@ public class EducatorMainForm extends JFrame {
       viewMenu.setMnemonic(KeyEvent.VK_V);
 
       JMenu toolsMenu = new JMenu("Tools");
+      toolsMenu.add(optionsMi);
+      toolsMenu.add(nimbusMi);
+      toolsMenu.add(metalMi);
+      toolsMenu.add(systemMi);
+
+      optionsMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent event) {
+            OptionsForm.main();
+         }
+      });
+
+      nimbusMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent event) {
+            OptionsForm.changeLaf(EducatorMainForm.this, "nimbus");
+         }
+      });
+
+      metalMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent event) {
+            OptionsForm.changeLaf(EducatorMainForm.this, "metal");
+         }
+      });
+
+      systemMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent event) {
+            OptionsForm.changeLaf(EducatorMainForm.this, "system");
+         }
+      });
+
       JMenu helpMenu = new JMenu("Help");
+      helpMenu.add(documentationMi);
+      helpMenu.add(aboutMi);
 
       JCheckBoxMenuItem sbarMi = new JCheckBoxMenuItem("Show statubar");
       sbarMi.setMnemonic(KeyEvent.VK_S);
@@ -223,9 +279,11 @@ public class EducatorMainForm extends JFrame {
             if (e.getStateChange() == ItemEvent.DESELECTED) {
                helpText1.setVisible(false);
                helpText2.setVisible(false);
+               helpText3.setVisible(false);
             } else {
                helpText1.setVisible(true);
                helpText2.setVisible(true);
+               helpText3.setVisible(true);
             }
 
          }

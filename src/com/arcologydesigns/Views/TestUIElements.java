@@ -9,7 +9,7 @@ import javax.swing.UIManager;
 public class TestUIElements {
 
    public static void main(String[] args) {
-      printUIManagerKeys("close");
+      printUIManagerKeys("edit");
    }
 
 //   public TestUIElements(String _filter) {
