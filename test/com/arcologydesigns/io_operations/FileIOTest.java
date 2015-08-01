@@ -24,15 +24,21 @@ public class FileIOTest {
 
    }
 
+
+   //Not sure what this operation does?  Does it write a line on the screen?  Or does it write a line on the file?
+
    @Test
    public void testWriteOperation() throws Exception {
-      FileIO testfile = new FileIO("test.txt");
+      FileIO testfile = new FileIO("C:\\Users\\Ari\\Desktop\\CS4398\\educatorProductivityToolkit\\resources\\flatFiles\\test.txt");
       testfile.WriteOperation("This is a test");
-      assertFalse(FileIO.appendCheck());
+      String file = testfile.ReadOneLine();
    }
+
+   //This test appears to be working fine.
 
    @Test
    public void testReadOneLine() throws Exception {
-
+      FileIO testfile = new FileIO("C:\\Users\\Ari\\Desktop\\CS4398\\educatorProductivityToolkit\\resources\\flatFiles\\studentData.txt");
+      String file = testfile.ReadOneLine();
    }
 }

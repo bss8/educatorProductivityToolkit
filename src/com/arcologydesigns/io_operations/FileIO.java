@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 public class FileIO {
 
     private String fileName;
-    private String path;
+    private static String path;
     private static boolean appendToFile;
 
     public FileIO(String filePath) {
@@ -22,6 +22,11 @@ public class FileIO {
     public FileIO(String filePath, boolean appendValue) {
         path = filePath;
         appendToFile = appendValue;
+    }
+
+    public static String setFilePath(String filepath) throws IOException {
+        path = filepath;
+        return path;
     }
 
     public void WriteOperation(String textLine) throws IOException {
