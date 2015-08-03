@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * AuthenticationController created by Borislav S. on 7/10/2015 @ 5:59 PM.
  * This class serves to validate a user based on existing username and password
  * TODO: create encryption algorithm for storing and retrieving user data
+ * TODO: if authentication is possible, secure the user credentials file
  */
 public class AuthenticationController {
    private boolean isUserValid;
@@ -31,7 +32,7 @@ public class AuthenticationController {
       userData = SpreadsheetIntegration.UserData.getUserData();
 
       for (SpreadsheetIntegration.UserNode currentNode : userData) {
-         if ( (currentNode.username.equals(username) && (currentNode.password.equals(strPwd))) ) {
+         if ( (currentNode.getUsername().equals(username) && (currentNode.getPassword().equals(strPwd))) ) {
 
             isUserValid = true;
 
@@ -40,12 +41,12 @@ public class AuthenticationController {
             switch (userType) {
                case 'S':
                   Student student = new Student();
-                  student.setUserID(currentNode.username);
+                  student.setUserID(currentNode.getUsername());
                   globalUserType = userType;
                   break;
                case 'I':
                   Instructor instructor = new Instructor();
-                  instructor.setUserID(currentNode.username);
+                  instructor.setUserID(currentNode.getUsername());
                   globalUserType = userType;
                   break;
                case 'G':

@@ -17,9 +17,25 @@ public class SpreadsheetIntegration {
    private ArrayList<UserNode> userData = new ArrayList<UserNode>();
 
    public class UserNode {
-      public String username;
-      public String password;
+      private String username;
+      private String password;
       public String userType;
+
+      public String getPassword() {
+         return password;
+      }
+
+      public void setPassword(String password) {
+         this.password = password;
+      }
+
+      public String getUsername() {
+         return username;
+      }
+
+      public void setUsername(String username) {
+         this.username = username;
+      }
    } // end class UserNode
 
    /** A static class to fetch user data and maintain a single copy */
@@ -91,12 +107,12 @@ public class SpreadsheetIntegration {
 
          final String split[] = inputLine.split(",");
          if (split.length > 1) {
-            uNode.username = split[0];
-            uNode.password = split[1];
+            uNode.setUsername(split[0]);
+            uNode.setPassword(split[1]);
             uNode.userType = split[2];
          }
 
-         if(uNode.username != null && uNode.password != null) {
+         if(uNode.getUsername() != null && uNode.getPassword() != null) {
             userData.add(numRows, uNode);
          }
          numRows++;

@@ -15,7 +15,9 @@ import static java.lang.System.*;
  * TODO: need to be able to delete a node from the tree and reorganize the tree using above
  *
  * INSTRUCTIONS: create a new instance, insert items (must be an object, i.e., Integer rather than int), make a call to
- * balance the tree, then use breadthFirstSearch to find an item.
+ * balance the tree, then use breadthFirstSearch to find an item. The findMin() and findMax() are called automatically
+ * by the balance method and should not be used to find the min/max in the tree. The getMinTreeValue and getMaxTreeValue
+ * should be used instead.
  */
 public class BST< T extends Comparable<T> > {
 
@@ -350,4 +352,4 @@ public class BST< T extends Comparable<T> > {
       int max = findMax(list);
       return this.maxTreeValue;
    }
-}
+} //end class BST
