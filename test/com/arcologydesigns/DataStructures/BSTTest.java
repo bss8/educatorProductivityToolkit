@@ -61,6 +61,9 @@ public class BSTTest {
 
    @Test
    public void testInsertItem() throws Exception {
+       BST<Integer> testTree = new BST<>();
+       testTree.insertItem(1);
+       assertEquals(Integer.valueOf(1),testTree.countNodes());
 
    }
 
