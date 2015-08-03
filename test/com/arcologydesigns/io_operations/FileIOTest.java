@@ -35,6 +35,9 @@ public class FileIOTest {
    }
 
    //This test appears to be working fine.
+   //
+   //The only thing I would question is the skipping of the first line after you've already run the function once.
+   //Will it skip the 3rd line and read in the 4th?
 
    @Test
    public void testReadOneLine() throws Exception {
