@@ -338,10 +338,20 @@ public class BST< T extends Comparable<T> > {
     */
 
    public double getMinTreeValue() {
+      // call inOrderTraversal to obtain a string list of
+      String listTraversal = inOrderTraversal();
+      ArrayList<Double> list = convertTreeToList(listTraversal);
+      int min = findMin(list);
+
       return this.minTreeValue;
    }
 
    public double getMaxTreeValue() {
+      // call inOrderTraversal to obtain a string list of
+      String listTraversal = inOrderTraversal();
+      ArrayList<Double> list = convertTreeToList(listTraversal);
+
+      int max = findMax(list);
       return this.maxTreeValue;
    }
 }
