@@ -333,10 +333,6 @@ public class BST< T extends Comparable<T> > {
       this.insertItem(item);
    }
 
-   /*
-   Error found, getMax/getMin both return 0.0 every time, even when presented with negative integers.
-    */
-
    public double getMinTreeValue() {
       // call inOrderTraversal to obtain a string list of
       String listTraversal = inOrderTraversal();
