@@ -31,7 +31,7 @@ public class AuthenticationController {
       userData = SpreadsheetIntegration.UserData.getUserData();
 
       for (SpreadsheetIntegration.UserNode currentNode : userData) {
-         if ( (currentNode.username.equals(username) && (currentNode.password.equals(strPwd))) ) {
+         if ( (currentNode.getUsername().equals(username) && (currentNode.getPassword().equals(strPwd))) ) {
 
             isUserValid = true;
 
@@ -40,12 +40,12 @@ public class AuthenticationController {
             switch (userType) {
                case 'S':
                   Student student = new Student();
-                  student.setUserID(currentNode.username);
+                  student.setUserID(currentNode.getUsername());
                   globalUserType = userType;
                   break;
                case 'I':
                   Instructor instructor = new Instructor();
-                  instructor.setUserID(currentNode.username);
+                  instructor.setUserID(currentNode.getUsername());
                   globalUserType = userType;
                   break;
                case 'G':
