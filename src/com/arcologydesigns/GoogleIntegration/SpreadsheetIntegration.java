@@ -1,5 +1,8 @@
 package com.arcologydesigns.GoogleIntegration;
 
+import com.arcologydesigns.DataStructures.BST;
+import com.arcologydesigns.ept.users.Student;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -105,30 +108,60 @@ public class SpreadsheetIntegration {
    }  // end fetchUserLoginData()
 
    private void fetchClassData(BufferedReader in) throws IOException {
-      String inputLine;
+      String inputLine = "";
       int numRows = 0;
       //TODO: replace the below test with implementation; class data to use ArrayList
-      System.out.print(in.readLine() + "\n"); // skip headers
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+
+
    }
 
    private void fetchInstructorData(BufferedReader in) throws IOException {
-      String inputLine;
+      String inputLine = "";
       int numRows = 0;
       //TODO: replace the below test with implementation; Instructor data to use ArrayList
-      System.out.print(in.readLine() + "\n"); // skip headers
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+
+
    }
 
    private void fetchStudentData(BufferedReader in) throws IOException {
-      String inputLine;
+      String inputLine = "";
       int numRows = 0;
       //TODO: replace the below test with implementation; Student data to use BST
-      System.out.print(in.readLine() + "\n"); // skip headers
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+      BST<Student> studentBST = new BST<>();
+
+      while (in.ready()) {
+         inputLine = in.readLine();
+         final String split[] = inputLine.split(",");
+         Student student = new Student();
+
+         if (split.length > 1) {
+            student.setUserID(split[0]);
+            student.setUserName(split[1]);
+            student.setPhone(split[2]);
+            student.setAddress(split[3]);
+            student.setEmail(split[4]);
+         }
+
+         studentBST.insertItem(student);
+      }
+
+      studentBST.balanceRecursive();
+      //System.out.print(studentBST.inOrderTraversal());
    }
 
    private void fetchAssignmentData(BufferedReader in) throws IOException {
-      String inputLine;
+      String inputLine = "";
       int numRows = 0;
       //TODO: replace the below test with implementation; class data to use Queue
-      System.out.print(in.readLine() + "\n"); // skip headers
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+
+
    }
 }  //end class SpreadsheetIntegration

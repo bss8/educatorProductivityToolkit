@@ -14,7 +14,7 @@ public class Student extends User implements Comparable<Student> {
    }
 
    public Student() {
-
+      this.grade = 0.0;
    }
 
    @Override
