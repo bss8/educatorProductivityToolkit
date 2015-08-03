@@ -127,27 +127,27 @@ public class BSTTest {
 
    @Test
    public void testGetMinTreeValue() throws Exception {
-       /*BST<Integer> testTree = new BST<>();
+       BST<Integer> testTree = new BST<>();
        testTree.insertItem(-1);
        testTree.insertItem(3);
        testTree.insertItem(5);
        testTree.insertItem(6);
        testTree.insertItem(4);
        testTree.insertItem(2);
-       System.out.println(testTree.getMinTreeValue());
-       */
+       assertEquals(Double.valueOf(-1.0), testTree.getMinTreeValue());
+
    }
 
    @Test
    public void testGetMaxTreeValue() throws Exception {
-       /*BST<Integer> testTree = new BST<>();
+       BST<Integer> testTree = new BST<>();
        testTree.insertItem(1);
        testTree.insertItem(3);
        testTree.insertItem(5);
        testTree.insertItem(6);
        testTree.insertItem(4);
        testTree.insertItem(2);
-       System.out.println(testTree.getMaxTreeValue());
-        */
+       assertEquals(Double.valueOf(6.0), testTree.getMaxTreeValue());
+
    }
 }
