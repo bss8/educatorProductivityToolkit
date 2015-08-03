@@ -1,5 +1,8 @@
 package com.arcologydesigns.GoogleIntegration;
 
+import com.arcologydesigns.DataStructures.BST;
+import com.arcologydesigns.ept.users.Student;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,41 +24,23 @@ public class SpreadsheetIntegration {
       private String password;
       public String userType;
 
-      public String getPassword() {
-         return password;
-      }
-
-      public void setPassword(String password) {
-         this.password = password;
-      }
-
-      public String getUsername() {
-         return username;
-      }
-
-      public void setUsername(String username) {
-         this.username = username;
-      }
+      public String getPassword() { return password; }
+      public void setPassword(String password) { this.password = password; }
+      public String getUsername() { return username; }
+      public void setUsername(String username) { this.username = username; }
    } // end class UserNode
 
    /** A static class to fetch user data and maintain a single copy */
    public static class UserData {
       private static ArrayList<UserNode> users;
-
-      public static ArrayList<UserNode> getUserData() {
-         return users;
-      }
-
-      public static void setUserData(ArrayList<UserNode> userNode) {
-         users = userNode;
-      }
+      public static ArrayList<UserNode> getUserData() { return users; }
+      public static void setUserData(ArrayList<UserNode> userNode) { users = userNode; }
    } // end class UserData
 
    /** This default constructor is used exclusively for user authentication */
    public SpreadsheetIntegration() throws IOException {
       URL googleSpreadsheet = new URL("https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/pub?output=csv");
       BufferedReader in = new BufferedReader(new InputStreamReader(googleSpreadsheet.openStream()));
-
       fetchUserLoginData(in);
    } // end SpreadSheetIntegration()
 
@@ -123,18 +108,60 @@ public class SpreadsheetIntegration {
    }  // end fetchUserLoginData()
 
    private void fetchClassData(BufferedReader in) throws IOException {
+      String inputLine = "";
+      int numRows = 0;
+      //TODO: replace the below test with implementation; class data to use ArrayList
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+
 
    }
 
    private void fetchInstructorData(BufferedReader in) throws IOException {
+      String inputLine = "";
+      int numRows = 0;
+      //TODO: replace the below test with implementation; Instructor data to use ArrayList
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+
 
    }
 
    private void fetchStudentData(BufferedReader in) throws IOException {
+      String inputLine = "";
+      int numRows = 0;
+      //TODO: replace the below test with implementation; Student data to use BST
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+      BST<Student> studentBST = new BST<>();
 
+      while (in.ready()) {
+         inputLine = in.readLine();
+         final String split[] = inputLine.split(",");
+         Student student = new Student();
+
+         if (split.length > 1) {
+            student.setUserID(split[0]);
+            student.setUserName(split[1]);
+            student.setPhone(split[2]);
+            student.setAddress(split[3]);
+            student.setEmail(split[4]);
+         }
+
+         studentBST.insertItem(student);
+      }
+
+      studentBST.balanceRecursive();
+      //System.out.print(studentBST.inOrderTraversal());
    }
 
    private void fetchAssignmentData(BufferedReader in) throws IOException {
+      String inputLine = "";
+      int numRows = 0;
+      //TODO: replace the below test with implementation; class data to use Queue
+      //System.out.print(in.readLine() + "\n"); // skip headers
+      in.readLine();
+
 
    }
 }  //end class SpreadsheetIntegration
