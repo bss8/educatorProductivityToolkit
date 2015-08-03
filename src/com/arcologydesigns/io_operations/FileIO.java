@@ -20,38 +20,34 @@ public class FileIO {
     }
 
     public FileIO(String filePath, boolean appendValue) {
-        path = filePath;
-        appendToFile = appendValue;
+       path = filePath;
+       appendToFile = appendValue;
     }
 
     public void WriteOperation(String textLine) throws IOException {
-        FileWriter writer = new FileWriter(path, appendToFile);
-        PrintWriter printWriter = new PrintWriter(writer);
+       FileWriter writer = new FileWriter(path, appendToFile);
+       PrintWriter printWriter = new PrintWriter(writer);
 
-        printWriter.printf("%s" + "%n", textLine);
+       printWriter.printf("%s" + "%n", textLine);
 
-        printWriter.close();
+       printWriter.close();
     }
 
     public String ReadOneLine() throws IOException {
-        FileReader fileReader = new FileReader(path);
-        BufferedReader lineReader = new BufferedReader(fileReader);
-        String fileData;
+       FileReader fileReader = new FileReader(path);
+       BufferedReader lineReader = new BufferedReader(fileReader);
+       String fileData;
 
        lineReader.readLine();  // temporary code to skip first line containing headers
 
-        fileData = lineReader.readLine();
-        System.out.print("1st line: " + fileData + "\n");
+       fileData = lineReader.readLine();
+       System.out.print("1st line: " + fileData + "\n");
 
-        lineReader.close();
-
-        return fileData;
+       lineReader.close();
+       return fileData;
     }
 
     public String ReadAll() throws IOException {
-
-
-        return "";
+       return "";
     }
-
-}
+} //end class FileIO
