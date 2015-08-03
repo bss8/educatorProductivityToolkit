@@ -1,5 +1,7 @@
 package com.arcologydesigns.Views;
 
+import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
+
 import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.Icon;
@@ -27,6 +29,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 
 import static java.awt.event.ActionEvent.*;
@@ -103,8 +106,14 @@ public class EducatorMainForm extends JFrame {
       importDataButton.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent event) {
-
-
+            try {
+               SpreadsheetIntegration loadClassData = new SpreadsheetIntegration(getClassesTextField(), 'C');
+               SpreadsheetIntegration loadAssignmentData = new SpreadsheetIntegration(getAssignmentsTextField(), 'A');
+               SpreadsheetIntegration loadStudentData = new SpreadsheetIntegration(getStudentsTextField(), 'S');
+               SpreadsheetIntegration loadInstructorData = new SpreadsheetIntegration(getInstructorsTextField(), 'I');
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
          }
       });
    }
@@ -342,4 +351,19 @@ public class EducatorMainForm extends JFrame {
       imgUrl = _imageURL;
    }
 
+   public String getAssignmentsTextField() {
+      return assignmentsTextField.getText();
+   }
+
+   public String getClassesTextField() {
+      return classesTextField.getText();
+   }
+
+   public String getStudentsTextField() {
+      return studentsTextField.getText();
+   }
+
+   public String getInstructorsTextField() {
+      return instructorsTextField.getText();
+   }
 } // end class EducatorMainForm
