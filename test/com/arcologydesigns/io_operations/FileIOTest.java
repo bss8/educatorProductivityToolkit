@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.io.FileWriter;
 import java.io.Writer;
 
@@ -11,6 +12,7 @@ import static org.junit.Assert.*;
 
 /**
  * FileIOTest created by Borislav S. on 7/14/2015 @ 11:40 PM.
+ * Modified by arnissim on 7/31/2015
  */
 public class FileIOTest {
 
@@ -23,9 +25,6 @@ public class FileIOTest {
    public void tearDown() throws Exception {
 
    }
-
-
-   //Not sure what this operation does?  Does it write a line on the screen?  Or does it write a line on the file?
 
    @Test
    public void testWriteOperation() throws Exception {
@@ -54,19 +53,10 @@ public class FileIOTest {
       */
    }
 
-   //This test appears to be working fine.
-   //
-   //The only thing I would question is the skipping of the first line after you've already run the function once.
-   //Will it skip the 3rd line and read in the 4th?
-
    @Test
    public void testReadOneLine() throws Exception {
-      /*
-         EXAMPLE OF BAD CODE: the below code. To fetch a resource, use the absolute reference path and invoke
-         getClassLoader() then getResource() to set a resource. Otherwise, the resource will not show when running
-         the application from a JAR file.
-
-            setContentPane(new JLabel(new ImageIcon(".\\resources\\desert.jpg")));
-      */
+      FileIO testfile = new FileIO(".\\resources\\flatfiles\\studentData.txt");
+      String testfile2 = testfile.ReadOneLine();
+      assertNotNull(testfile2);
    }
 }
