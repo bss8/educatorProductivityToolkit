@@ -12,8 +12,8 @@ import java.io.PrintWriter;
 public class FileIO {
 
     private String fileName;
-    private static String path;
-    private static boolean appendToFile;
+    private String path;
+    private boolean appendToFile;
 
     public FileIO(String filePath) {
         path = filePath;
@@ -24,11 +24,6 @@ public class FileIO {
         appendToFile = appendValue;
     }
 
-    public static String setFilePath(String filepath) throws IOException {
-        path = filepath;
-        return path;
-    }
-
     public void WriteOperation(String textLine) throws IOException {
         FileWriter writer = new FileWriter(path, appendToFile);
         PrintWriter printWriter = new PrintWriter(writer);
@@ -36,10 +31,6 @@ public class FileIO {
         printWriter.printf("%s" + "%n", textLine);
 
         printWriter.close();
-    }
-
-    public static boolean appendCheck() throws IOException {
-        return appendToFile;
     }
 
     public String ReadOneLine() throws IOException {
