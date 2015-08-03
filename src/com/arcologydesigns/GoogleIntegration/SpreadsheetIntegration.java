@@ -21,41 +21,23 @@ public class SpreadsheetIntegration {
       private String password;
       public String userType;
 
-      public String getPassword() {
-         return password;
-      }
-
-      public void setPassword(String password) {
-         this.password = password;
-      }
-
-      public String getUsername() {
-         return username;
-      }
-
-      public void setUsername(String username) {
-         this.username = username;
-      }
+      public String getPassword() { return password; }
+      public void setPassword(String password) { this.password = password; }
+      public String getUsername() { return username; }
+      public void setUsername(String username) { this.username = username; }
    } // end class UserNode
 
    /** A static class to fetch user data and maintain a single copy */
    public static class UserData {
       private static ArrayList<UserNode> users;
-
-      public static ArrayList<UserNode> getUserData() {
-         return users;
-      }
-
-      public static void setUserData(ArrayList<UserNode> userNode) {
-         users = userNode;
-      }
+      public static ArrayList<UserNode> getUserData() { return users; }
+      public static void setUserData(ArrayList<UserNode> userNode) { users = userNode; }
    } // end class UserData
 
    /** This default constructor is used exclusively for user authentication */
    public SpreadsheetIntegration() throws IOException {
       URL googleSpreadsheet = new URL("https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/pub?output=csv");
       BufferedReader in = new BufferedReader(new InputStreamReader(googleSpreadsheet.openStream()));
-
       fetchUserLoginData(in);
    } // end SpreadSheetIntegration()
 
@@ -123,18 +105,30 @@ public class SpreadsheetIntegration {
    }  // end fetchUserLoginData()
 
    private void fetchClassData(BufferedReader in) throws IOException {
-
+      String inputLine;
+      int numRows = 0;
+      //TODO: replace the below test with implementation; class data to use ArrayList
+      System.out.print(in.readLine() + "\n"); // skip headers
    }
 
    private void fetchInstructorData(BufferedReader in) throws IOException {
-
+      String inputLine;
+      int numRows = 0;
+      //TODO: replace the below test with implementation; Instructor data to use ArrayList
+      System.out.print(in.readLine() + "\n"); // skip headers
    }
 
    private void fetchStudentData(BufferedReader in) throws IOException {
-
+      String inputLine;
+      int numRows = 0;
+      //TODO: replace the below test with implementation; Student data to use BST
+      System.out.print(in.readLine() + "\n"); // skip headers
    }
 
    private void fetchAssignmentData(BufferedReader in) throws IOException {
-
+      String inputLine;
+      int numRows = 0;
+      //TODO: replace the below test with implementation; class data to use Queue
+      System.out.print(in.readLine() + "\n"); // skip headers
    }
 }  //end class SpreadsheetIntegration
