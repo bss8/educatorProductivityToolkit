@@ -1,6 +1,7 @@
 package com.arcologydesigns.GoogleIntegration;
 
 import com.arcologydesigns.DataStructures.BST;
+import com.arcologydesigns.ept.schoolItems.SchoolClass;
 import com.arcologydesigns.ept.users.Instructor;
 import com.arcologydesigns.ept.users.Student;
 
@@ -115,6 +116,22 @@ public class SpreadsheetIntegration {
       //System.out.print(in.readLine() + "\n"); // skip headers
       in.readLine();
 
+      ArrayList<SchoolClass> classesList = new ArrayList<>();
+
+      while(in.ready()) {
+         inputLine = in.readLine();
+         final String split[] = inputLine.split(",");
+         SchoolClass myClasses = new SchoolClass();
+
+         if (split.length > 1) {
+            myClasses.setClassId(split[0]);
+            myClasses.setInstructorId(split[1]);
+            myClasses.setStudentId(split[2]);
+            myClasses.setClassName(split[3]);
+         }
+
+         classesList.add(myClasses);
+      }
 
    }
 

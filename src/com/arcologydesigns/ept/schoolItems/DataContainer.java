@@ -12,40 +12,40 @@ import java.util.ArrayList;
  */
 public class DataContainer {
    public static class DataContainerInst {
-      private BST<Student> studentsData;
-      private ArrayList<Class> classesData;
-      private ArrayList<Instructor> instructorsData;
-      private Queue<Assignment> assignmentData;
+      private static BST<Student> studentsData;
+      private static ArrayList<SchoolClass> classesData;
+      private static ArrayList<Instructor> instructorsData;
+      private static Queue<Assignment> assignmentData;
 
-      public void setStudentsData(BST<Student> studentsData) {
-         this.studentsData = studentsData;
+      public static void setStudentsData(BST<Student> _studentsData) {
+         DataContainerInst.studentsData = _studentsData;
       }
 
-      public void setClassesData(ArrayList<Class> classesData) {
-         this.classesData = classesData;
+      public void setClassesData(ArrayList<SchoolClass> classesData) {
+         DataContainerInst.classesData = classesData;
       }
 
       public void setInstructorsData(ArrayList<Instructor> instructorsData) {
-         this.instructorsData = instructorsData;
+         DataContainerInst.instructorsData = instructorsData;
       }
 
       public void setAssignmentData(Queue<Assignment> assignmentData) {
-         this.assignmentData = assignmentData;
+         DataContainerInst.assignmentData = assignmentData;
       }
 
-      public BST<Student> getStudentsData() {
+      public static BST<Student> getStudentsData() {
          return studentsData;
       }
 
-      public ArrayList<Class> getClassesData() {
+      public static ArrayList<SchoolClass> getClassesData() {
          return classesData;
       }
 
-      public ArrayList<Instructor> getInstructorsData() {
+      public static ArrayList<Instructor> getInstructorsData() {
          return instructorsData;
       }
 
-      public Queue<Assignment> getAssignmentData() {
+      public static Queue<Assignment> getAssignmentData() {
          return assignmentData;
       }
    }
