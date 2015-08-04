@@ -21,15 +21,15 @@ public class DataContainer {
          DataContainerInst.studentsData = _studentsData;
       }
 
-      public void setClassesData(ArrayList<Classes> classesData) {
+      public static void setClassesData(ArrayList<Classes> classesData) {
          DataContainerInst.classesData = classesData;
       }
 
-      public void setInstructorsData(ArrayList<Instructor> instructorsData) {
+      public static void setInstructorsData(ArrayList<Instructor> instructorsData) {
          DataContainerInst.instructorsData = instructorsData;
       }
 
-      public void setAssignmentData(Queue<Assignment> assignmentData) {
+      public static void setAssignmentData(Queue<Assignment> assignmentData) {
          DataContainerInst.assignmentData = assignmentData;
       }
 

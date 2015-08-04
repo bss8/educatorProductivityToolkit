@@ -4,6 +4,7 @@ import com.arcologydesigns.DataStructures.BST;
 import com.arcologydesigns.DataStructures.Queue;
 import com.arcologydesigns.ept.schoolItems.Assignment;
 import com.arcologydesigns.ept.schoolItems.Classes;
+import com.arcologydesigns.ept.schoolItems.DataContainer;
 import com.arcologydesigns.ept.users.Instructor;
 import com.arcologydesigns.ept.users.Student;
 
@@ -134,7 +135,7 @@ public class SpreadsheetIntegration {
 
          classesList.add(myClasses);
       }
-
+      DataContainer.DataContainerInst.setClassesData(classesList);
    }
 
    private void fetchInstructorData(BufferedReader in) throws IOException {
@@ -160,7 +161,7 @@ public class SpreadsheetIntegration {
 
          instructorsList.add(instructor);
       }
-
+      DataContainer.DataContainerInst.setInstructorsData(instructorsList);
    }
 
    private void fetchStudentData(BufferedReader in) throws IOException {
@@ -188,7 +189,7 @@ public class SpreadsheetIntegration {
       }
 
       studentBST.balanceRecursive();
-      //System.out.print(studentBST.inOrderTraversal());
+      DataContainer.DataContainerInst.setStudentsData(studentBST);
    }
 
    private void fetchAssignmentData(BufferedReader in) throws IOException {
@@ -205,11 +206,15 @@ public class SpreadsheetIntegration {
          Assignment assignment = new Assignment();
 
          if (split.length > 1) {
-
+            assignment.setAssignmentId(split[0]);
+            assignment.setClassId(split[1]);
+            assignment.setStudentId(split[2]);
+            int score = Integer.parseInt(split[3]);
+            assignment.setAssignmentScore(score);
          }
 
          assignmentQueue.enQueue(assignment);
       }
-
+      DataContainer.DataContainerInst.setAssignmentData(assignmentQueue);
    }
 }  //end class SpreadsheetIntegration
