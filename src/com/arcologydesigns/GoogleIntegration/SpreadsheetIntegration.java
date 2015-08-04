@@ -1,6 +1,7 @@
 package com.arcologydesigns.GoogleIntegration;
 
 import com.arcologydesigns.DataStructures.BST;
+import com.arcologydesigns.ept.users.Instructor;
 import com.arcologydesigns.ept.users.Student;
 
 import java.io.BufferedReader;
@@ -123,7 +124,23 @@ public class SpreadsheetIntegration {
       //TODO: replace the below test with implementation; Instructor data to use ArrayList
       //System.out.print(in.readLine() + "\n"); // skip headers
       in.readLine();
+      ArrayList<Instructor> instructorsList = new ArrayList<>();
 
+      while(in.ready()) {
+         inputLine = in.readLine();
+         final String split[] = inputLine.split(",");
+         Instructor instructor = new Instructor();
+
+         if (split.length > 1) {
+            instructor.setUserID(split[0]);
+            instructor.setUserName(split[1]);
+            instructor.setPhone(split[2]);
+            instructor.setAddress(split[3]);
+            instructor.setEmail(split[4]);
+         }
+
+         instructorsList.add(instructor);
+      }
 
    }
 
