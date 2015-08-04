@@ -29,15 +29,25 @@ public class StudentInfoForm extends JDialog {
         setVisible(true);
     }
 
-    public void setStudentNameLabel(String studentNameLabel) { this.studentNameLabel.setText(studentNameLabel); }
+    public void setStudentNameLabel(String studentNameLabel) {
+        this.studentNameLabel.setText(studentNameLabel);
+    }
 
-    public void setStudentPhone(String studentPhone) { this.studentPhone.setText(studentPhone); }
+    public void setStudentPhone(String studentPhone) {
+        this.studentPhone.setText(studentPhone);
+    }
 
-    public void setStudentID(String studentID) { this.studentID.setText(studentID); }
+    public void setStudentID(String studentID) {
+        this.studentID.setText(studentID);
+    }
 
-    public void setStudentAddress(String studentAddress) { this.studentAddress.setText(studentAddress); }
+    public void setStudentAddress(String studentAddress) {
+        this.studentAddress.setText(studentAddress);
+    }
 
-    public void setStudentEmail(String studentEmail) { this.studentEmail.setText(studentEmail); }
+    public void setStudentEmail(String studentEmail) {
+        this.studentEmail.setText(studentEmail);
+    }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here

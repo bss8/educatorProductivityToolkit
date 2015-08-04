@@ -38,7 +38,7 @@ import static java.awt.event.ActionEvent.*;
  * EducatorMainForm created by Borislav S. on 7/11/2015 @ 9:57 PM.
  */
 public class EducatorMainForm extends JFrame {
-
+   private char userType;
    private ImageIcon img;
    private JPanel educatorMainPanel;
    private JLabel userIdLabel;
@@ -85,12 +85,15 @@ public class EducatorMainForm extends JFrame {
       switch (userType) {
          case 'S':
             imgUrl = "images/educator_logo_student.jpg";
+            this.userType = userType;
             break;
          case 'I':
             imgUrl = "images/educator_logo_instructor.jpg";
+            this.userType = userType;
             break;
          case 'G':
             imgUrl = "images/educator_logo_guest.jpg";
+            this.userType = userType;
             break;
          default:
             imgUrl = "images/educator_logo_guest.jpg";
@@ -229,7 +232,7 @@ public class EducatorMainForm extends JFrame {
       //Menu items for File menu
       JMenuItem newMi = new JMenuItem(new MenuItemAction("New", iconNew, KeyEvent.VK_N));
       JMenuItem openMi = new JMenuItem(new MenuItemAction("Open", iconOpen, KeyEvent.VK_O));
-      JMenuItem saveMi = new JMenuItem(new MenuItemAction("Save", iconSave, KeyEvent.VK_S));
+      final JMenuItem saveMi = new JMenuItem(new MenuItemAction("Save", iconSave, KeyEvent.VK_S));
       JMenuItem exitMi = new JMenuItem("Exit", iconExit);
 
       exitMi.setMnemonic(KeyEvent.VK_E);
@@ -277,8 +280,20 @@ public class EducatorMainForm extends JFrame {
       helpMenu.add(documentationMi);
       helpMenu.add(aboutMi);
 
-      JMenu information = new JMenu("Instructions");
+      JMenu information = new JMenu("Information/Details");
       JMenuItem currentUserInfo = new JMenuItem("Current User Info");
+      currentUserInfo.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            if(userType == 'S') {
+               StudentInfoForm studentInfoForm = new StudentInfoForm();
+               studentInfoForm.setStudentID(userIdLabel.getText());
+            }
+            else if(userType == 'I') {
+               InstructorInfoForm instructorInfoForm = new InstructorInfoForm();
+            }
+         }
+      });
       information.add(currentUserInfo);
 
       JMenu analytics = new JMenu("Analytics");
