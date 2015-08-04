@@ -1,6 +1,8 @@
 package com.arcologydesigns.GoogleIntegration;
 
 import com.arcologydesigns.DataStructures.BST;
+import com.arcologydesigns.DataStructures.Queue;
+import com.arcologydesigns.ept.schoolItems.Assignment;
 import com.arcologydesigns.ept.schoolItems.SchoolClass;
 import com.arcologydesigns.ept.users.Instructor;
 import com.arcologydesigns.ept.users.Student;
@@ -195,7 +197,19 @@ public class SpreadsheetIntegration {
       //TODO: replace the below test with implementation; class data to use Queue
       //System.out.print(in.readLine() + "\n"); // skip headers
       in.readLine();
+      Queue<Assignment> assignmentQueue = new Queue<>();
 
+      while (in.ready()) {
+         inputLine = in.readLine();
+         final String split[] = inputLine.split(",");
+         Assignment assignment = new Assignment();
+
+         if (split.length > 1) {
+
+         }
+
+         assignmentQueue.enQueue(assignment);
+      }
 
    }
 }  //end class SpreadsheetIntegration
