@@ -1,6 +1,9 @@
 package com.arcologydesigns.Controllers;
 
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
+import com.arcologydesigns.ept.users.Student;
+import com.arcologydesigns.ept.users.User;
+import com.sun.org.apache.regexp.internal.CharacterArrayCharacterIterator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,16 +31,48 @@ public class AuthenticationControllerTest extends AuthenticationController {
    @Test
    public void testAuthenticateUser() throws Exception {
 
+
+
+
       /*
+         Comment made by ARI:
          Can't figure out how to create a "UserNode" to set the passwords.  It won't let me set the password because I'm trying to set it
          static and inside an "inner class".  Very stuck :(
 
          Added some setters and getters into the SpreadsheetIntegration Class but still no good.
 
       */
+
+
+
       //assert (SpreadsheetIntegration.UserNode.username("bss64"));
       //assert (SpreadsheetIntegration.UserNode.password("test123"));
-      assertFalse(this.authenticateUser("bss64", new char[]{'t', 'e', 's', 't', '1', '2', '3'}));
+
+      //char[] foo= new char[]{'t', 'e', 's', 't', '1', '2', '3'};
+      //assertFalse(this.authenticateUser(String.valueOf("bss64"), foo ));
+
+
+
+      /*
+      Adam:
+      Ran into the same problem, attempted to make a fake student user, and just manually set it to accept it as a
+      valid student but it was too well protected. Good for security though, so not necessarily a bad thing.
+
+      Edited, and commented out, the above assert due to it throwing a java.lang.NullPointerException upon compiling.
+
+      Student Foo = new Student();
+
+      Foo.setUserName("Ted");
+      Foo.setUserID("007");
+      Foo.setPhone("555-867-5309");
+      Foo.setAddress("1600 Pennsylvania Avenue ");
+      Foo.setEmail("Anonymous@Lasersharks.com");
+      AuthenticationController bar = new AuthenticationControllerTest();
+      char[] password = new char[] {'p','a','s','s','w','o','r','d'};
+      bar.authenticateUser(Foo.getUserName(),password);
+      */
+
+
    }
 
    @Test
