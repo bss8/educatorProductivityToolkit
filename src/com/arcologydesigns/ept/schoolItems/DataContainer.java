@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class DataContainer {
    public static class DataContainerInst {
       private static BST<Student> studentsData;
-      private static ArrayList<SchoolClass> classesData;
+      private static ArrayList<Classes> classesData;
       private static ArrayList<Instructor> instructorsData;
       private static Queue<Assignment> assignmentData;
 
@@ -21,7 +21,7 @@ public class DataContainer {
          DataContainerInst.studentsData = _studentsData;
       }
 
-      public void setClassesData(ArrayList<SchoolClass> classesData) {
+      public void setClassesData(ArrayList<Classes> classesData) {
          DataContainerInst.classesData = classesData;
       }
 
@@ -37,7 +37,7 @@ public class DataContainer {
          return studentsData;
       }
 
-      public static ArrayList<SchoolClass> getClassesData() {
+      public static ArrayList<Classes> getClassesData() {
          return classesData;
       }
 

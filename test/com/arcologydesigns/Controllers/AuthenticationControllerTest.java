@@ -32,7 +32,7 @@ public class AuthenticationControllerTest extends AuthenticationController {
          Can't figure out how to create a "UserNode" to set the passwords.  It won't let me set the password because I'm trying to set it
          static and inside an "inner class".  Very stuck :(
 
-         Added some setters and getters into the SpreadsheetIntegration SchoolClass but still no good.
+         Added some setters and getters into the SpreadsheetIntegration Classes but still no good.
 
       */
       //assert (SpreadsheetIntegration.UserNode.username("bss64"));

@@ -3,7 +3,7 @@ package com.arcologydesigns.GoogleIntegration;
 import com.arcologydesigns.DataStructures.BST;
 import com.arcologydesigns.DataStructures.Queue;
 import com.arcologydesigns.ept.schoolItems.Assignment;
-import com.arcologydesigns.ept.schoolItems.SchoolClass;
+import com.arcologydesigns.ept.schoolItems.Classes;
 import com.arcologydesigns.ept.users.Instructor;
 import com.arcologydesigns.ept.users.Student;
 
@@ -118,12 +118,12 @@ public class SpreadsheetIntegration {
       //System.out.print(in.readLine() + "\n"); // skip headers
       in.readLine();
 
-      ArrayList<SchoolClass> classesList = new ArrayList<>();
+      ArrayList<Classes> classesList = new ArrayList<>();
 
       while(in.ready()) {
          inputLine = in.readLine();
          final String split[] = inputLine.split(",");
-         SchoolClass myClasses = new SchoolClass();
+         Classes myClasses = new Classes();
 
          if (split.length > 1) {
             myClasses.setClassId(split[0]);
