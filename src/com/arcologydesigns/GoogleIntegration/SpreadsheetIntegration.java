@@ -188,7 +188,7 @@ public class SpreadsheetIntegration {
          studentBST.insertItem(student);
       }
 
-      studentBST.balanceRecursive();
+      //studentBST.balanceRecursive();
       DataContainer.DataContainerInst.setStudentsData(studentBST);
    }
 

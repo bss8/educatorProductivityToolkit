@@ -14,16 +14,25 @@ public class Student extends User implements Comparable<Student> {
    }
 
    public Student() {
-      this.grade = 0.0;
+
    }
 
    @Override
    public int compareTo(Student student) {
-      return (this.grade < student.grade ? -1 : this.grade > student.grade ? 1 : 0);
+      return this.getUserID().compareTo(student.getUserID());
+   }
+
+   @Override
+   public boolean equals(Object obj) {
+      if (!(obj instanceof Student))
+         return false;
+      if (((Student) obj).getUserID().equals(this.getUserID())) return true;
+      else return false;
+
    }
 
    public String toString() {
-      return (Double.toString(this.grade));
+      return (getUserName()  + ": " + Double.toString(this.grade));
    }
 
    public String fullStringRep() {
