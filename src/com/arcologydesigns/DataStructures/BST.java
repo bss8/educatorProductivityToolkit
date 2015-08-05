@@ -27,8 +27,8 @@ public class BST< T extends Comparable<T> > {
    private String inOrderBST;
    private String preOrderBST;
    private String postOrderBST;
-   private double minTreeValue;
-   private double maxTreeValue;
+   private T minTreeValue;
+   private T maxTreeValue;
 
    private class TreeNode  {
       T data;
@@ -50,8 +50,8 @@ public class BST< T extends Comparable<T> > {
    public BST() {
       ROOT = null;
       inOrderBST = "";
-      minTreeValue = 0.0;
-      maxTreeValue = 0.0;
+      minTreeValue = null;
+      maxTreeValue = null;
    }
 
    public void copyTree(TreeNode copy, TreeNode originalTree) {
@@ -231,8 +231,8 @@ public class BST< T extends Comparable<T> > {
     Preconditions: BST has been initialized
     Postcondidions: returns true if the item is found in the BST
     *****************************/
-   private boolean breadthFirstSearch(TreeNode t, T item) {
-      if (t == null) return false;  //if t is null, list is empty and the item will not be found
+   private T breadthFirstSearch(TreeNode t, T item) {
+      if (t == null) return null;  //if t is null, list is empty and the item will not be found
 
       //create a queue to store tree nodes and enqueue the first item, the root, to begin the search
       Queue<TreeNode> q = new Queue<>();
@@ -246,7 +246,7 @@ public class BST< T extends Comparable<T> > {
          TreeNode tmp = q.deQueue();
 
          if (tmp.data.equals(item))
-            return true;
+            return tmp.data;
          else {
             //enqueue the node's child elements, if they exist (check if not null)
             if (tmp.left != null)
@@ -256,31 +256,31 @@ public class BST< T extends Comparable<T> > {
          }
       }
       //if the if-condition above is not reached, the item is not found - return false
-      return false;
+      return null;
    }
 
-   public boolean breadthFirstSearch(T item) {
+   public T breadthFirstSearch(T item) {
       //we call the private method from the exposed public function and pass in
       //the root (beginning of tree) and searched-for item
       return breadthFirstSearch(ROOT, item);
    }
 
-   private ArrayList<Double> convertTreeToList(String treeValues) {
+   private ArrayList<T> convertTreeToList(String treeValues) {
       String[] split = treeValues.split(",");
-      ArrayList<Double> list = new ArrayList<>();
+      ArrayList<T> list = new ArrayList<>();
 
       for(String s : split) {
-         double d = Double.parseDouble(s);
-         list.add(d);
+         T value = (T) s;
+         list.add(value);
       }
       return list;
    }
 
-   private int findMin(List<Double> treeList) {
+   private int findMin(List<T> treeList) {
       minTreeValue = treeList.get(0);
       int minIndex = 0;
       for(int i = 1; i < treeList.size(); i++) {
-         if(treeList.get(i) < minTreeValue) {
+         if(treeList.get(i).compareTo(minTreeValue) == -1) {
             minTreeValue = treeList.get(i);
             minIndex = i;
          }
@@ -288,11 +288,11 @@ public class BST< T extends Comparable<T> > {
       return minIndex;
    }
 
-   private int findMax(List<Double> treeList) {
+   private int findMax(List<T> treeList) {
       maxTreeValue = treeList.get(0);
       int maxIndex = 0;
       for(int i = 1; i < treeList.size(); i++) {
-         if(treeList.get(i) > maxTreeValue) {
+         if(treeList.get(i).compareTo(maxTreeValue) == 1) {
             maxTreeValue = treeList.get(i);
             maxIndex = i;
          }
@@ -320,7 +320,7 @@ public class BST< T extends Comparable<T> > {
 
       // call inOrderTraversal to obtain a string list of
       String listTraversal = inOrderTraversal();
-      ArrayList<Double> list = convertTreeToList(listTraversal);
+      ArrayList<T> list = convertTreeToList(listTraversal);
       int min = findMin(list);
       int max = findMax(list);
 
@@ -335,19 +335,19 @@ public class BST< T extends Comparable<T> > {
       this.insertItem(item);
    }
 
-   public double getMinTreeValue() {
+   public T getMinTreeValue() {
       // call inOrderTraversal to obtain a string list of
       String listTraversal = inOrderTraversal();
-      ArrayList<Double> list = convertTreeToList(listTraversal);
+      ArrayList<T> list = convertTreeToList(listTraversal);
       int min = findMin(list);
 
       return this.minTreeValue;
    }
 
-   public double getMaxTreeValue() {
+   public T getMaxTreeValue() {
       // call inOrderTraversal to obtain a string list of
       String listTraversal = inOrderTraversal();
-      ArrayList<Double> list = convertTreeToList(listTraversal);
+      ArrayList<T> list = convertTreeToList(listTraversal);
 
       int max = findMax(list);
       return this.maxTreeValue;

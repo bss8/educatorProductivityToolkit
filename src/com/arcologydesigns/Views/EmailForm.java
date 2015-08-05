@@ -62,4 +62,19 @@ public class EmailForm extends JFrame {
    public String getCcTextField()      { return ccTextField.getText(); }
    public String getSubjectTextField() { return subjectTextField.getText(); }
 
+   public void setMessageText(String messageText) {
+      this.messageTextArea.setText(messageText);
+   }
+
+   public void setCcTextField(String ccText) {
+      this.ccTextField.setText(ccText);
+   }
+
+   public void setToText(String toText) {
+      this.toTextField.setText(toText);
+   }
+
+   public void setSubjectText(String subjectText) {
+      this.subjectTextField.setText(subjectText);
+   }
 } // end class EmailForm

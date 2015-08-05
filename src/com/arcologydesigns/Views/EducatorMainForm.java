@@ -1,27 +1,13 @@
 package com.arcologydesigns.Views;
 
+import com.arcologydesigns.DataStructures.BST;
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
+import com.arcologydesigns.ept.schoolItems.DataContainer;
+import com.arcologydesigns.ept.users.Student;
 
-import javax.swing.AbstractAction;
-import javax.swing.Box;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JTextField;
-import javax.swing.KeyStroke;
-import javax.swing.UIManager;
+import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -58,6 +44,7 @@ public class EducatorMainForm extends JFrame {
    private JLabel assignmentsLabel;
    private String imgUrl;
    private JPopupMenu pmenu;
+   private boolean isDataImported;
 
    /**
     * MenuItemAction class serves to create a menu item with a label, a visual icon, and a mnemonic.
@@ -114,6 +101,7 @@ public class EducatorMainForm extends JFrame {
                SpreadsheetIntegration loadAssignmentData = new SpreadsheetIntegration(getAssignmentsTextField(), 'A');
                SpreadsheetIntegration loadStudentData = new SpreadsheetIntegration(getStudentsTextField(), 'S');
                SpreadsheetIntegration loadInstructorData = new SpreadsheetIntegration(getInstructorsTextField(), 'I');
+               isDataImported = true;
             } catch (IOException e) {
                e.printStackTrace();
             }
@@ -143,8 +131,6 @@ public class EducatorMainForm extends JFrame {
 
       // Set the background, black with 125 as alpha value. This is less transparent
       if(educatorMainPanel != null) {
-         educatorMainPanel.setBackground(new Color(33, 71, 116, 165));
-         mainContentPanel.setBackground(new Color(33, 71, 116, 165));
 
          // Set some size to the panels
          educatorMainPanel.setPreferredSize(new Dimension(1920, 600));
@@ -267,10 +253,41 @@ public class EducatorMainForm extends JFrame {
       JMenu helpMenu = new JMenu("Help");
       //Menu items for Help menu
       JMenuItem documentationMi = new JMenuItem(new MenuItemAction("Documentation", iconHelp, KeyEvent.VK_H));
+      documentationMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               Desktop.getDesktop().browse(new URL("https://github.com/62696e617279/educatorProductivityToolkit/blob/master/README.md").toURI());
+            } catch (Exception err) {
+               err.printStackTrace();
+               JOptionPane.showMessageDialog(getParent(),
+                       "Something went wrong and the README page cannot display!\n" +
+                               "Please navigate to https://github.com/62696e617279/educatorProductivityToolkit/blob/master/README.md manually.",
+                       "Cannot open browser!",
+                       JOptionPane.ERROR_MESSAGE);
+            }
+         }
+      });
+
       JMenuItem aboutMi = new JMenuItem("About");
       aboutMi.setMnemonic(KeyEvent.VK_A);
       aboutMi.setToolTipText("Learn about the EPT application and access GitHub URL");
       aboutMi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, CTRL_MASK));
+      aboutMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               Desktop.getDesktop().browse(new URL("https://62696e617279.github.io/educatorProductivityToolkit/").toURI());
+            } catch (Exception err) {
+               err.printStackTrace();
+               JOptionPane.showMessageDialog(getParent(),
+                       "Something went wrong and the project page cannot display!\n" +
+                               "Please navigate to https://62696e617279.github.io/educatorProductivityToolkit manually.",
+                       "Cannot open browser!",
+                       JOptionPane.ERROR_MESSAGE);
+            }
+         }
+      });
       JCheckBoxMenuItem sbarMi = new JCheckBoxMenuItem("Show instructions");
       sbarMi.setMnemonic(KeyEvent.VK_S);
       sbarMi.setDisplayedMnemonicIndex(5);
@@ -286,11 +303,39 @@ public class EducatorMainForm extends JFrame {
          @Override
          public void actionPerformed(ActionEvent e) {
             if(userType == 'S') {
-               StudentInfoForm studentInfoForm = new StudentInfoForm();
-               studentInfoForm.setStudentID(userIdLabel.getText());
+               if(isDataImported) {
+                  StudentInfoForm studentInfoForm = new StudentInfoForm();
+                  studentInfoForm.setStudentID(userIdLabel.getText());
+
+                  BST<Student> studentBST = DataContainer.DataContainerInst.getStudentsData();
+                  Student tmpStudent = new Student();
+                  tmpStudent.setUserID(userIdLabel.getText());
+                  Student s = studentBST.breadthFirstSearch(tmpStudent);
+                  System.out.print(s.getUserID());
+
+                  studentInfoForm.setStudentAddress(s.getAddress());
+                  studentInfoForm.setStudentEmail(s.getEmail());
+                  studentInfoForm.setStudentNameLabel(s.getUserName());
+                  studentInfoForm.setStudentPhone(s.getPhone());
+               } else {
+                  JOptionPane.showMessageDialog(getParent(),
+                          "You must first import class data!\n" +
+                                  "Please try again after importing data using the main page import button.",
+                          "Cannot display information!!",
+                          JOptionPane.WARNING_MESSAGE);
+               }
             }
             else if(userType == 'I') {
-               InstructorInfoForm instructorInfoForm = new InstructorInfoForm();
+               if(isDataImported) {
+                  InstructorInfoForm instructorInfoForm = new InstructorInfoForm();
+               } else {
+                  JOptionPane.showMessageDialog(getParent(),
+                          "You must first import class data!\n" +
+                                  "Please try again after importing data using the main page import button.",
+                          "Cannot display information!!",
+                          JOptionPane.WARNING_MESSAGE);
+               }
+
             }
          }
       });
