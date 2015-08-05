@@ -32,7 +32,7 @@ public class Student extends User implements Comparable<Student> {
    }
 
    public String toString() {
-      return (getUserName()  + ": " + Double.toString(this.grade));
+      return (getUserID() + "," + getUserName() + "," + getPhone() + "," + getAddress() + "," + getEmail() + ";");
    }
 
    public String fullStringRep() {

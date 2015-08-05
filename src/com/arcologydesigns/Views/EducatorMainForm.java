@@ -354,7 +354,7 @@ public class EducatorMainForm extends JFrame {
                        JOptionPane.WARNING_MESSAGE);
             } else {
                if(isDataImported) {
-                  InstructorAnalyticsReportForm analyticsReportForm = new InstructorAnalyticsReportForm();
+                  InstructorAnalyticsReportForm.main(null);
                } else {
                   JOptionPane.showMessageDialog(getParent(),
                           "You must first import class data!\n" +
