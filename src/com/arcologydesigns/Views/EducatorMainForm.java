@@ -7,9 +7,7 @@ import com.arcologydesigns.ept.users.Student;
 
 import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -133,8 +131,6 @@ public class EducatorMainForm extends JFrame {
 
       // Set the background, black with 125 as alpha value. This is less transparent
       if(educatorMainPanel != null) {
-         educatorMainPanel.setBackground(new Color(33, 71, 116, 165));
-         mainContentPanel.setBackground(new Color(33, 71, 116, 165));
 
          // Set some size to the panels
          educatorMainPanel.setPreferredSize(new Dimension(1920, 600));
@@ -257,10 +253,41 @@ public class EducatorMainForm extends JFrame {
       JMenu helpMenu = new JMenu("Help");
       //Menu items for Help menu
       JMenuItem documentationMi = new JMenuItem(new MenuItemAction("Documentation", iconHelp, KeyEvent.VK_H));
+      documentationMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               Desktop.getDesktop().browse(new URL("https://github.com/62696e617279/educatorProductivityToolkit/blob/master/README.md").toURI());
+            } catch (Exception err) {
+               err.printStackTrace();
+               JOptionPane.showMessageDialog(getParent(),
+                       "Something went wrong and the README page cannot display!\n" +
+                               "Please navigate to https://github.com/62696e617279/educatorProductivityToolkit/blob/master/README.md manually.",
+                       "Cannot open browser!",
+                       JOptionPane.ERROR_MESSAGE);
+            }
+         }
+      });
+
       JMenuItem aboutMi = new JMenuItem("About");
       aboutMi.setMnemonic(KeyEvent.VK_A);
       aboutMi.setToolTipText("Learn about the EPT application and access GitHub URL");
       aboutMi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, CTRL_MASK));
+      aboutMi.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               Desktop.getDesktop().browse(new URL("https://62696e617279.github.io/educatorProductivityToolkit/").toURI());
+            } catch (Exception err) {
+               err.printStackTrace();
+               JOptionPane.showMessageDialog(getParent(),
+                       "Something went wrong and the project page cannot display!\n" +
+                               "Please navigate to https://62696e617279.github.io/educatorProductivityToolkit manually.",
+                       "Cannot open browser!",
+                       JOptionPane.ERROR_MESSAGE);
+            }
+         }
+      });
       JCheckBoxMenuItem sbarMi = new JCheckBoxMenuItem("Show instructions");
       sbarMi.setMnemonic(KeyEvent.VK_S);
       sbarMi.setDisplayedMnemonicIndex(5);
