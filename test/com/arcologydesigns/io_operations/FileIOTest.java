@@ -8,7 +8,12 @@ import javax.swing.*;
 import java.io.FileWriter;
 import java.io.Writer;
 
+import static java.nio.file.Files.delete;
+import static java.nio.file.Files.deleteIfExists;
 import static org.junit.Assert.*;
+
+import java.io.*;
+import java.nio.file.Files;
 
 /**
  * FileIOTest created by Borislav S. on 7/14/2015 @ 11:40 PM.
@@ -28,29 +33,22 @@ public class FileIOTest {
 
    @Test
    public void testWriteOperation() throws Exception {
-      /*
-      * Remember when I showed you guys how to pull data and I showed how in AuthenticatorForm I kept the commented out
-      * method as a caveat? Take a look at AuthenticationForm.java for how to import resources, text or otherwise.
-      * For example:
 
-         ClassLoader cldr = this.getClass().getClassLoader();
-         java.net.URL imageURL   = cldr.getResource("images/desert.jpg");
-
-         assert imageURL != null;  //used during debugging
-
-         if (imageURL != null) {
-            img = new ImageIcon(imageURL);
+      FileIO testfile = new FileIO(".\\resources\\flatfiles\\test.txt");
+      testfile.WriteOperation("This is a test");
+      assertNotNull(testfile);
+      File file = new File(".\\resources\\flatfiles\\test.txt");
+      try {
+         if (file.delete()) {
+            System.out.println(file.getName() + " is deleted!");
+            assertTrue(true);
+         } else {
+            assertTrue(false);
          }
+      }catch(Exception e){
+         e.printStackTrace();
+      }
 
-      */
-
-      /*
-         EXAMPLE OF BAD CODE: the below code. To fetch a resource, use the absolute reference path and invoke
-         getClassLoader() then getResource() to set a resource. Otherwise, the resource will not show when running
-         the application from a JAR file.
-
-            setContentPane(new JLabel(new ImageIcon(".\\resources\\desert.jpg")));
-      */
    }
 
    @Test
