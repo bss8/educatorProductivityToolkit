@@ -343,6 +343,28 @@ public class EducatorMainForm extends JFrame {
 
       JMenu analytics = new JMenu("Analytics");
       JMenuItem runAnalytics = new JMenuItem("Run Analytics");
+      runAnalytics.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            if(userType != 'I') {
+               JOptionPane.showMessageDialog(getParent(),
+                       "You do not appear to be an instructor!\n" +
+                               "Please authenticate using an instructor account and try again.",
+                       "Cannot run analytics - invalid user type!",
+                       JOptionPane.WARNING_MESSAGE);
+            } else {
+               if(isDataImported) {
+                  InstructorAnalyticsReportForm analyticsReportForm = new InstructorAnalyticsReportForm();
+               } else {
+                  JOptionPane.showMessageDialog(getParent(),
+                          "You must first import class data!\n" +
+                                  "Please try again after importing data using the main page import button.",
+                          "Cannot display information!!",
+                          JOptionPane.WARNING_MESSAGE);
+               }
+            }
+         }
+      });
       analytics.add(runAnalytics);
 
       JMenu viewMenu = new JMenu("View");
