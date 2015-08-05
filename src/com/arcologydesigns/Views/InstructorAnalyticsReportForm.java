@@ -9,7 +9,10 @@ import com.arcologydesigns.ept.users.Student;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -18,10 +21,12 @@ import java.util.Objects;
  */
 public class InstructorAnalyticsReportForm extends JDialog {
    private JPanel instructorAnalyticsPanel;
+   private JButton emailAllGradesButton;
    DefaultTableModel model;
    JTable table;
    String col[] = {"Name", "ID", "Avg Grade", "Class Grade", "Assig_1", "Assig_2", "Assig_3",
-           "Assig_4", "Assig_5", "Assig_6", "Assig_7", "Assig_8", "Assig_9"};
+           "Assig_4", "Assig_5"};
+   String allEmails;
 
    public static void main(String args[]) {
       new InstructorAnalyticsReportForm().start();
@@ -49,7 +54,7 @@ public class InstructorAnalyticsReportForm extends JDialog {
       ArrayList<Student> studentArrayList = DataContainer.DataContainerInst.getStudentList();
       Queue<Assignment> assignmentQueue = DataContainer.DataContainerInst.getAssignmentData();
       ArrayList<Assignment> assignmentArrayList = DataContainer.DataContainerInst.getAssignmentArrayList();
-      ArrayList<Instructor> instructorArrayList = DataContainer.DataContainerInst.getInstructorsData();
+      final ArrayList<Instructor> instructorArrayList = DataContainer.DataContainerInst.getInstructorsData();
       ArrayList<Classes> classesArrayList = DataContainer.DataContainerInst.getClassesData();
 
       String studentList = studentBST.inOrderTraversal();
@@ -68,7 +73,9 @@ public class InstructorAnalyticsReportForm extends JDialog {
             if (studentArrayList.get(i).getUserID().equals(assignmentArrayList.get(j).getStudentId())) {
                table.setValueAt(studentArrayList.get(i).getUserName(), index, 0);
                table.setValueAt(studentArrayList.get(i).getUserID(), index, 1);
-
+               if (studentArrayList.get(i).getEmail() != null && !studentArrayList.get(i).getEmail().equals(null)) {
+                  allEmails += studentArrayList.get(i).getEmail() + ";";
+               }
                index++;
                break;
             }
@@ -108,8 +115,24 @@ public class InstructorAnalyticsReportForm extends JDialog {
 
       //table.setValueAt("csanuragjain", 0, 0);
 
+      emailAllGradesButton.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            EmailForm eForm = new EmailForm("Email all student grades!");
+            eForm.setCcTextField(instructorArrayList.get(0).getEmail());
+            eForm.setToText(allEmails);
+            eForm.setSubjectText("Grades distribution list");
+            String s = "";
+            for (int i = 0; i < 10; i++) {
+               s += table.getValueAt(i, 0).toString() + ": " + table.getValueAt(i, 2).toString() + "\n";
+            }
+            eForm.setMessageText(s);
+         }
+      });
+
 
       add(pane, BorderLayout.SOUTH);
+      add(emailAllGradesButton);
       // Set the size of the JFrame and make it visible
       setSize(1200, 1000);
       setVisible(true);
@@ -136,8 +159,15 @@ public class InstructorAnalyticsReportForm extends JDialog {
     */
    private void $$$setupUI$$$() {
       instructorAnalyticsPanel = new JPanel();
-      instructorAnalyticsPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+      instructorAnalyticsPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
       instructorAnalyticsPanel.setBackground(new Color(-14596236));
+      emailAllGradesButton = new JButton();
+      emailAllGradesButton.setText("Email All Grades");
+      instructorAnalyticsPanel.add(emailAllGradesButton, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+      final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
+      instructorAnalyticsPanel.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
+      final com.intellij.uiDesigner.core.Spacer spacer2 = new com.intellij.uiDesigner.core.Spacer();
+      instructorAnalyticsPanel.add(spacer2, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
    }
 
    /**
