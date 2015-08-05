@@ -16,6 +16,8 @@ public class DataContainer {
       private static ArrayList<Classes> classesData;
       private static ArrayList<Instructor> instructorsData;
       private static Queue<Assignment> assignmentData;
+      private static ArrayList<Student> studentList;
+      private static ArrayList<Assignment> assignmentArrayList;
 
       public static void setStudentsData(BST<Student> _studentsData) {
          DataContainerInst.studentsData = _studentsData;
@@ -33,6 +35,14 @@ public class DataContainer {
          DataContainerInst.assignmentData = assignmentData;
       }
 
+      public static void setStudentList(ArrayList<Student> studentList) {
+         DataContainerInst.studentList = studentList;
+      }
+
+      public static void setAssignmentArrayList(ArrayList<Assignment> assignmentArrayList) {
+         DataContainerInst.assignmentArrayList = assignmentArrayList;
+      }
+
       public static BST<Student> getStudentsData() {
          return studentsData;
       }
@@ -47,6 +57,14 @@ public class DataContainer {
 
       public static Queue<Assignment> getAssignmentData() {
          return assignmentData;
+      }
+
+      public static ArrayList<Student> getStudentList() {
+         return studentList;
+      }
+
+      public static ArrayList<Assignment> getAssignmentArrayList() {
+         return assignmentArrayList;
       }
    }
 }

@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * InstructorAnalyticsReportForm created by Borislav S. on 7/14/2015 @ 7:25 PM.
@@ -19,7 +20,8 @@ public class InstructorAnalyticsReportForm extends JDialog {
    private JPanel instructorAnalyticsPanel;
    DefaultTableModel model;
    JTable table;
-   String col[] = {"Name", "Avg Grade", "Class Grade"};
+   String col[] = {"Name", "ID", "Avg Grade", "Class Grade", "Assig_1", "Assig_2", "Assig_3",
+           "Assig_4", "Assig_5", "Assig_6", "Assig_7", "Assig_8", "Assig_9"};
 
    public static void main(String args[]) {
       new InstructorAnalyticsReportForm().start();
@@ -39,34 +41,70 @@ public class InstructorAnalyticsReportForm extends JDialog {
             return false;
          }
       };
+      table.setSize(1000, 700);
       JScrollPane pane = new JScrollPane(table);
+      pane.setPreferredSize(new Dimension(1000, 700));
 
       BST<Student> studentBST = DataContainer.DataContainerInst.getStudentsData();
+      ArrayList<Student> studentArrayList = DataContainer.DataContainerInst.getStudentList();
       Queue<Assignment> assignmentQueue = DataContainer.DataContainerInst.getAssignmentData();
+      ArrayList<Assignment> assignmentArrayList = DataContainer.DataContainerInst.getAssignmentArrayList();
       ArrayList<Instructor> instructorArrayList = DataContainer.DataContainerInst.getInstructorsData();
       ArrayList<Classes> classesArrayList = DataContainer.DataContainerInst.getClassesData();
 
       String studentList = studentBST.inOrderTraversal();
       final String[] split1 = studentList.split(";");
       int index = 0;
+      int index2 = 0;
+      int index3 = 0;
+      int index4 = 0;
+      int rowInd = 0;
+      int gradeTotal = 0;
+      int numAssignments = 0;
+      double avgGrade = 0.0;
 
+      for (int i = 0; i < studentArrayList.size(); i++) {
+         for (int j = 0; j < assignmentArrayList.size(); j++) {
+            if (studentArrayList.get(i).getUserID().equals(assignmentArrayList.get(j).getStudentId())) {
+               table.setValueAt(studentArrayList.get(i).getUserName(), index, 0);
+               table.setValueAt(studentArrayList.get(i).getUserID(), index, 1);
 
-      for (String s : split1) {
-         boolean inBounds = (index >= 0) && (index < split1.length);
-         final String split[] = s.split(",");
-         if (split.length > 1) {
-            if (split[1] != null && inBounds) {
-               if (index == 0) {
-                  table.setValueAt(split[1], index, 0);
-               } else {
-                  table.setValueAt(split[2], index, 0);
-               }
-
+               index++;
+               break;
             }
          }
-         index++;
       }
 
+      for (Student aStudentArrayList : studentArrayList) {
+         for (Assignment anAssignmentArrayList : assignmentArrayList) {
+            while (anAssignmentArrayList.getStudentId().equals(aStudentArrayList.getUserID())) {
+               int aId = Integer.parseInt(anAssignmentArrayList.getAssignmentId());
+               if (aId > 1) {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index2, 3 + aId);
+                  index2++;
+               } else {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index2, 3 + aId);
+                  index3++;
+               }
+               break;
+            }
+         }
+      }
+
+      for (Student aStudentArrayList : studentArrayList) {
+         for (Assignment anAssignmentArrayList : assignmentArrayList) {
+            while (anAssignmentArrayList.getStudentId().equals(aStudentArrayList.getUserID())) {
+               gradeTotal += anAssignmentArrayList.getAssignmentScore();
+               index4++;
+               break;
+            }
+         }
+         avgGrade = gradeTotal / index4;
+         table.setValueAt(avgGrade, rowInd, 2);
+         rowInd++;
+         index4 = 0;
+         gradeTotal = 0;
+      }
 
       //table.setValueAt("csanuragjain", 0, 0);
 
@@ -79,7 +117,7 @@ public class InstructorAnalyticsReportForm extends JDialog {
    }
 
    public InstructorAnalyticsReportForm() {
-      String col[] = {"Student", "Avg Grade"};
+
    }
 
    {
