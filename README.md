@@ -6,8 +6,8 @@ Users will have the ability to:
  - perform analytics on class and individual student performance;
  - email reports, gradebook, and other materials
 
-## Class Diagram: http://i.imgur.com/bln6cJi.png
-## Downloadable JAR: https://drive.google.com/file/d/0BzUtXxcCG9ZvR0g3YmZPSl9LcjA/view?usp=sharing
+### Class Diagram: http://i.imgur.com/bGG4KkW.png
+### Downloadable JAR: https://drive.google.com/file/d/0BzUtXxcCG9ZvZTFqVU9ZX21qUUE/view?usp=sharing
 ### StackOverflow on creating generic array:    
 https://stackoverflow.com/questions/31486242/java-instantiating-array-object-of-type-t-using-a-factory/31486323?noredirect=1#comment50937886_31486323
 

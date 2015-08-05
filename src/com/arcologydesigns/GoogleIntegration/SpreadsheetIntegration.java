@@ -8,6 +8,7 @@ import com.arcologydesigns.ept.schoolItems.DataContainer;
 import com.arcologydesigns.ept.users.Instructor;
 import com.arcologydesigns.ept.users.Student;
 
+import javax.xml.crypto.Data;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,10 +30,21 @@ public class SpreadsheetIntegration {
       private String password;
       public String userType;
 
-      public String getPassword() { return password; }
-      public void setPassword(String password) { this.password = password; }
-      public String getUsername() { return username; }
-      public void setUsername(String username) { this.username = username; }
+      public String getPassword() {
+         return password;
+      }
+
+      public void setPassword(String password) {
+         this.password = password;
+      }
+
+      public String getUsername() {
+         return username;
+      }
+
+      public void setUsername(String username) {
+         this.username = username;
+      }
    } // end class UserNode
 
    /** A static class to fetch user data and maintain a single copy */
@@ -171,6 +183,7 @@ public class SpreadsheetIntegration {
       //System.out.print(in.readLine() + "\n"); // skip headers
       in.readLine();
       BST<Student> studentBST = new BST<>();
+      ArrayList<Student> studentArrayList = new ArrayList<>();
 
       while (in.ready()) {
          inputLine = in.readLine();
@@ -186,10 +199,12 @@ public class SpreadsheetIntegration {
          }
 
          studentBST.insertItem(student);
+         studentArrayList.add(student);
       }
 
       //studentBST.balanceRecursive();
       DataContainer.DataContainerInst.setStudentsData(studentBST);
+      DataContainer.DataContainerInst.setStudentList(studentArrayList);
    }
 
    private void fetchAssignmentData(BufferedReader in) throws IOException {
@@ -199,8 +214,9 @@ public class SpreadsheetIntegration {
       //System.out.print(in.readLine() + "\n"); // skip headers
       in.readLine();
       Queue<Assignment> assignmentQueue = new Queue<>();
+      ArrayList<Assignment> assignmentArrayList = new ArrayList<>();
 
-      while (in.ready()) {
+       while (in.ready()) {
          inputLine = in.readLine();
          final String split[] = inputLine.split(",");
          Assignment assignment = new Assignment();
@@ -214,7 +230,9 @@ public class SpreadsheetIntegration {
          }
 
          assignmentQueue.enQueue(assignment);
+         assignmentArrayList.add(assignment);
       }
       DataContainer.DataContainerInst.setAssignmentData(assignmentQueue);
+      DataContainer.DataContainerInst.setAssignmentArrayList(assignmentArrayList);
    }
 }  //end class SpreadsheetIntegration

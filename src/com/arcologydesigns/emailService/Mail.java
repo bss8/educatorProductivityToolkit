@@ -40,7 +40,14 @@ public class Mail {
             out.println("\n\n 2nd ===> get com.arcologydesigns.Mailns.emailService.Mail Session..");
             getMailSession = Session.getDefaultInstance(mailServerProperties, null);
             generateMailMessage = new MimeMessage(getMailSession);
-            generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(_toField));
+            if(!_toField.contains(";")) {
+                generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(_toField));
+            } else {
+                String split[] = _toField.split(";");
+                for(String s : split) {
+                    generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(s));
+                }
+            }
 
             // make CC field optional
             if (!_ccField.equals("-")) {

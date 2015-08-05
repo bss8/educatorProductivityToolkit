@@ -37,7 +37,7 @@ public class Queue< T > {
     Preconditions: queue has been initialized
     Postconditions: All the items have been removed
     *****************************/
-    void makeEmpty() {
+    public void makeEmpty() {
        while (!this.isEmpty()) {
           this.deQueue();
        }
@@ -50,7 +50,7 @@ public class Queue< T > {
     Preconditions: queue has been initialized
     Postconditions: Returns true if there are no items on the queue, else false.
     *****************************/
-   boolean isEmpty() {
+    public boolean isEmpty() {
       return (front == rear);
    }
 
@@ -61,10 +61,10 @@ public class Queue< T > {
     Preconditions: queue has been initialized
     Postconditions: Returns true if there is no more room to add items, else false
     *****************************/
-   boolean isFull() {
-      // Queue is full if rear has wrapped around to location of front
-      return ((rear - MAX_ITEMS) == front);
-   }
+    public boolean isFull() {
+       // Queue is full if rear has wrapped around to location of front
+       return ((rear - MAX_ITEMS) == front);
+    }
 
    /****************************
     push
