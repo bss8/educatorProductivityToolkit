@@ -34,6 +34,8 @@ public class AuthenticationControllerTest extends AuthenticationController {
 
          Added some setters and getters into the SpreadsheetIntegration Classes but still no good.
 
+
+         Boris check here!
       */
       //assert (SpreadsheetIntegration.UserNode.username("bss64"));
       //assert (SpreadsheetIntegration.UserNode.password("test123"));
