@@ -32,7 +32,6 @@ public class FileIO {
        PrintWriter printWriter = new PrintWriter(writer);
 
        printWriter.printf("%s" + "%n", textLine);
-
        printWriter.close();
     }
 
