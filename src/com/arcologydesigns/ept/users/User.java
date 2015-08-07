@@ -2,6 +2,7 @@ package com.arcologydesigns.ept.users;
 
 /**
  * User created by Borislav S. on 7/12/2015 @ 5:06 PM.
+ * NO METHODS TO TEST - ALL SETTERS OR GETTERS
  */
 public abstract class User {
    private String userID;

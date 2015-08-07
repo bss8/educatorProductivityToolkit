@@ -57,4 +57,13 @@ public class FileIOTest {
       String testfile2 = testfile.ReadOneLine();
       assertNotNull(testfile2);
    }
+
+   public void run() throws Exception {
+      try {
+         this.testReadOneLine();
+         this.testWriteOperation();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
 }

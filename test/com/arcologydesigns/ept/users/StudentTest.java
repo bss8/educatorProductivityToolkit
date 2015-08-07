@@ -26,30 +26,56 @@ public class StudentTest {
 
    @Test
    public void testCompareTo() throws Exception {
-      Student Foo = new Student("Bob", 0);
-      Student Bar = new Student("", 0);
+      Student s = new Student();
+      s.setUserID("test1");
+      Student s2 = new Student();
+      s2.setUserID("test2");
+      int i = s.compareTo(s2);
+      assert(i == -1);
+   }
 
-      int test = Foo.compareTo(Bar);
-      System.out.printf("%s", test);
-      assert (test == 0);
+   @Test
+   public void testCompareTo_2() throws Exception {
 
-      Student A = new Student ( "", 1);
-      Student B = new Student ( "", 0);
-      test = A.compareTo(B);
-      assert (test == 1);
-
-      test = B.compareTo(A);
-      assert ( test == -1);
+      Student s = new Student();
+      s.setUserID("test1");
+      Student s2 = new Student();
+      s2.setUserID("test1");
+      int i = s.compareTo(s2);
+      assert(i == 0);
    }
 
    @Test
    public void testToString() throws Exception {
+      Student s = new Student();
+      s.setUserID("user1");
+      String studentString = s.toString();
+      System.out.print(studentString);
+      assert(studentString.equals("user1,null,null,null,null;"));
+   }
 
-      Student Foo = new Student ( "Jacob" , 94);
-      String Bar = Foo.toString();
-      assertEquals ("94.0", Bar);
+   @Test
+   public void testToString_2() throws Exception {
+      Student s = new Student();
+      s.setUserID("user1");
+      s.setUserName("John");
+      s.setEmail("John@hotmail.com");
+      s.setPhone("1112223333");
+      String studentString = s.toString();
+      System.out.print(studentString);
+      assert(studentString.equals("user1,John,1112223333,null,John@hotmail.com;"));
+   }
 
-
+   @Test
+   public void testToString_3() throws Exception {
+      Student s = new Student();
+      s.setUserID("user1");
+      s.setUserName("Smith");
+      s.setEmail("Andrew@hotmail.com");
+      s.setPhone("5555555555");
+      String studentString = s.toString();
+      System.out.print(studentString);
+      assert(!studentString.equals("user1,John,1112223333,null,John@hotmail.com;"));
    }
 
    @Test
@@ -58,6 +84,17 @@ public class StudentTest {
       String test = J.fullStringRep();
       assertEquals("John: 85.0", J.fullStringRep());
       System.out.println(test);//works fine but i'm seeing an '0' character here.
+   }
 
+   public void run() throws Exception {
+      try {
+         this.testCompareTo();
+         this.testCompareTo_2();
+         this.testToString();
+         this.testToString_2();
+         this.testToString_3();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
    }
 }

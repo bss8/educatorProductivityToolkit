@@ -20,6 +20,7 @@ import static java.lang.System.*;
 
 /**
  * SpreadsheetIntegration created by Borislav S. on 7/10/2015 @ 7:06 PM.
+ * NO METHODS TO TEST - ALL VOID
  */
 public class SpreadsheetIntegration {
 
@@ -54,7 +55,9 @@ public class SpreadsheetIntegration {
       public static void setUserData(ArrayList<UserNode> userNode) { users = userNode; }
    } // end class UserData
 
-   /** This default constructor is used exclusively for user authentication */
+   /** This default constructor is used exclusively for user authentication; UserNode cannot be created outside of
+    * this class and the URL must be the same - no option is provided for alternative authentication. For security reasons,
+    * there is only one administrator - Borislav Sabotinov (bss64@txstate.edu) */
    public SpreadsheetIntegration() throws IOException {
       URL googleSpreadsheet = new URL("https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/pub?output=csv");
       BufferedReader in = new BufferedReader(new InputStreamReader(googleSpreadsheet.openStream()));

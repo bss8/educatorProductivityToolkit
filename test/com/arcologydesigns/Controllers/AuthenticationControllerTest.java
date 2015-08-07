@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
@@ -30,29 +32,17 @@ public class AuthenticationControllerTest extends AuthenticationController {
 
    @Test
    public void testAuthenticateUser() throws Exception {
+      SpreadsheetIntegration s = new SpreadsheetIntegration();
+      AuthenticationController a = new AuthenticationControllerTest();
+      char[] foo= new char[]{'t', 'e', 's', 't', '1', '2', '3'};
+      a.authenticateUser("bss64", foo);
+      assertFalse(this.authenticateUser(String.valueOf("bss64"), foo));
 
-
-
-
-      /*
-         Comment made by ARI:
+      /* Comment made by ARI:
          Can't figure out how to create a "UserNode" to set the passwords.  It won't let me set the password because I'm trying to set it
          static and inside an "inner class".  Very stuck :(
-
          Added some setters and getters into the SpreadsheetIntegration Classes but still no good.
-
-
-         Boris check here!
-      */
-
-
-
-      //assert (SpreadsheetIntegration.UserNode.username("bss64"));
-      //assert (SpreadsheetIntegration.UserNode.password("test123"));
-
-      //char[] foo= new char[]{'t', 'e', 's', 't', '1', '2', '3'};
-      //assertFalse(this.authenticateUser(String.valueOf("bss64"), foo ));
-
+         Boris check here!  */
 
 
       /*
@@ -73,12 +63,53 @@ public class AuthenticationControllerTest extends AuthenticationController {
       char[] password = new char[] {'p','a','s','s','w','o','r','d'};
       bar.authenticateUser(Foo.getUserName(),password);
       */
-
-
    }
 
    @Test
    public void testAuthenticateUser1() throws Exception {
+      SpreadsheetIntegration s = new SpreadsheetIntegration();
+      AuthenticationController a = new AuthenticationControllerTest();
+      char[] foo= new char[]{'t', 'e', 's', 't', '0', '0', '1'};
+      a.authenticateUser("bss64", foo);
+      assertTrue(this.authenticateUser(String.valueOf("bss64"), foo));
+   }
 
+   @Test
+   public void testAuthenticateUser2() throws Exception {
+      SpreadsheetIntegration s = new SpreadsheetIntegration();
+      AuthenticationController a = new AuthenticationControllerTest();
+      char[] foo= new char[]{'c', 'o', 'm', 'p', 's', 'c', 'i'};
+      a.authenticateUser("rp31", foo);
+      assertTrue(this.authenticateUser(String.valueOf("rp31"), foo));
+   }
+
+   @Test
+   public void testAuthenticateUser3() throws Exception {
+      SpreadsheetIntegration s = new SpreadsheetIntegration();
+      AuthenticationController a = new AuthenticationControllerTest();
+      char[] foo= new char[]{'t', 'e', 's', 't', '0', '0', '1'};
+      a.authenticateUser("nope", foo);
+      assertFalse(this.authenticateUser(String.valueOf("nope"), foo));
+   }
+
+   @Test
+   public void testAuthenticateUser4() throws Exception {
+      SpreadsheetIntegration s = new SpreadsheetIntegration();
+      AuthenticationController a = new AuthenticationControllerTest();
+      char[] foo= new char[]{'T', 'E', 's', 't', '0', '0', '1'};
+      a.authenticateUser("bss64", foo);
+      assertFalse(this.authenticateUser(String.valueOf("Bss64"), foo));
+   }
+
+   public void run() throws Exception {
+      try {
+         this.testAuthenticateUser();
+         this.testAuthenticateUser1();
+         this.testAuthenticateUser2();
+         this.testAuthenticateUser3();
+         this.testAuthenticateUser4();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
    }
 }

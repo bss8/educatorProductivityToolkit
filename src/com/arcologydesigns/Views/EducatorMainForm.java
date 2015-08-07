@@ -3,6 +3,7 @@ package com.arcologydesigns.Views;
 import com.arcologydesigns.DataStructures.BST;
 import com.arcologydesigns.GoogleIntegration.SpreadsheetIntegration;
 import com.arcologydesigns.ept.schoolItems.DataContainer;
+import com.arcologydesigns.ept.users.Instructor;
 import com.arcologydesigns.ept.users.Student;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static java.awt.event.ActionEvent.*;
 
@@ -430,8 +432,8 @@ public class EducatorMainForm extends JFrame {
          public void actionPerformed(ActionEvent e) {
             if (userType == 'S') {
                if (isDataImported) {
-                  StudentInfoForm studentInfoForm = new StudentInfoForm();
-                  studentInfoForm.setStudentID(userIdLabel.getText());
+                  UserInfoForm userInfoForm_s = new UserInfoForm();
+                  userInfoForm_s.setUserID(userIdLabel.getText());
 
                   BST<Student> studentBST = DataContainer.DataContainerInst.getStudentsData();
                   Student tmpStudent = new Student();
@@ -439,10 +441,10 @@ public class EducatorMainForm extends JFrame {
                   Student s = studentBST.breadthFirstSearch(tmpStudent);
                   System.out.print(s.getUserID());
 
-                  studentInfoForm.setStudentAddress(s.getAddress());
-                  studentInfoForm.setStudentEmail(s.getEmail());
-                  studentInfoForm.setStudentNameLabel(s.getUserName());
-                  studentInfoForm.setStudentPhone(s.getPhone());
+                  userInfoForm_s.setUserAddress(s.getAddress());
+                  userInfoForm_s.setUserEmail(s.getEmail());
+                  userInfoForm_s.setUserNameLabel(s.getUserName());
+                  userInfoForm_s.setUserPhone(s.getPhone());
                } else {
                   JOptionPane.showMessageDialog(getParent(),
                           "You must first import class data!\n" +
@@ -452,7 +454,18 @@ public class EducatorMainForm extends JFrame {
                }
             } else if (userType == 'I') {
                if (isDataImported) {
-                  InstructorInfoForm instructorInfoForm = new InstructorInfoForm();
+                  UserInfoForm userInfoForm_i = new UserInfoForm();
+                  ArrayList<Instructor> instructorArrayList = DataContainer.DataContainerInst.getInstructorsData();
+
+                  for (Instructor i : instructorArrayList) {
+                     if (i.getUserID().equals(userIdLabel.getText())) {
+                        userInfoForm_i.setUserID(userIdLabel.getText());
+                        userInfoForm_i.setUserAddress(i.getAddress());
+                        userInfoForm_i.setUserEmail(i.getEmail());
+                        userInfoForm_i.setUserNameLabel(i.getUserName());
+                        userInfoForm_i.setUserPhone(i.getPhone());
+                     }
+                  }
                } else {
                   JOptionPane.showMessageDialog(getParent(),
                           "You must first import class data!\n" +

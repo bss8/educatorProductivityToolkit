@@ -25,7 +25,7 @@ public class InstructorAnalyticsReportForm extends JDialog {
    DefaultTableModel model;
    JTable table;
    String col[] = {"Name", "ID", "Avg Grade", "Class Grade", "Assig_1", "Assig_2", "Assig_3",
-           "Assig_4", "Assig_5"};
+           "Assig_4", "Assig_5", "Assig_6", "Assig_7"};
    String allEmails;
 
    public static void main(String args[]) {
@@ -60,14 +60,26 @@ public class InstructorAnalyticsReportForm extends JDialog {
       String studentList = studentBST.inOrderTraversal();
       final String[] split1 = studentList.split(";");
       int index = 0;
+
+
       int index2 = 0;
       int index3 = 0;
+      int index3_a = 0;
+      int index3_b = 0;
+      int index3_c = 0;
+      int index3_d = 0;
+      int index3_e = 0;
+      int index3_f = 0;
+
+
+
       int index4 = 0;
       int rowInd = 0;
       int gradeTotal = 0;
       int numAssignments = 0;
       double avgGrade = 0.0;
 
+      /** The below code sets the name and user ID in the table and obtains emails for emailing grades to the class */
       for (int i = 0; i < studentArrayList.size(); i++) {
          for (int j = 0; j < assignmentArrayList.size(); j++) {
             if (studentArrayList.get(i).getUserID().equals(assignmentArrayList.get(j).getStudentId())) {
@@ -82,15 +94,41 @@ public class InstructorAnalyticsReportForm extends JDialog {
          }
       }
 
+      /** The below code is responsible for setting the assignment grades in the correct spot in the table.
+       * The current algorithm can support up to 7 assignments */
       for (Student aStudentArrayList : studentArrayList) {
          for (Assignment anAssignmentArrayList : assignmentArrayList) {
             while (anAssignmentArrayList.getStudentId().equals(aStudentArrayList.getUserID())) {
                int aId = Integer.parseInt(anAssignmentArrayList.getAssignmentId());
-               if (aId > 1) {
+               if (aId > 7) {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index3_a, 3 + aId);
+                  index3_f++;
+               }
+               else if (aId > 6) {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index3_a, 3 + aId);
+                  index3_e++;
+               }
+               else if (aId > 5) {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index3_a, 3 + aId);
+                  index3_d++;
+               }
+               else if (aId > 4) {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index3_a, 3 + aId);
+                  index3_c++;
+               }
+               else if (aId > 3) {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index3_a, 3 + aId);
+                  index3_b++;
+               }
+               else if (aId > 2) {
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index3_a, 3 + aId);
+                  index3_a++;
+               }
+               else if (aId > 1) {
                   table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index2, 3 + aId);
                   index2++;
                } else {
-                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index2, 3 + aId);
+                  table.setValueAt(anAssignmentArrayList.getAssignmentScore(), index3, 3 + aId);
                   index3++;
                }
                break;
@@ -98,14 +136,17 @@ public class InstructorAnalyticsReportForm extends JDialog {
          }
       }
 
+      /** The below code adds up the student grades as a running total, the value of which is used to get the avg grade */
       for (Student aStudentArrayList : studentArrayList) {
          for (Assignment anAssignmentArrayList : assignmentArrayList) {
-            while (anAssignmentArrayList.getStudentId().equals(aStudentArrayList.getUserID())) {
+            if (anAssignmentArrayList.getStudentId().equals(aStudentArrayList.getUserID())) {
                gradeTotal += anAssignmentArrayList.getAssignmentScore();
                index4++;
                break;
             }
          }
+
+         /** Calculation for a student's average grade */
          avgGrade = gradeTotal / index4;
          table.setValueAt(avgGrade, rowInd, 2);
          rowInd++;

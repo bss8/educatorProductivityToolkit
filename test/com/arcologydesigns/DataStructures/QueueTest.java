@@ -82,4 +82,15 @@ public class QueueTest {
       assert(!myQ.isFull());
    }
 
+   public void run() throws Exception {
+      try {
+         this.testDeQueue();
+         this.testEnQueue();
+         this.testIsEmpty();
+         this.testIsFull();
+         this.testMakeEmpty();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
 }
