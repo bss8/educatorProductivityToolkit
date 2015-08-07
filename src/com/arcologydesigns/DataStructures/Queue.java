@@ -75,7 +75,6 @@ public class Queue< T > {
     *****************************/
    public void enQueue(T newItem) {
       assert(!isFull());
-
       rear++;
       items[rear % MAX_ITEMS] = newItem;
    }

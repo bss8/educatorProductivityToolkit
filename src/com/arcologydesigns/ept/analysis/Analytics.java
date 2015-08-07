@@ -5,5 +5,4 @@ package com.arcologydesigns.ept.analysis;
  * STATUS: MOTHBALLED
  * Basic analytics, such as assignment grades and average grade, reside in InstructorAnalyticsReportForm
  */
-public abstract class Analytics {
-}
+public abstract class Analytics {}
