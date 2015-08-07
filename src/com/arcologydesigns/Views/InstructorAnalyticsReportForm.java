@@ -142,7 +142,6 @@ public class InstructorAnalyticsReportForm extends JDialog {
             if (anAssignmentArrayList.getStudentId().equals(aStudentArrayList.getUserID())) {
                gradeTotal += anAssignmentArrayList.getAssignmentScore();
                index4++;
-               break;
             }
          }
 

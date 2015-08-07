@@ -41,10 +41,21 @@ public class EmailForm extends JFrame {
 
             try {
                Mail.generateAndSendEmail(getToTextField(), getCcTextField(), getSubjectTextField(), getMessageTextArea());
-
                out.println("\n\n ===> Your Java Program just sent an email successfully. Check your email...");
+
+               JOptionPane.showMessageDialog(getParent(),
+                       "You successfully sent an email!\n" +
+                               "If the email address is valid, the message will be sent.",
+                       "Email Sent!!",
+                       JOptionPane.INFORMATION_MESSAGE);
+
             } catch (MessagingException e) {
                out.printf("Messaging exception: %s", e);
+               JOptionPane.showMessageDialog(getParent(),
+                       "Something went wrong and the email was not sent!\n" +
+                               "Check to make sure all fields are filled in or enter a - (dash) to skip. The To field is required.",
+                       "Email Failure!",
+                       JOptionPane.ERROR_MESSAGE);
             }
          }
       });
