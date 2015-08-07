@@ -6,9 +6,13 @@ Users will have the ability to:
  - perform analytics on class and individual student performance;
  - email reports, gradebook, and other materials
 
-### Class Diagram: http://i.imgur.com/nZi23I4.png
-### Downloadable JAR: https://drive.google.com/file/d/0BzUtXxcCG9ZvbW10RHZEX3o5OUU/view?usp=sharing
-### StackOverflow on creating generic array:    
+### Class Diagram:    
+http://i.imgur.com/nZi23I4.png
+### Downloadable JAR:    
+https://drive.google.com/file/d/0BzUtXxcCG9ZvbW10RHZEX3o5OUU/view?usp=sharing
+### Online Data (Spreadsheet):     
+https://docs.google.com/spreadsheets/d/1uJVvxDvBN-pvjwuSWcTjdmX9DePW0a3y1JByMMIzpIM/edit?usp=sharing
+### StackOverflow on creating generic array:        
 https://stackoverflow.com/questions/31486242/java-instantiating-array-object-of-type-t-using-a-factory/31486323?noredirect=1#comment50937886_31486323
 
 # 1. Setup Instructions
@@ -74,3 +78,15 @@ http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-dow
 
 As the project directory structure changes and we add things like packages, other dependencies, we may need to go through this process a few times.
 If we are mostly working remote, we can look into meeting tools like Cisco WebEx or Skype so we can share the desktop and get on a call together.
+
+# Using the applications - Basic Instructions
+The application is user friendly and in most cases provides a detailed popup message in case anything goes wrong or if the user skips an important step. Below is a general outline for interacting with the application's main features:
+
+ - One must be connected to the internet to use this application. If behind a proxy server and/or a firewall, some functionality may not work. This app should work on the Texas State network. 
+ - Whenever sending an email is an option, the "To" field is required. The remaining fields may be skipped by typing a dash (-) character in the text box. The "To" field may accept multiple emails - they must be separated by a semicolon and there must not be any blank spaces in between. The "CC" field only accepts one email. 
+ - To view analytics, authenticate using an instructor account; student accounts do not have sufficient permission to run analytics. The "Import" button must be clicked on the main page prior to running analytics. 
+ - To view "Current User Info" the "Import" button must be clicked to read in data. 
+ - Some menu items on the "File" menu do nothing, they are placeholders for a future release (I plan to continue adding to and improving this application). 
+ - Students should see a bronze logo when logging in; instructors should see a metalic blue logo.  
+ - Mnemonics and accelerators are used where appropriate, for example, when the "Help" menu is open, one may press Ctrl+A to open the "About" page. Ctrl+W will exit the application.
+ - The application does not contain manu scrollbars and GUI elements are best viewed on a 1920x1080 resolution. The main applicaiton window (the one with the links and import button) should be kept full screen at all times. Should the window size change, it will collapse in a small box. Expanding it slightly and invoking: **right-click > maximize** should return the window to normal. 
