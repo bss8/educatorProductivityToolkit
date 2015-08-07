@@ -12,6 +12,10 @@ import static java.lang.System.*;
 
 /**
  * com.arcologydesigns.emailServicedesigns.Mail created by Borislav S. on 7/1/2015 @ 10:00 PM.
+ * This file receives several strings to generate and send an email using an SMTP server.
+ * The user can pass in multiple emails, separated by a semicolon, for the TO field.
+ * The CC field is currently limited to one recipient only.
+ * The TO field is required; all other fields may be skipped using a dash (-) character.
  */
 public class Mail {
 

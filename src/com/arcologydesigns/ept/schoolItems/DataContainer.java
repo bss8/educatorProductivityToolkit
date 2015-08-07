@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 /**
  * Created by Boris on 8/3/2015.
+ * This static class ensures there is only one copy of imported data during runtime to prevent passing copies around, thus
+ * improving performance. It contains setters and getters to access data imported from external sources.
  */
 public class DataContainer {
    public static class DataContainerInst {

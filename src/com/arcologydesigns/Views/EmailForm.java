@@ -12,6 +12,8 @@ import static java.lang.System.*;
 
 /**
  * Test created by Borislav S. on 7/3/2015 @ 5:53 PM.
+ * Some UI elements were generated using the IntelliJ GUI Designer (generated code is available in this class).
+ * This file uses the /src/com/arcologydesigns/emailService/Mail.java class to send emails using SMTP.
  */
 public class EmailForm extends JFrame {
    private JPanel emailPanel;

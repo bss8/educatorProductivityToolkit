@@ -5,6 +5,7 @@ import java.awt.*;
 
 /**
  * StudentAnalyticsReportForm created by Borislav S. on 7/14/2015 @ 7:24 PM.
+ * Some UI elements were generated using the IntelliJ GUI Designer (generated code is available in this class).
  */
 public class StudentAnalyticsReportForm extends JDialog {
    private JPanel studentAnalyticsPanel;

@@ -3,6 +3,8 @@ package com.arcologydesigns.ept.users;
 /**
  * User created by Borislav S. on 7/12/2015 @ 5:06 PM.
  * NO METHODS TO TEST - ALL SETTERS OR GETTERS
+ * This abstract class is a blueprint for what constitutes a user of this application and what objects will be used
+ * on the GUI. For instance, student data is read in to create student instances, which then populate the analysis table.
  */
 public abstract class User {
    private String userID;

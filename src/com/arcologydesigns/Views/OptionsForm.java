@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Created by Boris on 8/1/2015.
+ * Some UI elements were generated using the IntelliJ GUI Designer (generated code is available in this class).
  */
 public class OptionsForm extends JDialog {
 

@@ -18,6 +18,7 @@ import java.util.Objects;
 
 /**
  * InstructorAnalyticsReportForm created by Borislav S. on 7/14/2015 @ 7:25 PM.
+ * Some UI elements were generated using the IntelliJ GUI Designer (generated code is available in this class).
  */
 public class InstructorAnalyticsReportForm extends JDialog {
    private JPanel instructorAnalyticsPanel;

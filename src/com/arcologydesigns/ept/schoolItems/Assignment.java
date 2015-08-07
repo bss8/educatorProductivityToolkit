@@ -2,6 +2,8 @@ package com.arcologydesigns.ept.schoolItems;
 
 /**
  * Created by Boris on 8/3/2015.
+ * This class defines what constitutes an assignment. It contains getters to access values and setters to create an assignment
+ * from externally read data
  */
 public class Assignment {
    private String assignmentId;

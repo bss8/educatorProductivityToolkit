@@ -63,12 +63,9 @@ public class AuthenticationController {
       }
 
       return isUserValid;
-
    }  // end authenticateUser()
-
 
    public char getUserType() {
       return this.globalUserType;
    }
-
 }  // end class AuthenticationController

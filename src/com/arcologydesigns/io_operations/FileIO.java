@@ -2,6 +2,9 @@ package com.arcologydesigns.io_operations;
 
 /**
  * Created by bss64 ajn21 on 7/9/2015.
+ * This file is currently not being used as local data is not supported in the current release version of the app.
+ * Support is planned for the next release - once integrated, users will be able to read in data from a local flat file
+ * following the contract outlined in the SpreadsheetIntegration class documentation.
  */
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by bss64 on 7/14/2015.
  * edited by arnissim on 7/28/2015
+ * Some UI elements were generated using the IntelliJ GUI Designer (generated code is available in this class).
  */
 
 public class UserInfoForm extends JDialog {

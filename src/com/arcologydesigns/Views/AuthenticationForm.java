@@ -25,7 +25,8 @@ public class AuthenticationForm extends JFrame {
    }
 
    /**
-    * Creates a form with a background image and a semi-transparent overlay for displaying login content
+    * Creates a form with a background image and a semi-transparent overlay for displaying login content.
+    * Some UI elements were generated using the IntelliJ GUI Designer (generated code is available in this class).
     */
    private void createAndShowGUI() {
 

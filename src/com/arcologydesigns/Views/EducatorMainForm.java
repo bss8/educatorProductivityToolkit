@@ -25,6 +25,9 @@ import static java.awt.event.ActionEvent.*;
 
 /**
  * EducatorMainForm created by Borislav S. on 7/11/2015 @ 9:57 PM.
+ * Main form containing right-click popup menu, a menubar, the background image (custom - created in Photoshop)
+ * All of the actionlisteners that determine what happens when a menu item is invoked are in this class.
+ * Some UI elements were generated using the IntelliJ GUI Designer (generated code is available in this class).
  */
 public class EducatorMainForm extends JFrame {
    private char userType;

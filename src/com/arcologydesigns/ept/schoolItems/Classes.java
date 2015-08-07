@@ -4,6 +4,8 @@ import com.arcologydesigns.DataStructures.Queue;
 
 /**
  * Created by Boris on 8/3/2015.
+ * This class defines what constitutes a class. It contains getters to access values and setters to create a class
+ * from externally read data
  */
 public class Classes {
    private Queue<Assignment> classAssignments;

@@ -21,6 +21,25 @@ import static java.lang.System.*;
 /**
  * SpreadsheetIntegration created by Borislav S. on 7/10/2015 @ 7:06 PM.
  * NO METHODS TO TEST - ALL VOID
+ * This is perhaps the most important class of this application. It is responsible for reading in authentication data using
+ * the default constructor. Using the overloaded constructor, it accepts a URL to an online CSV version of a flat file
+ * containing data, which must be in the required format:
+ * Here is an outline of our data and how it relates logically. We are not using an RDBMS and cannot run queries with SQL.
+
+ 5 sheets (tables): APP_USERS, INSTRUCTORS, STUDENTS, CLASSES, and ASSIGNMENTS.
+ The column in bold is the primary key. Multiple bold items indicate a composite key (made up of multiple columns, some of which are foreign keys used to establish a relationship).
+
+ APP_USERS fields: USER_ID, PWD, STATUS.
+ INSTRUCTORS fields: INSTRUCTOR_ID, INSTRUCTOR_NAME, PHONE, ADDRESS, EMAIL
+ STUDENTS fields: STUDENT_ID, STUDENT_NAME, PHONE, ADDRESS, EMAIL
+ CLASSES: CLASS_ID, INSTRUCTOR_ID, STUDENT_ID, CLASS_NAME
+ ASSIGNMENTS: ASSIGNMENT_ID, CLASS_ID, STUDENT_ID, SCORE
+ CLASSES table relates students and instructors to a given class. ASSIGNMENTS table relates a student in a given class to a specific assignment. This data is in 2NF/3NF (normal form), as each spreadsheet can be considered a table and therefore a set of data. Each row in the table is an independent entry - that is, each row in ASSIGNMENTS table "Is-an" assignment, each row in CLASSES table "Is-a" class and so on.
+
+ Definitions:
+ Primary Key: a value unique for each record;
+ Composite Key: a compound key that consists of two or more attributes to uniquely identify a record;
+ Foreign Key: a column that references the primary key of another table to establish a relationship;
  */
 public class SpreadsheetIntegration {
 
