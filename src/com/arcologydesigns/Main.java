@@ -26,6 +26,24 @@ public class Main {
 //         e.printStackTrace();
 //      }
 
+      //Code to initialize proxy using browser settings
+      System.setProperty("java.net.useSystemProxies", "true");
+      System.out.println("detecting proxies");
+      ExtendedProxyManager.init();
+
+/*
+URL url = new URL("http://www.google.com/");
+URLConnection con = url.openConnection();
+BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+// Read it ...
+String inputLine;
+while ((inputLine = in.readLine()) != null)
+System.out.println(inputLine);
+
+in.close();
+*/
+
       AuthenticationForm.main();  // initialize by prompting user for credentials
 
       // Get user data on initial load
