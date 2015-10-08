@@ -2,6 +2,8 @@ package com.arcologydesigns;
 
 /**
  * Created by VZ9YFG on 9/2/2015.
+ * https://stackoverflow.com/questions/120797/how-do-i-set-the-proxy-to-be-used-by-the-jvm
+ * ExtendedProxyManager created by user dma_k (March 9, 2010)
  */
 import com.sun.deploy.net.proxy.DeployProxySelector;
 import com.sun.deploy.services.PlatformType;
